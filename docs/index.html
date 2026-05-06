@@ -1,0 +1,107 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Fundamentos de Telemática · Tema 1 · Ejemplos interactivos</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="site-header hero">
+    <div>
+      <p class="eyebrow">Universidad Politécnica de Cartagena</p>
+      <h1>Fundamentos de Telemática · Tema 1 · Ejemplos interactivos</h1>
+      <p>Simuladores docentes para explorar mallas completas, conmutación, retardos, overhead, pipeline, datagrama y circuito virtual.</p>
+      <p class="notice">Las diapositivas completas del tema se distribuyen a través del aula virtual. Este sitio contiene únicamente los ejemplos interactivos.</p>
+      <div class="hero-actions">
+        <a class="button" href="#simuladores">Ver simuladores</a>
+        <a class="button secondary" href="https://github.com/rasorey/fundamentos-telematica-tema1-interactivos">Repositorio</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="simuladores" class="section">
+      <div class="section-heading">
+        <h2>Simuladores disponibles</h2>
+        <p>Cada ejemplo se puede usar en clase, en el aula virtual o como actividad autónoma del estudiante.</p>
+      </div>
+      <div class="card-grid">
+      <article class="sim-card">
+        <span class="sim-number">01</span>
+        <h3>Malla completa</h3>
+        <p>Explora cómo crecen enlaces e interfaces cuando todos los nodos se conectan directamente entre sí.</p>
+        <a class="button" href="interactive_examples/full_mesh_calculator/">Abrir simulador</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">02</span>
+        <h3>Transmisión vs propagación</h3>
+        <p>Compara el tiempo de meter bits en el enlace con el tiempo de viaje físico de la señal.</p>
+        <a class="button" href="interactive_examples/transmission_vs_propagation/">Abrir simulador</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">03</span>
+        <h3>Conmutación de circuitos</h3>
+        <p>Visualiza establecimiento, reserva de recursos, posible bloqueo y recursos ociosos.</p>
+        <a class="button" href="interactive_examples/circuit_switching/">Abrir simulador</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">04</span>
+        <h3>Conmutación de mensajes</h3>
+        <p>Simula el paso de un mensaje completo por nodos intermedios con buffers y colas.</p>
+        <a class="button" href="interactive_examples/message_switching/">Abrir simulador</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">05</span>
+        <h3>Conmutación de paquetes</h3>
+        <p>Experimenta con tamaño de paquete, cabecera, saltos, colas y comparación con mensaje sin segmentar.</p>
+        <a class="button" href="interactive_examples/packet_switching_delay/">Abrir simulador</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">06</span>
+        <h3>Datagrama vs circuito virtual</h3>
+        <p>Observa rutas, orden de llegada, congestión, fallo de enlace e identificadores de circuito virtual.</p>
+        <a class="button" href="interactive_examples/datagram_vs_virtual_circuit/">Abrir simulador</a>
+      </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>Tabla de conceptos</h2>
+        <p>Acceso rápido desde el concepto principal al simulador correspondiente.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Ejemplo</th><th>Concepto principal</th><th>Enlace</th></tr></thead>
+          <tbody>
+        <tr><td><code>full_mesh_calculator</code></td><td>Escalabilidad de mallas completas</td><td><a href="interactive_examples/full_mesh_calculator/">Malla completa</a></td></tr>
+        <tr><td><code>transmission_vs_propagation</code></td><td>Tiempo de transmisión y tiempo de propagación</td><td><a href="interactive_examples/transmission_vs_propagation/">Transmisión vs propagación</a></td></tr>
+        <tr><td><code>circuit_switching</code></td><td>Conmutación de circuitos</td><td><a href="interactive_examples/circuit_switching/">Conmutación de circuitos</a></td></tr>
+        <tr><td><code>message_switching</code></td><td>Conmutación de mensajes y almacenamiento/reenvío</td><td><a href="interactive_examples/message_switching/">Conmutación de mensajes</a></td></tr>
+        <tr><td><code>packet_switching_delay</code></td><td>Conmutación de paquetes, pipeline, overhead y retardo</td><td><a href="interactive_examples/packet_switching_delay/">Conmutación de paquetes</a></td></tr>
+        <tr><td><code>datagram_vs_virtual_circuit</code></td><td>Datagrama frente a circuito virtual</td><td><a href="interactive_examples/datagram_vs_virtual_circuit/">Datagrama vs circuito virtual</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="license-panel">
+      <h2>Licencia</h2>
+      <p>Este repositorio usa doble licencia: código fuente HTML/CSS/JavaScript bajo 0BSD y contenido docente original bajo CC0 1.0 Universal.</p>
+      <p>Las imágenes, iconos, fotografías o recursos externos no se relicencian; mantienen su licencia original y se documentan en <a href="assets/credits/IMAGE_CREDITS.md">IMAGE_CREDITS.md</a>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><a href="https://github.com/rasorey/fundamentos-telematica-tema1-interactivos">Repositorio en GitHub</a> · <a href="../LICENSES.md">Licencias</a> · <a href="../sources.md">Fuentes</a></p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

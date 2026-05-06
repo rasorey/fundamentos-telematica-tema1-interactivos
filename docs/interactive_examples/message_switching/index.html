@@ -1,0 +1,62 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Conmutación de mensajes · Tema 1</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header compact">
+    <a class="back-link" href="../../">Volver al índice</a>
+    <div>
+      <p class="eyebrow">Fundamentos de Telemática · Tema 1</p>
+      <h1>Conmutación de mensajes</h1>
+      <p>Simula el paso de un mensaje completo por nodos intermedios con buffers y colas.</p>
+    </div>
+  </header>
+  <main class="example-layout">
+    <section class="simulator">
+      <aside class="panel controls">
+        <h2>Parámetros</h2>
+        <label>Tamaño del mensaje (kB) <input id="messageKb" type="number" min="1" value="512"></label>
+        <label>Tasa del enlace (Mb/s) <input id="rateMbps" type="number" min="0.1" step="0.1" value="10"></label>
+        <label>Número de saltos <input id="hops" type="range" min="1" max="6" value="3"><span class="value-row"><strong id="hopsLabel">3</strong></span></label>
+        <label>Retardo medio de cola por nodo (ms) <input id="queueMs" type="number" min="0" value="5"></label>
+        <label>Procesamiento por nodo (ms) <input id="procMs" type="number" min="0" value="1"></label>
+        <label>Capacidad de buffer por nodo (kB) <input id="bufferKb" type="number" min="1" value="1024"></label>
+        <div class="actions"><button id="stepBtn">Avanzar mensaje</button><button id="playBtn" class="ghost">Animar</button></div>
+      </aside>
+      <section class="panel">
+        <h2>Almacenamiento y reenvío</h2>
+        <div class="metrics">
+          <div class="metric"><strong id="txHop">-</strong><span>transmisión por salto</span></div>
+          <div class="metric"><strong id="total">-</strong><span>retardo total aprox.</span></div>
+          <div class="metric"><strong id="buffer">-</strong><span>ocupación de buffer</span></div>
+          <div class="metric"><strong id="compare">-</strong><span>paquetes aprox.</span></div>
+        </div>
+        <svg id="messageSvg" class="visual" viewBox="0 0 900 420"></svg>
+      </section>
+    </section>
+    <section class="formula">
+      <h2>Fórmulas usadas</h2>
+      <p><code>Tsalto ≈ Ttx_mensaje + Tcola + Tprocesamiento</code>. En conmutación de mensajes, cada nodo espera el mensaje completo antes de reenviarlo.</p>
+    </section>
+    <section class="watch">
+      <h2>Interpretación</h2>
+      <p id="messageText"></p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

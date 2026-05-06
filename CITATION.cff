@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "Fundamentos de Telemática · Tema 1 · Ejemplos interactivos"
+message: "Si usas este material en docencia o investigación, se agradece citarlo."
+type: software
+license: 0BSD
+authors:
+  - family-names: "PENDIENTE"
+    given-names: "PENDIENTE"
+repository-code: "https://github.com/rasorey/fundamentos-telematica-tema1-interactivos"
+url: "https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/"
+abstract: "Ejemplos interactivos para el Tema 1 de Fundamentos de Telemática: introducción a redes de computadores, conmutación, retardos, tamaño de paquete, pipeline y modos datagrama/circuito virtual."
+keywords:
+  - redes de computadores
+  - telemática
+  - conmutación de paquetes
+  - conmutación de circuitos
+  - conmutación de mensajes
+  - retardo de transmisión
+  - retardo de propagación
+  - datagrama
+  - circuito virtual
+  - simuladores docentes

@@ -1,0 +1,64 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Conmutación de circuitos · Tema 1</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header compact">
+    <a class="back-link" href="../../">Volver al índice</a>
+    <div>
+      <p class="eyebrow">Fundamentos de Telemática · Tema 1</p>
+      <h1>Conmutación de circuitos</h1>
+      <p>Visualiza establecimiento, reserva de recursos, posible bloqueo y recursos ociosos.</p>
+    </div>
+  </header>
+  <main class="example-layout">
+    <section class="simulator">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+        <label>Número de saltos <input id="hops" type="range" min="1" max="6" value="4"><span class="value-row"><strong id="hopsLabel">4</strong></span></label>
+        <label>Establecimiento por salto (ms) <input id="setup" type="number" min="0" value="25"></label>
+        <label>Tasa reservada (Mb/s) <input id="rate" type="number" min="0.1" step="0.1" value="10"></label>
+        <label>Datos a transferir (kB) <input id="data" type="number" min="1" value="800"></label>
+        <label>Actividad del usuario (%) <input id="activity" type="range" min="1" max="100" value="40"><span class="value-row"><strong id="activityLabel">40 %</strong></span></label>
+        <label>Capacidad disponible por enlace (Mb/s) <input id="capacity" type="number" min="0.1" step="0.1" value="20"></label>
+        <label>Liberación por salto (ms) <input id="release" type="number" min="0" value="5"></label>
+        <div class="actions"><button id="phaseBtn">Avanzar fase</button><button id="autoBtn" class="ghost">Animar</button></div>
+      </aside>
+      <section class="panel">
+        <h2>Fases y recursos</h2>
+        <div class="metrics">
+          <div class="metric"><strong id="phase">Establecimiento</strong><span>fase actual</span></div>
+          <div class="metric"><strong id="total">-</strong><span>tiempo total aprox.</span></div>
+          <div class="metric"><strong id="util">-</strong><span>utilización efectiva</span></div>
+          <div class="metric"><strong id="blocked">-</strong><span>bloqueo</span></div>
+        </div>
+        <svg id="circuitSvg" class="visual" viewBox="0 0 900 360"></svg>
+      </section>
+    </section>
+    <section class="formula">
+      <h2>Fórmulas usadas</h2>
+      <p><code>Ttotal ≈ Testablecimiento + Ttransferencia + Tliberación</code>; <code>Ttransferencia = datos / tasa reservada</code>.</p>
+      <p>La capacidad se reserva aunque el usuario transmita a ráfagas: si la actividad es baja, aparecen recursos ociosos.</p>
+    </section>
+    <section class="watch">
+      <h2>Qué observar</h2>
+      <p id="circuitText"></p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

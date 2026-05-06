@@ -1,0 +1,68 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Datagrama vs circuito virtual · Tema 1</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header compact">
+    <a class="back-link" href="../../">Volver al índice</a>
+    <div>
+      <p class="eyebrow">Fundamentos de Telemática · Tema 1</p>
+      <h1>Datagrama vs circuito virtual</h1>
+      <p>Observa rutas, orden de llegada, congestión, fallo de enlace e identificadores de circuito virtual.</p>
+    </div>
+  </header>
+  <main class="example-layout">
+    <section class="simulator">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+        <label>Modo
+          <select id="mode"><option value="datagram">Datagrama</option><option value="vc">Circuito virtual</option></select>
+        </label>
+        <label><input id="congestion" type="checkbox"> Congestionar enlace B-D</label>
+        <label><input id="failure" type="checkbox"> Fallo de enlace B-D</label>
+        <button id="send">Enviar 5 paquetes</button>
+        <div class="metrics">
+          <div class="metric"><strong id="flex">alta</strong><span>flexibilidad</span></div>
+          <div class="metric"><strong id="setup">no</strong><span>establecimiento previo</span></div>
+          <div class="metric"><strong id="state">bajo</strong><span>estado en red</span></div>
+        </div>
+      </aside>
+      <section class="panel">
+        <h2>Red y rutas</h2>
+        <svg id="networkSvg" class="visual" viewBox="0 0 900 380"></svg>
+      </section>
+    </section>
+    <section class="panel">
+      <h2>Tabla dinámica de paquetes</h2>
+      <div class="table-wrap"><table><thead><tr><th>Paquete</th><th>Ruta</th><th>Tiempo de llegada</th><th>Orden esperado</th><th>Orden real</th></tr></thead><tbody id="packetRows"></tbody></table></div>
+    </section>
+    <section class="panel">
+      <h2>Comparación conceptual</h2>
+      <div class="table-wrap"><table><thead><tr><th>Criterio</th><th>Datagrama</th><th>Circuito virtual</th></tr></thead><tbody>
+        <tr><td>Camino</td><td>Variable por paquete</td><td>Fijado al establecer</td></tr>
+        <tr><td>Estado</td><td>Menor estado por flujo</td><td>Estado en nodos</td></tr>
+        <tr><td>Orden</td><td>Puede haber desorden</td><td>Normalmente conserva orden</td></tr>
+        <tr><td>Robustez</td><td>Flexible ante cambios</td><td>Puede requerir reestablecimiento</td></tr>
+        <tr><td>Overhead</td><td>Más información por paquete</td><td>Señalización inicial e identificadores</td></tr>
+        <tr><td>Decisión</td><td>Por paquete</td><td>En establecimiento y por identificador</td></tr>
+      </tbody></table></div>
+    </section>
+    <section id="vcTable" class="formula"></section>
+  </main>
+  <footer class="site-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

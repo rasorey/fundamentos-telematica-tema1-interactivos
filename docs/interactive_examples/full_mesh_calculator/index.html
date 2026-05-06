@@ -1,0 +1,66 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Malla completa · Tema 1</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header compact">
+    <a class="back-link" href="../../">Volver al índice</a>
+    <div>
+      <p class="eyebrow">Fundamentos de Telemática · Tema 1</p>
+      <h1>Malla completa</h1>
+      <p>Explora cómo crecen enlaces e interfaces cuando todos los nodos se conectan directamente entre sí.</p>
+    </div>
+  </header>
+  <main class="example-layout">
+    <section class="simulator">
+      <aside class="panel controls">
+        <h2>Parámetros</h2>
+        <label>Número de nodos
+          <input id="nodes" type="range" min="2" max="100" value="8">
+          <span class="value-row"><span>N = <strong id="nodesLabel">8</strong></span><span>2-100</span></span>
+        </label>
+        <div class="metrics">
+          <div class="metric"><strong id="links">28</strong><span>enlaces</span></div>
+          <div class="metric"><strong id="perNode">7</strong><span>interfaces por nodo</span></div>
+          <div class="metric"><strong id="totalIf">56</strong><span>interfaces totales</span></div>
+        </div>
+        <div class="formula">
+          <strong>Fórmulas usadas</strong>
+          <p><code>Enlaces = N · (N - 1) / 2</code><br><code>Interfaces por nodo = N - 1</code><br><code>Interfaces totales = N · (N - 1)</code></p>
+        </div>
+      </aside>
+      <section class="panel">
+        <h2>Visualización</h2>
+        <svg id="meshSvg" class="visual" viewBox="0 0 900 420" role="img" aria-label="Comparación entre malla completa, estrella y crecimiento de enlaces"></svg>
+      </section>
+    </section>
+    <section class="panel">
+      <h2>Ejemplos numéricos</h2>
+      <div class="table-wrap"><table><thead><tr><th>N</th><th>Enlaces</th><th>Interfaces por nodo</th><th>Interfaces totales</th></tr></thead><tbody>
+        <tr><td>5</td><td>10</td><td>4</td><td>20</td></tr>
+        <tr><td>10</td><td>45</td><td>9</td><td>90</td></tr>
+        <tr><td>100</td><td>4.950</td><td>99</td><td>9.900</td></tr>
+      </tbody></table></div>
+    </section>
+    <section class="interpretation">
+      <h2>Interpretación</h2>
+      <p id="interpretation">La malla completa da conexión directa entre todos los pares, pero enlaces e interfaces crecen cuadráticamente.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Transmisión vs propagación · Tema 1</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header compact">
+    <a class="back-link" href="../../">Volver al índice</a>
+    <div>
+      <p class="eyebrow">Fundamentos de Telemática · Tema 1</p>
+      <h1>Transmisión vs propagación</h1>
+      <p>Compara el tiempo de meter bits en el enlace con el tiempo de viaje físico de la señal.</p>
+    </div>
+  </header>
+  <main class="example-layout">
+    <section class="simulator">
+      <aside class="panel controls">
+        <h2>Parámetros</h2>
+        <label>Casos predefinidos
+          <select id="preset">
+            <option value="custom">Personalizado</option>
+            <option value="lan">LAN corta</option>
+            <option value="cities">Fibra entre ciudades</option>
+            <option value="intercontinental">Enlace intercontinental</option>
+            <option value="satellite">Enlace satelital</option>
+            <option value="slowBig">Baja tasa con paquete grande</option>
+            <option value="fastFar">Alta tasa con gran distancia</option>
+          </select>
+        </label>
+        <label>Tamaño del paquete (bytes)
+          <input id="packetBytes" type="number" min="64" max="1000000" value="1500">
+        </label>
+        <label>Tasa de transmisión (Mb/s)
+          <input id="rateMbps" type="number" min="0.01" max="100000" step="0.01" value="10">
+        </label>
+        <label>Distancia física (km)
+          <input id="distanceKm" type="number" min="0.001" max="80000" step="0.001" value="1">
+        </label>
+        <label>Medio físico
+          <select id="medium">
+            <option value="copper">Cobre · v ≈ 2 · 10^8 m/s</option>
+            <option value="fiber">Fibra · v ≈ 2 · 10^8 m/s</option>
+            <option value="radio">Radio/vacío · v ≈ 3 · 10^8 m/s</option>
+            <option value="satellite">Larga distancia/satelital · v ≈ 3 · 10^8 m/s</option>
+          </select>
+        </label>
+      </aside>
+      <section class="panel">
+        <h2>Resultado de un salto</h2>
+        <div class="metrics">
+          <div class="metric"><strong id="ttx">-</strong><span>tiempo de transmisión</span></div>
+          <div class="metric"><strong id="tprop">-</strong><span>tiempo de propagación</span></div>
+          <div class="metric"><strong id="total">-</strong><span>retardo total aprox.</span></div>
+          <div class="metric"><strong id="dominant">-</strong><span>componente dominante</span></div>
+        </div>
+        <svg id="txSvg" class="visual" viewBox="0 0 900 360" role="img" aria-label="Tiempo de transmisión frente a propagación"></svg>
+      </section>
+    </section>
+    <section class="panel">
+      <h2>Qué observar</h2>
+      <div class="bar-row">
+        <div class="bar-label"><span>Transmisión</span><span id="txPercent">0 %</span></div>
+        <div class="bar-track"><div id="txBar" class="bar-fill"></div></div>
+        <div class="bar-label"><span>Propagación</span><span id="propPercent">0 %</span></div>
+        <div class="bar-track"><div id="propBar" class="bar-fill alt"></div></div>
+      </div>
+      <p id="explanation" class="interpretation"></p>
+    </section>
+    <section class="formula">
+      <h2>Fórmulas usadas</h2>
+      <p><code>Ttx = L / R</code>, donde L es el tamaño del paquete en bits y R la tasa del enlace en bits/s.</p>
+      <p><code>Tprop = d / v</code>, donde d es la distancia física y v la velocidad de propagación en el medio.</p>
+      <p>Ejemplos: 1.500 B a 10 Mb/s → Ttx ≈ 1,2 ms; 1.500 B a 1 Gb/s → Ttx ≈ 12 µs; 1.000 km de fibra → Tprop ≈ 5 ms.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
