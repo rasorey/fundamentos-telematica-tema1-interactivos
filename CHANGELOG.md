@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.1 - 2026-05-07
+
+- Corregida la animación de `transmission_vs_propagation`: el primer bit y el último bit se propagan ahora con la misma velocidad del medio.
+- Ajustado el modelo visual para que el último bit empiece a moverse después de `Ttx`, en lugar de recorrer el enlace con una velocidad aparente distinta.
+- Añadida una nota docente visible aclarando que la diferencia entre ambos bits es temporal, no física.
+
 ## 1.3.0 - 2026-05-07
 
 - Añadido modo “Reto” en los seis simuladores con valores aleatorios, comprobación y pista o solución razonada.

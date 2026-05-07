@@ -51,8 +51,13 @@ function draw(ttx, tprop, total) {
   const lineY = 145;
   const txFraction = total ? Math.max(0.02, Math.min(0.98, ttx / total)) : 0.5;
   const p = Math.max(0, Math.min(1, progress));
-  const firstBitX = 130 + p * 650;
-  const lastBitX = 130 + Math.max(0, (p - txFraction) / Math.max(0.01, 1 - txFraction)) * 650;
+  const elapsed = p * total;
+  const propagationTime = Math.max(tprop, 1e-12);
+  const firstBitPosition = Math.max(0, Math.min(1, elapsed / propagationTime));
+  const lastBitPosition = Math.max(0, Math.min(1, (elapsed - ttx) / propagationTime));
+  const firstBitX = 130 + firstBitPosition * 650;
+  const lastBitX = 130 + lastBitPosition * 650;
+  const lastBitHasLeft = elapsed >= ttx;
   const txWidth = Math.max(16, Math.min(260, 35 + txFraction * 300));
   svg.append(svgEl("line", { x1: 120, y1: lineY, x2: 780, y2: lineY, stroke: "#c7d2e5", "stroke-width": 8, "stroke-linecap": "round" }));
   svg.append(svgEl("circle", { cx: 95, cy: lineY, r: 34, fill: "#1f3f88" }));
@@ -63,16 +68,16 @@ function draw(ttx, tprop, total) {
   text(svg, { x: 130 + txWidth / 2, y: 115, fill: "#17315f", "text-anchor": "middle", "font-weight": 900, "font-size": 13 }, "paquete entra bit a bit");
   svg.append(svgEl("circle", { cx: firstBitX, cy: lineY, r: 15, fill: "#007c89" }));
   svg.append(svgEl("circle", { cx: firstBitX, cy: lineY, r: 30, fill: "none", stroke: "#007c89", "stroke-width": 2, opacity: .45 }));
-  svg.append(svgEl("rect", { x: lastBitX - 6, y: lineY - 20, width: 12, height: 40, fill: "#1f3f88", opacity: .85 }));
+  svg.append(svgEl("rect", { x: lastBitX - 6, y: lineY - 20, width: 12, height: 40, fill: "#1f3f88", opacity: lastBitHasLeft ? .85 : .35 }));
   text(svg, { x: firstBitX, y: lineY + 54, fill: "#007c89", "text-anchor": "middle", "font-weight": 900, "font-size": 12 }, "primer bit");
-  text(svg, { x: lastBitX, y: lineY - 36, fill: "#1f3f88", "text-anchor": "middle", "font-weight": 900, "font-size": 12 }, "último bit");
+  text(svg, { x: Math.max(lastBitX, 170), y: lineY - 36, fill: "#1f3f88", "text-anchor": "middle", "font-weight": 900, "font-size": 12 }, lastBitHasLeft ? "último bit" : "último bit espera");
   svg.append(svgEl("line", { x1: 130, y1: 260, x2: 780, y2: 260, stroke: "#c7d2e5", "stroke-width": 2 }));
   svg.append(svgEl("rect", { x: 130, y: 252, width: 650 * txFraction, height: 16, fill: "#f59e0b" }));
   svg.append(svgEl("rect", { x: 130 + 650 * txFraction, y: 252, width: 650 * (1 - txFraction), height: 16, fill: "#007c89" }));
   svg.append(svgEl("circle", { cx: 130 + p * 650, cy: 260, r: 8, fill: "#c2413d" }));
   text(svg, { x: 210, y: 300, fill: "#17315f", "text-anchor": "middle", "font-weight": 900 }, "Ttx: meter bits");
   text(svg, { x: 630, y: 300, fill: "#17315f", "text-anchor": "middle", "font-weight": 900 }, "Tprop: viaje físico");
-  text(svg, { x: 450, y: 335, fill: "#516483", "text-anchor": "middle" }, "Aumentar R reduce Ttx, pero no reduce Tprop. En enlaces largos, la física importa.");
+  text(svg, { x: 450, y: 335, fill: "#516483", "text-anchor": "middle" }, "Ambos bits se propagan con la misma v; el último sale Ttx más tarde.");
 }
 function update() {
   const packetBytes = Number($("packetBytes").value);
