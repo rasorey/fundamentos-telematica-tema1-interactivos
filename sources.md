@@ -25,14 +25,22 @@
 ## Imágenes usadas en la presentación local
 
 - NASA Visible Earth, *Earth at Night (Black Marble) 2016 Color Maps*. https://visibleearth.nasa.gov/images/144898/earth-at-night-black-marble-2016-color-maps/144943l
+- Wikimedia Commons, *Front of server racks at NERSC*. https://commons.wikimedia.org/wiki/File:Front_of_server_racks_at_NERSC.jpg
+- Wikimedia Commons / U.S. National Archives and Records Administration, *FIBER OPTICS CABLES*. https://commons.wikimedia.org/wiki/File:FIBER_OPTICS_CABLES_-_NARA_-_17496485.jpg
+- NASA, *TDRS: An Era of Continuous Space Communications*. https://www.nasa.gov/missions/tdrs/tdrs-an-era-of-continuous-space-communications/
 - NASA, *Images and Media Usage Guidelines*. https://www.nasa.gov/nasa-brand-center/images-and-media/
 
-## PowerPoint, Mentimeter e incrustación
+## Microsoft Forms, PowerPoint e incrustación
 
-- Mentimeter Help Center, *How to use the PowerPoint Add-in*. https://help.mentimeter.com/en/articles/1720503-how-to-use-the-powerpoint-add-in
-- Mentimeter Help Center, *PowerPoint Add-in FAQ*. https://help.mentimeter.com/en/articles/8320447-powerpoint-add-in-faq
-- Mentimeter Help Center, *Requirements for running the PowerPoint add-in*. https://help.mentimeter.com/en/articles/7328815-requirements-for-running-the-powerpoint-add-in
+- Microsoft Support, *Insert a form or quiz into PowerPoint*. https://support.microsoft.com/en-gb/office/insert-a-form-or-quiz-into-powerpoint-1a316f81-9ea7-4bc2-bda0-024c0d780df1
+- Microsoft Support, *Share a form*. https://support.microsoft.com/en-us/office/share-a-form-384371be-f1e7-4628-bcba-abd3d6123917
+- Microsoft Support, *Send a form to get responses*. https://support.microsoft.com/en-us/office/send-a-form-to-get-responses-381935d9-ba9c-429e-b8cb-2de6714a75a0
 - Microsoft Learn, *PowerPoint add-ins documentation*. https://learn.microsoft.com/en-us/office/dev/add-ins/powerpoint/
+
+## Unidades de información y prefijos
+
+- BIPM, *The International System of Units (SI): Prefixes*. https://www.bipm.org/en/measurement-units/si-prefixes
+- NIST, *Definitions of the SI units: The binary prefixes*. https://physics.nist.gov/cgi-bin/cuu/Info/Units/binary.html
 
 ## Licencias
 

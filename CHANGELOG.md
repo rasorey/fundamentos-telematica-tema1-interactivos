@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0 - 2026-05-07
+
+- Actualizadas fuentes y documentación para la iteración V4 local de la presentación.
+- Sustituida la referencia documental a herramientas de participación externas por Microsoft Forms.
+- Añadidas fuentes oficiales para Microsoft Forms, inserción en PowerPoint, compartición mediante enlace/QR, prefijos SI y prefijos binarios.
+- Mantenida la separación: el repositorio sigue alojando solo ejemplos interactivos web y documentación asociada, nunca diapositivas.
+
 ## 1.1.0 - 2026-05-07
 
 - Convertidos los simuladores en micro-laboratorios guiados con predicción previa, presets, reinicio, explicación dinámica e interpretación del resultado.
@@ -12,8 +19,8 @@
 - Mejorado `packet_switching_delay` con pipeline animado, scrubber temporal, comparación con mensaje sin segmentar, gráficas de eficiencia/retardo/overhead y tablas generadas con nodos HTML.
 - Mejorado `datagram_vs_virtual_circuit` con selección de enlace congestionado o fallado, rutas alternativas, fase de establecimiento, tablas dinámicas y generación accesible de filas/celdas.
 - Actualizada la documentación para explicar modo normal, modo incrustado, uso desde PowerPoint, uso por QR y distribución mediante aula virtual.
-- Preparada integración local V3 de la presentación con datos de impacto, Mentimeter, capturas, QR, enlaces públicos y nota de fallback para navegador.
-- Actualizadas fuentes para datos de impacto, GitHub Pages, Mentimeter, PowerPoint add-ins y licencias.
+- Preparada integración local V3 de la presentación con datos de impacto, capturas, QR, enlaces públicos y nota de fallback para navegador.
+- Actualizadas fuentes para datos de impacto, GitHub Pages, PowerPoint add-ins y licencias.
 - Confirmada la exclusión de `.ppt`, `.pptx` y PDF de diapositivas del repositorio.
 
 ## 1.0.0 - 2026-05-06

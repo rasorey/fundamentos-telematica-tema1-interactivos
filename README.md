@@ -67,6 +67,8 @@ No se recomienda depender exclusivamente de la incrustación web dentro de Power
 2. Incluir botón y QR con la URL pública normal.
 3. Usar `?embed=1` o `docs/embed/*.html` solo como mejora cuando el aula y el complemento lo permitan.
 
+La participación en clase se gestiona fuera de este repositorio mediante varios Microsoft Forms cortos, uno por bloque del tema. Esos formularios no forman parte del sitio de ejemplos; las diapositivas locales incluyen placeholders de URL/QR para sustituirlos cuando se creen en la cuenta institucional.
+
 ## Publicación en GitHub Pages
 
 Este repositorio incluye el workflow `.github/workflows/pages.yml`, que publica el contenido de `docs/` como sitio estático.
