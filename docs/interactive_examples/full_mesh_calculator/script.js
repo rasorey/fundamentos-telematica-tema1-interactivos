@@ -19,6 +19,7 @@ const $ = (id) => document.getElementById(id);
 const svg = $("meshSvg");
 const nodesInput = $("nodes");
 const presets = { "8": 8, "20": 20, "50": 50, "100": 100 };
+let challenge = { n: 12, answer: 66 };
 
 function svgEl(name, attrs = {}) {
   const node = document.createElementNS("http://www.w3.org/2000/svg", name);
@@ -60,7 +61,7 @@ function drawSwitched(n) {
   label({ x: 365, y: 455, fill: "#516483", "font-size": 12 }, `Introduce tránsito: menos enlaces físicos directos que una malla de ${n} nodos.`);
 }
 function draw(n) {
-  svg.innerHTML = "";
+  svg.replaceChildren();
   const links = n * (n - 1) / 2;
   $("nodesLabel").textContent = n;
   $("links").textContent = links.toLocaleString("es-ES");
@@ -126,4 +127,24 @@ $("explainBtn").addEventListener("click", () => {
   const links = n * (n - 1) / 2;
   $("interpretation").textContent = explain(n, links) + " Una red conmutada evita crear un enlace físico para cada pareja y concentra decisiones de encaminamiento en nodos de red.";
 });
+function newChallenge() {
+  const values = [6, 8, 10, 12, 16, 20, 24, 30];
+  challenge.n = values[Math.floor(Math.random() * values.length)];
+  challenge.answer = challenge.n * (challenge.n - 1) / 2;
+  $("challengeQuestion").textContent = `Reto: para N = ${challenge.n} nodos, ¿cuántos enlaces necesita una malla completa?`;
+  $("challengeAnswer").value = "";
+  $("challengeFeedback").textContent = "";
+  $("challengeFeedback").className = "challenge-feedback";
+}
+function checkChallenge() {
+  const given = Number($("challengeAnswer").value);
+  const ok = given === challenge.answer;
+  $("challengeFeedback").className = "challenge-feedback " + (ok ? "ok" : "warning");
+  $("challengeFeedback").textContent = ok
+    ? `Correcto: ${challenge.n} · ${challenge.n - 1} / 2 = ${challenge.answer} enlaces.`
+    : `No todavía. Pista: cuenta los pares de nodos: N · (N - 1) / 2 = ${challenge.n} · ${challenge.n - 1} / 2.`;
+}
+$("challengeNew").addEventListener("click", newChallenge);
+$("challengeCheck").addEventListener("click", checkChallenge);
 draw(Number(nodesInput.value));
+newChallenge();

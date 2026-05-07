@@ -18,6 +18,7 @@ setupEmbedUi();
 const $ = (id) => document.getElementById(id);
 let activeHop = 0;
 let timer = null;
+let challenge = null;
 const presets = {
   short: { messageKb: 64, rateMbps: 20, hops: 3, queueMs: 2, procMs: 1, bufferKb: 1024 },
   large: { messageKb: 4096, rateMbps: 10, hops: 4, queueMs: 8, procMs: 2, bufferKb: 8192 },
@@ -38,7 +39,7 @@ function calc() {
 }
 function draw(c) {
   const svg = $("messageSvg");
-  svg.innerHTML = "";
+  svg.replaceChildren();
   const hops = v("hops");
   const top = 85, left = 110, right = 800;
   const pts = Array.from({ length: hops + 1 }, (_, i) => [left + i * (right - left) / hops, top]);
@@ -101,4 +102,30 @@ $("explainBtn").addEventListener("click", () => {
   update();
   $("messageText").textContent += " Paso a paso: recibir completo → almacenar → decidir salida → reenviar.";
 });
+function newChallenge() {
+  const messageKb = [64, 128, 256, 512][Math.floor(Math.random() * 4)];
+  const rateMbps = [5, 10, 20][Math.floor(Math.random() * 3)];
+  const hops = [2, 3, 4][Math.floor(Math.random() * 3)];
+  const queueMs = [0, 2, 5][Math.floor(Math.random() * 3)];
+  const procMs = [1, 2][Math.floor(Math.random() * 2)];
+  const tx = messageKb * 1024 * 8 / (rateMbps * 1e6) * 1000;
+  const total = hops * (tx + queueMs + procMs);
+  challenge = { messageKb, rateMbps, hops, queueMs, procMs, tx, total };
+  $("challengeQuestion").textContent = `Mensaje ${messageKb} kB, ${rateMbps} Mb/s, ${hops} saltos, cola ${queueMs} ms y proceso ${procMs} ms por salto. Calcula el retardo total.`;
+  $("challengeAnswer").value = "";
+  $("challengeFeedback").textContent = "";
+  $("challengeFeedback").className = "challenge-feedback";
+}
+function checkChallenge() {
+  if (!challenge) newChallenge();
+  const given = Number($("challengeAnswer").value);
+  const ok = Math.abs(given - challenge.total) <= Math.max(0.5, challenge.total * 0.03);
+  $("challengeFeedback").className = "challenge-feedback " + (ok ? "ok" : "warning");
+  $("challengeFeedback").textContent = ok
+    ? `Correcto: Ttx por salto ≈ ${challenge.tx.toFixed(1)} ms; total ≈ ${challenge.total.toFixed(1)} ms.`
+    : `Pista: primero calcula Ttx del mensaje completo y luego multiplica por los ${challenge.hops} saltos.`;
+}
+$("challengeNew").addEventListener("click", newChallenge);
+$("challengeCheck").addEventListener("click", checkChallenge);
 update();
+newChallenge();

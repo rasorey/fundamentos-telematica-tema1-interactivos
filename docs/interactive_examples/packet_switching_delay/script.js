@@ -26,6 +26,7 @@ const presets = {
 let progress = 0.35;
 let playing = false;
 let timer = null;
+let challenge = null;
 function v(id) { return Number($(id).value); }
 function fmt(ms) { return ms < 1000 ? ms.toFixed(2) + " ms" : (ms / 1000).toFixed(2) + " s"; }
 function svgEl(name, attrs = {}) { const n = document.createElementNS("http://www.w3.org/2000/svg", name); Object.entries(attrs).forEach(([k,val]) => n.setAttribute(k,val)); return n; }
@@ -51,7 +52,7 @@ function calc() {
 }
 function draw(c) {
   const svg = $("packetSvg");
-  svg.innerHTML = "";
+  svg.replaceChildren();
   const colors = ["#1f3f88", "#007c89", "#f59e0b", "#5969b3", "#138a63", "#c2413d"];
   label(svg, { x: 38, y: 35, fill: "#17315f", "font-weight": 900 }, "Diagrama espacio-tiempo simplificado");
   const shown = Math.min(c.packets, 14);
@@ -77,7 +78,7 @@ function draw(c) {
 }
 function drawTradeoff(c) {
   const svg = $("tradeoffSvg");
-  svg.innerHTML = "";
+  svg.replaceChildren();
   const sizes = [128, 256, 512, 1000, 1500, 3000, 9000];
   const chart = (x0, title, color, getter, suffix = "") => {
     const y0 = 215, w = 250, h = 145;
@@ -176,4 +177,29 @@ $("explainBtn").addEventListener("click", () => {
   update();
   $("warnings").textContent += " El pipeline aparece porque, mientras un paquete avanza por un salto, otros paquetes pueden estar ocupando saltos anteriores.";
 });
+function newChallenge() {
+  const messageKb = [32, 64, 128][Math.floor(Math.random() * 3)];
+  const payload = [256, 512, 1000, 1500][Math.floor(Math.random() * 4)];
+  const header = [20, 40, 60][Math.floor(Math.random() * 3)];
+  const msgBytes = messageKb * 1024;
+  const packets = Math.ceil(msgBytes / payload);
+  const overhead = packets * header;
+  challenge = { messageKb, payload, header, packets, overhead };
+  $("challengeQuestion").textContent = `Mensaje ${messageKb} kB, payload ${payload} B y cabecera ${header} B. Calcula el overhead total.`;
+  $("challengeAnswer").value = "";
+  $("challengeFeedback").textContent = "";
+  $("challengeFeedback").className = "challenge-feedback";
+}
+function checkChallenge() {
+  if (!challenge) newChallenge();
+  const given = Number($("challengeAnswer").value);
+  const ok = given === challenge.overhead;
+  $("challengeFeedback").className = "challenge-feedback " + (ok ? "ok" : "warning");
+  $("challengeFeedback").textContent = ok
+    ? `Correcto: ${challenge.packets} paquetes · ${challenge.header} B = ${challenge.overhead} B de cabeceras.`
+    : `No todavía. Paso 1: paquetes = ceil(${challenge.messageKb} kB / ${challenge.payload} B). Paso 2: multiplica por la cabecera.`;
+}
+$("challengeNew").addEventListener("click", newChallenge);
+$("challengeCheck").addEventListener("click", checkChallenge);
 update();
+newChallenge();

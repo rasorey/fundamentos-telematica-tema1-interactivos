@@ -19,6 +19,7 @@ const $ = (id) => document.getElementById(id);
 const nodes = { A:[90,190], B:[270,85], C:[270,295], D:[530,85], E:[530,295], F:[790,190] };
 const links = [["A","B"],["A","C"],["B","D"],["C","E"],["B","E"],["C","D"],["D","F"],["E","F"]];
 let packets = [];
+let challenge = null;
 function svgEl(name, attrs = {}) { const n = document.createElementNS("http://www.w3.org/2000/svg", name); Object.entries(attrs).forEach(([k,v]) => n.setAttribute(k,v)); return n; }
 function label(svg, attrs, value) { const t = svgEl("text", attrs); t.textContent = value; svg.append(t); }
 function keyFor(a, b) { return [a, b].sort().join(""); }
@@ -48,7 +49,7 @@ function routesFor() {
 }
 function draw() {
   const svg = $("networkSvg");
-  svg.innerHTML = "";
+  svg.replaceChildren();
   const congested = $("congestion").checked;
   const failed = $("failure").checked;
   const congestedKey = selected("congestionLink");
@@ -130,4 +131,23 @@ $("explainBtn").addEventListener("click", () => {
     : "Observa que todos los paquetes usan la misma ruta lógica y que el estado del circuito simplifica la decisión por paquete.";
   info.append(note);
 });
+function newChallenge() {
+  const mode = Math.random() < 0.55 ? "datagram" : "vc";
+  const congested = Math.random() < 0.6;
+  challenge = { mode, congested, disorder: mode === "datagram" };
+  $("challengeQuestion").textContent = `Caso: modo ${mode === "datagram" ? "datagrama" : "circuito virtual"}${congested ? " con congestión" : " sin congestión destacada"}. ¿Puede aparecer desorden con más facilidad?`;
+  $("challengeFeedback").textContent = "";
+  $("challengeFeedback").className = "challenge-feedback";
+}
+function checkChallenge() {
+  if (!challenge) newChallenge();
+  const ok = $("challengeAnswer").value === (challenge.disorder ? "sí" : "no");
+  $("challengeFeedback").className = "challenge-feedback " + (ok ? "ok" : "warning");
+  $("challengeFeedback").textContent = ok
+    ? (challenge.disorder ? "Correcto: en datagrama cada paquete puede seguir rutas con retardos distintos." : "Correcto: en circuito virtual los paquetes siguen la ruta lógica establecida y normalmente conservan orden.")
+    : "No todavía. Pregúntate si la decisión de ruta se toma por paquete o en una fase previa de establecimiento.";
+}
+$("challengeNew").addEventListener("click", newChallenge);
+$("challengeCheck").addEventListener("click", checkChallenge);
 send();
+newChallenge();

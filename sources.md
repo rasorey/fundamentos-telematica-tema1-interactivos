@@ -9,6 +9,16 @@
 - IETF RFC 8200, *Internet Protocol, Version 6 (IPv6) Specification*. https://www.rfc-editor.org/rfc/rfc8200.html
 - IETF RFC 2475, *An Architecture for Differentiated Services*. https://www.rfc-editor.org/rfc/rfc2475.html
 
+## Materiales docentes de referencia para los micro-laboratorios
+
+- Kurose/Ross, ejercicios interactivos del capítulo 1. https://gaia.cs.umass.edu/kurose_ross/interactive/
+- Kurose/Ross, *Packet switching versus circuit switching*. https://gaia.cs.umass.edu/kurose_ross/interactive/ps_versus_cs.php
+- Kurose/Ross, *One-hop transmission delay*. https://gaia.cs.umass.edu/kurose_ross/interactive/one-hop-delay.php
+- MIT OCW 6.02, *Lecture 17: Packet Switching*. https://ocw.mit.edu/courses/6-02-introduction-to-eecs-ii-digital-communication-systems-fall-2012/resources/mit6_02f12_lec17/
+- MIT 6.02, *Packet and Circuit Switching* tutorial problems. https://web.mit.edu/6.02/www/f2012/handouts/tutprobs/switching.html
+- Stanford CS144, *Introduction to Computer Networking*, Lecture 1. https://www.scs.stanford.edu/10au-cs144/notes/l1.pdf
+- MIT OCW 6.263J, *Data Communication Networks*, Lecture 1. https://ocw.mit.edu/courses/6-263j-data-communication-networks-fall-2002/resources/lecture1/
+
 ## Datos de impacto y contexto actual
 
 - International Telecommunication Union, *Measuring digital development: Facts and Figures 2025*. https://www.itu.int/itu-d/reports/statistics/facts-figures-2025/

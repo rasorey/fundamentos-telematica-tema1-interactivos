@@ -19,6 +19,7 @@ const $ = (id) => document.getElementById(id);
 const phases = ["Establecimiento", "Transferencia", "Liberación"];
 let phase = 0;
 let timer = null;
+let challenge = null;
 const presets = {
   steady: { hops: 4, setup: 25, rate: 10, data: 800, activity: 100, capacity: 20, release: 5 },
   bursty: { hops: 4, setup: 25, rate: 10, data: 800, activity: 25, capacity: 20, release: 5 },
@@ -38,7 +39,7 @@ function calc() {
 }
 function draw(c) {
   const svg = $("circuitSvg");
-  svg.innerHTML = "";
+  svg.replaceChildren();
   const pts = Array.from({ length: c.hops + 1 }, (_, i) => [90 + i * (720 / c.hops), 165 + (i % 2 ? -45 : 45)]);
   for (let i = 0; i < pts.length - 1; i++) {
     const reserved = phase === 1 && !c.blocked;
@@ -95,4 +96,23 @@ $("explainBtn").addEventListener("click", () => {
   update();
   $("circuitText").textContent += " La zona verde representa capacidad usada; el resto de la reserva es capacidad ociosa si no hay tráfico continuo.";
 });
+function newChallenge() {
+  const rate = [5, 10, 20, 30, 40][Math.floor(Math.random() * 5)];
+  const capacity = [10, 20, 25, 35][Math.floor(Math.random() * 4)];
+  challenge = { rate, capacity, blocked: rate > capacity };
+  $("challengeQuestion").textContent = `Reserva solicitada: ${rate} Mb/s. Capacidad disponible por enlace: ${capacity} Mb/s. ¿Hay bloqueo?`;
+  $("challengeFeedback").textContent = "";
+  $("challengeFeedback").className = "challenge-feedback";
+}
+function checkChallenge() {
+  if (!challenge) newChallenge();
+  const ok = $("challengeAnswer").value === (challenge.blocked ? "sí" : "no");
+  $("challengeFeedback").className = "challenge-feedback " + (ok ? "ok" : "warning");
+  $("challengeFeedback").textContent = ok
+    ? `Correcto: ${challenge.rate} ${challenge.blocked ? ">" : "≤"} ${challenge.capacity}, por eso ${challenge.blocked ? "la red bloquea la reserva" : "la reserva cabe en cada enlace"}.`
+    : `No todavía. Compara tasa reservada y capacidad disponible: si la tasa solicitada supera la capacidad, hay bloqueo.`;
+}
+$("challengeNew").addEventListener("click", newChallenge);
+$("challengeCheck").addEventListener("click", checkChallenge);
 update();
+newChallenge();

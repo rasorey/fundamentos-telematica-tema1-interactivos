@@ -58,6 +58,23 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
       <h2>Tabla dinámica de paquetes</h2>
       <div class="table-wrap"><table><thead><tr><th>Paquete</th><th>Ruta</th><th>Tiempo de llegada</th><th>Orden esperado</th><th>Orden real</th></tr></thead><tbody id="packetRows"></tbody></table></div>
     </section>
+    <section class="panel challenge-panel hide-embed">
+      <h2>Reto · predice el desorden</h2>
+      <p id="challengeQuestion">Pulsa “Nuevo reto” para recibir un modo y un estado de red.</p>
+      <div class="challenge-grid">
+        <label>Tu predicción
+          <select id="challengeAnswer">
+            <option value="sí">puede haber desorden</option>
+            <option value="no">normalmente se conserva el orden</option>
+          </select>
+        </label>
+        <div class="compact-actions">
+          <button id="challengeCheck" type="button">Comprobar</button>
+          <button id="challengeNew" class="ghost" type="button">Nuevo reto</button>
+        </div>
+      </div>
+      <p id="challengeFeedback" class="challenge-feedback" aria-live="polite"></p>
+    </section>
     <section class="panel">
       <h2>Comparación conceptual</h2>
       <div class="table-wrap"><table><thead><tr><th>Criterio</th><th>Datagrama</th><th>Circuito virtual</th></tr></thead><tbody>

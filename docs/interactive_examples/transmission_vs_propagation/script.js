@@ -28,6 +28,7 @@ const presets = {
 let progress = 0.35;
 let playing = false;
 let timer = null;
+let challenge = null;
 function fmt(seconds) {
   if (seconds < 1e-6) return (seconds * 1e9).toFixed(1) + " ns";
   if (seconds < 1e-3) return (seconds * 1e6).toFixed(1) + " µs";
@@ -46,7 +47,7 @@ function text(svg, attrs, value) {
 }
 function draw(ttx, tprop, total) {
   const svg = $("txSvg");
-  svg.innerHTML = "";
+  svg.replaceChildren();
   const lineY = 145;
   const txFraction = total ? Math.max(0.02, Math.min(0.98, ttx / total)) : 0.5;
   const p = Math.max(0, Math.min(1, progress));
@@ -137,4 +138,30 @@ $("explainBtn").addEventListener("click", () => {
   update();
   $("explanation").textContent += " Observa que Ttx depende de L/R, mientras Tprop depende de d/v: son dos relojes distintos.";
 });
+function calcCase(c) {
+  const ttx = c.packetBytes * 8 / (c.rateMbps * 1e6);
+  const tprop = c.distanceKm * 1000 / speeds[c.medium];
+  return { ttx, tprop, dominant: ttx > tprop ? "transmisión" : "propagación" };
+}
+function newChallenge() {
+  const keys = ["lan", "cities", "intercontinental", "satellite", "slowBig", "fastFar"];
+  const key = keys[Math.floor(Math.random() * keys.length)];
+  const c = presets[key];
+  challenge = { key, ...c, ...calcCase(c) };
+  $("challengeQuestion").textContent = `Caso: ${c.packetBytes.toLocaleString("es-ES")} B, ${c.rateMbps} Mb/s, ${c.distanceKm.toLocaleString("es-ES")} km. ¿Qué domina?`;
+  $("challengeFeedback").textContent = "";
+  $("challengeFeedback").className = "challenge-feedback";
+}
+function checkChallenge() {
+  if (!challenge) newChallenge();
+  const given = $("challengeAnswer").value;
+  const ok = given === challenge.dominant;
+  $("challengeFeedback").className = "challenge-feedback " + (ok ? "ok" : "warning");
+  $("challengeFeedback").textContent = ok
+    ? `Correcto: Ttx = ${fmt(challenge.ttx)} y Tprop = ${fmt(challenge.tprop)}.`
+    : `No todavía. Calcula Ttx = L/R y Tprop = d/v: salen ${fmt(challenge.ttx)} y ${fmt(challenge.tprop)}.`;
+}
+$("challengeNew").addEventListener("click", newChallenge);
+$("challengeCheck").addEventListener("click", checkChallenge);
 update();
+newChallenge();

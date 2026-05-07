@@ -191,6 +191,21 @@ tr:nth-child(even) td { background: #eef4fb; }
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 10px;
 }
+.challenge-panel {
+  border-left: 6px solid var(--violet);
+}
+.challenge-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(220px, 340px);
+  gap: 14px;
+  align-items: end;
+}
+.challenge-feedback {
+  margin: 10px 0 0;
+  font-weight: 800;
+}
+.challenge-feedback.ok { color: var(--green); }
+.challenge-feedback.warning { color: var(--red); }
 .embed-open {
   position: fixed;
   right: 12px;
@@ -294,6 +309,7 @@ body.embed .hide-embed {
 @media (max-width: 820px) {
   .site-header.compact { grid-template-columns: 1fr; }
   .simulator { grid-template-columns: 1fr; }
+  .challenge-grid { grid-template-columns: 1fr; }
   .site-header.hero { min-height: auto; }
 }
 @media (prefers-reduced-motion: reduce) {

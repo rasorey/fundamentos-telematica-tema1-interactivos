@@ -95,6 +95,23 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
       </div>
       <p id="explanation" class="interpretation"></p>
     </section>
+    <section class="panel challenge-panel hide-embed">
+      <h2>Reto · predice el componente dominante</h2>
+      <p id="challengeQuestion">Pulsa “Nuevo reto” para recibir un caso.</p>
+      <div class="challenge-grid">
+        <label>Tu predicción
+          <select id="challengeAnswer">
+            <option value="transmisión">domina transmisión</option>
+            <option value="propagación">domina propagación</option>
+          </select>
+        </label>
+        <div class="compact-actions">
+          <button id="challengeCheck" type="button">Comprobar</button>
+          <button id="challengeNew" class="ghost" type="button">Nuevo reto</button>
+        </div>
+      </div>
+      <p id="challengeFeedback" class="challenge-feedback" aria-live="polite"></p>
+    </section>
     <section class="lab-prompt">
       <h2>Pregunta de reflexión</h2>
       <p>¿Por qué una conexión de 1 Gb/s entre continentes puede seguir teniendo más latencia que una LAN mucho más lenta?</p>

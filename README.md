@@ -67,7 +67,17 @@ No se recomienda depender exclusivamente de la incrustación web dentro de Power
 2. Incluir botón y QR con la URL pública normal.
 3. Usar `?embed=1` o `docs/embed/*.html` solo como mejora cuando el aula y el complemento lo permitan.
 
-La participación en clase se gestiona fuera de este repositorio mediante varios Microsoft Forms cortos, uno por bloque del tema. Esos formularios no forman parte del sitio de ejemplos; las diapositivas locales incluyen placeholders de URL/QR para sustituirlos cuando se creen en la cuenta institucional.
+La participación en clase se gestiona fuera de este repositorio mediante varios Microsoft Forms cortos, uno por bloque del tema. Esos formularios no forman parte del sitio de ejemplos. La presentación principal para clase se mantiene limpia y los enlaces reales de Forms se preparan en una plantilla local editable.
+
+## Modo reto
+
+Cada simulador incluye un modo libre con controles y un bloque “Reto” para trabajar en formato:
+
+1. Predice o calcula.
+2. Comprueba.
+3. Lee una pista o solución razonada.
+
+Este modo está pensado para actividades breves en clase y para práctica individual desde el aula virtual.
 
 ## Publicación en GitHub Pages
 

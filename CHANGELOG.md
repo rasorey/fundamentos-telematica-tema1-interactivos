@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.3.0 - 2026-05-07
+
+- Añadido modo “Reto” en los seis simuladores con valores aleatorios, comprobación y pista o solución razonada.
+- Reforzado el enfoque de micro-laboratorio: predicción, cálculo, comprobación e interpretación.
+- Revisado el modo incrustado `?embed=1` para mantener vistas compactas 16:9.
+- Sustituido el vaciado de SVG con `innerHTML` por `replaceChildren()` para evitar patrones frágiles.
+- Probadas 19 rutas locales con Chromium/Google Chrome headless: índice, seis ejemplos en modo normal, seis ejemplos con `?embed=1` y seis wrappers `docs/embed/*.html`, sin errores de consola.
+- Actualizada la documentación para aclarar que la versión principal de las diapositivas se mantiene limpia y que Microsoft Forms se gestiona fuera del repositorio.
+- Confirmado que el repositorio sigue sin contener `.ppt`, `.pptx` ni PDF de diapositivas.
+
 ## 1.2.0 - 2026-05-07
 
 - Actualizadas fuentes y documentación para la iteración V4 local de la presentación.
