@@ -58,26 +58,47 @@ function draw(ttx, tprop, total) {
   const firstBitX = 130 + firstBitPosition * 650;
   const lastBitX = 130 + lastBitPosition * 650;
   const lastBitHasLeft = elapsed >= ttx;
+  const packetStartX = Math.min(lastBitX, firstBitX);
+  const packetWidth = Math.max(0, Math.abs(firstBitX - lastBitX));
   const txWidth = Math.max(16, Math.min(260, 35 + txFraction * 300));
-  svg.append(svgEl("line", { x1: 120, y1: lineY, x2: 780, y2: lineY, stroke: "#c7d2e5", "stroke-width": 8, "stroke-linecap": "round" }));
+  const timelineX = 180;
+  const timelineLen = 600;
+  const timeX = (seconds) => timelineX + Math.max(0, Math.min(1, seconds / Math.max(total, 1e-12))) * timelineLen;
+  const currentX = timeX(elapsed);
+  const firstArrivalX = timeX(tprop);
+  const firstArrivalNearStart = firstArrivalX < timelineX + 145;
+  svg.append(svgEl("rect", { x: 120, y: lineY - 22, width: 660, height: 44, rx: 22, fill: "#eef3fb", stroke: "#c7d2e5", "stroke-width": 2 }));
+  if (packetWidth > 1) {
+    svg.append(svgEl("rect", { x: packetStartX, y: lineY - 18, width: packetWidth, height: 36, rx: 10, fill: "#f59e0b", opacity: .92 }));
+    for (let x = packetStartX + 18; x < packetStartX + packetWidth - 4; x += 28) {
+      svg.append(svgEl("line", { x1: x, y1: lineY - 16, x2: x, y2: lineY + 16, stroke: "#fff7df", "stroke-width": 2, opacity: .75 }));
+    }
+  }
   svg.append(svgEl("circle", { cx: 95, cy: lineY, r: 34, fill: "#1f3f88" }));
   svg.append(svgEl("circle", { cx: 805, cy: lineY, r: 34, fill: "#1f3f88" }));
   text(svg, { x: 95, y: lineY + 5, fill: "#fff", "text-anchor": "middle", "font-weight": 900 }, "Tx");
   text(svg, { x: 805, y: lineY + 5, fill: "#fff", "text-anchor": "middle", "font-weight": 900 }, "Rx");
-  svg.append(svgEl("rect", { x: 130, y: 92, width: txWidth, height: 36, fill: "#f59e0b" }));
-  text(svg, { x: 130 + txWidth / 2, y: 115, fill: "#17315f", "text-anchor": "middle", "font-weight": 900, "font-size": 13 }, "paquete entra bit a bit");
-  svg.append(svgEl("circle", { cx: firstBitX, cy: lineY, r: 15, fill: "#007c89" }));
-  svg.append(svgEl("circle", { cx: firstBitX, cy: lineY, r: 30, fill: "none", stroke: "#007c89", "stroke-width": 2, opacity: .45 }));
-  svg.append(svgEl("rect", { x: lastBitX - 6, y: lineY - 20, width: 12, height: 40, fill: "#1f3f88", opacity: lastBitHasLeft ? .85 : .35 }));
-  text(svg, { x: firstBitX, y: lineY + 54, fill: "#007c89", "text-anchor": "middle", "font-weight": 900, "font-size": 12 }, "primer bit");
-  text(svg, { x: Math.max(lastBitX, 170), y: lineY - 36, fill: "#1f3f88", "text-anchor": "middle", "font-weight": 900, "font-size": 12 }, lastBitHasLeft ? "último bit" : "último bit espera");
-  svg.append(svgEl("line", { x1: 130, y1: 260, x2: 780, y2: 260, stroke: "#c7d2e5", "stroke-width": 2 }));
-  svg.append(svgEl("rect", { x: 130, y: 252, width: 650 * txFraction, height: 16, fill: "#f59e0b" }));
-  svg.append(svgEl("rect", { x: 130 + 650 * txFraction, y: 252, width: 650 * (1 - txFraction), height: 16, fill: "#007c89" }));
-  svg.append(svgEl("circle", { cx: 130 + p * 650, cy: 260, r: 8, fill: "#c2413d" }));
-  text(svg, { x: 210, y: 300, fill: "#17315f", "text-anchor": "middle", "font-weight": 900 }, "Ttx: meter bits");
-  text(svg, { x: 630, y: 300, fill: "#17315f", "text-anchor": "middle", "font-weight": 900 }, "Tprop: viaje físico");
-  text(svg, { x: 450, y: 335, fill: "#516483", "text-anchor": "middle" }, "Ambos bits se propagan con la misma v; el último sale Ttx más tarde.");
+  svg.append(svgEl("line", { x1: firstBitX, y1: lineY - 30, x2: firstBitX, y2: lineY + 30, stroke: "#007c89", "stroke-width": 4, "stroke-linecap": "round" }));
+  svg.append(svgEl("line", { x1: lastBitX, y1: lineY - 30, x2: lastBitX, y2: lineY + 30, stroke: "#1f3f88", "stroke-width": 4, "stroke-linecap": "round", opacity: lastBitHasLeft ? 1 : .35 }));
+  text(svg, { x: Math.min(Math.max(firstBitX, 170), 740), y: lineY + 58, fill: "#007c89", "text-anchor": "middle", "font-weight": 900, "font-size": 12 }, "primer bit");
+  text(svg, { x: lastBitHasLeft ? Math.min(Math.max(lastBitX, 170), 740) : 210, y: lastBitHasLeft ? lineY - 42 : lineY + 78, fill: "#1f3f88", "text-anchor": "middle", "font-weight": 900, "font-size": 12 }, lastBitHasLeft ? "último bit" : "último bit aún no sale");
+  svg.append(svgEl("rect", { x: 130, y: 82, width: txWidth, height: 34, rx: 8, fill: "#fef3c7", stroke: "#f59e0b", "stroke-width": 2 }));
+  text(svg, { x: 130 + txWidth / 2, y: 104, fill: "#17315f", "text-anchor": "middle", "font-weight": 900, "font-size": 12 }, "transmisión: el emisor mete bits");
+  text(svg, { x: 450, y: 45, fill: "#17315f", "text-anchor": "middle", "font-weight": 900, "font-size": 16 }, "El rectángulo naranja es el paquete ocupando el enlace en este instante");
+
+  text(svg, { x: 88, y: 262, fill: "#516483", "font-weight": 900, "font-size": 12 }, "Emisor");
+  text(svg, { x: 88, y: 302, fill: "#516483", "font-weight": 900, "font-size": 12 }, "Primer bit");
+  text(svg, { x: 88, y: 342, fill: "#516483", "font-weight": 900, "font-size": 12 }, "Último bit");
+  svg.append(svgEl("line", { x1: timelineX, y1: 352, x2: timelineX + timelineLen, y2: 352, stroke: "#c7d2e5", "stroke-width": 2 }));
+  svg.append(svgEl("rect", { x: timeX(0), y: 246, width: Math.max(2, timeX(ttx) - timeX(0)), height: 22, rx: 6, fill: "#f59e0b" }));
+  text(svg, { x: (timeX(0) + timeX(ttx)) / 2, y: 262, fill: "#17315f", "text-anchor": "middle", "font-weight": 900, "font-size": 12 }, "Ttx");
+  svg.append(svgEl("line", { x1: timeX(0), y1: 298, x2: timeX(tprop), y2: 298, stroke: "#007c89", "stroke-width": 8, "stroke-linecap": "round" }));
+  svg.append(svgEl("line", { x1: timeX(ttx), y1: 338, x2: timeX(total), y2: 338, stroke: "#1f3f88", "stroke-width": 8, "stroke-linecap": "round" }));
+  text(svg, { x: firstArrivalNearStart ? firstArrivalX + 10 : firstArrivalX, y: 288, fill: "#007c89", "text-anchor": firstArrivalNearStart ? "start" : "end", "font-weight": 900, "font-size": 12 }, "llega primer bit");
+  text(svg, { x: timeX(total), y: 328, fill: "#1f3f88", "text-anchor": "end", "font-weight": 900, "font-size": 12 }, "llega último bit");
+  svg.append(svgEl("line", { x1: currentX, y1: 238, x2: currentX, y2: 356, stroke: "#c2413d", "stroke-width": 2, "stroke-dasharray": "5 5" }));
+  svg.append(svgEl("circle", { cx: currentX, cy: 352, r: 7, fill: "#c2413d" }));
+  text(svg, { x: 450, y: 395, fill: "#516483", "text-anchor": "middle" }, "Ambos bordes del paquete avanzan con la misma velocidad; la cola sale Ttx después del frente.");
 }
 function update() {
   const packetBytes = Number($("packetBytes").value);

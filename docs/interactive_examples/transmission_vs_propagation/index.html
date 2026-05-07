@@ -76,7 +76,7 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
           <div class="metric"><strong id="total">-</strong><span>retardo total aprox.</span></div>
           <div class="metric"><strong id="dominant">-</strong><span>componente dominante</span></div>
         </div>
-        <svg id="txSvg" class="visual" viewBox="0 0 900 360" role="img" aria-label="Tiempo de transmisión frente a propagación"></svg>
+        <svg id="txSvg" class="visual" viewBox="0 0 900 420" role="img" aria-label="Tiempo de transmisión frente a propagación"></svg>
         <div class="timeline-control">
           <label>Tiempo de animación
             <input id="timeScrub" type="range" min="0" max="100" value="35">
@@ -94,7 +94,7 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
         <div class="bar-track"><div id="propBar" class="bar-fill alt"></div></div>
       </div>
       <p id="explanation" class="interpretation"></p>
-      <p class="mini-note">En la animación, el primer bit y el último bit se propagan por el enlace con la misma velocidad del medio. La diferencia es que el último bit empieza a propagarse cuando termina el tiempo de transmisión.</p>
+      <p class="mini-note">En la animación, el rectángulo naranja representa los bits del paquete que ocupan el enlace. Su borde delantero es el primer bit y su borde trasero es el último bit: ambos se propagan con la misma velocidad del medio; el último bit simplemente sale <code>Ttx</code> más tarde.</p>
     </section>
     <section class="panel challenge-panel hide-embed">
       <h2>Reto · predice el componente dominante</h2>
