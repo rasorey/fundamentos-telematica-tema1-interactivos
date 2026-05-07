@@ -26,6 +26,10 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
     <section class="simulator">
       <aside class="panel controls">
         <h2>Parámetros</h2>
+        <div class="lab-prompt embed-keep">
+          <strong>Predice:</strong>
+          <p class="mini-note">Al subir la tasa del enlace, ¿qué baja: Ttx, Tprop o ambos?</p>
+        </div>
         <label>Casos predefinidos
           <select id="preset">
             <option value="custom">Personalizado</option>
@@ -54,6 +58,15 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
             <option value="satellite">Larga distancia/satelital · v ≈ 3 · 10^8 m/s</option>
           </select>
         </label>
+        <label>Velocidad de animación
+          <input id="animSpeed" type="range" min="0.5" max="3" step="0.5" value="1">
+          <span class="value-row"><strong id="animSpeedLabel">1×</strong></span>
+        </label>
+        <div class="compact-actions">
+          <button id="playBtn" type="button">Play/pausa</button>
+          <button id="resetBtn" type="button" class="ghost">Reiniciar</button>
+          <button id="explainBtn" type="button" class="ghost">Explicar resultado</button>
+        </div>
       </aside>
       <section class="panel">
         <h2>Resultado de un salto</h2>
@@ -64,6 +77,12 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
           <div class="metric"><strong id="dominant">-</strong><span>componente dominante</span></div>
         </div>
         <svg id="txSvg" class="visual" viewBox="0 0 900 360" role="img" aria-label="Tiempo de transmisión frente a propagación"></svg>
+        <div class="timeline-control">
+          <label>Tiempo de animación
+            <input id="timeScrub" type="range" min="0" max="100" value="35">
+            <span class="value-row"><span>primer bit</span><span>último bit</span></span>
+          </label>
+        </div>
       </section>
     </section>
     <section class="panel">
@@ -75,6 +94,10 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
         <div class="bar-track"><div id="propBar" class="bar-fill alt"></div></div>
       </div>
       <p id="explanation" class="interpretation"></p>
+    </section>
+    <section class="lab-prompt">
+      <h2>Pregunta de reflexión</h2>
+      <p>¿Por qué una conexión de 1 Gb/s entre continentes puede seguir teniendo más latencia que una LAN mucho más lenta?</p>
     </section>
     <section class="formula">
       <h2>Fórmulas usadas</h2>

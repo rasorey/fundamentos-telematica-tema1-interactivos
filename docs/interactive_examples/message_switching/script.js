@@ -3,9 +3,26 @@
  * Contenido docente original asociado publicado bajo CC0 1.0 Universal.
  * Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
  */
+function setupEmbedUi() {
+  if (new URLSearchParams(location.search).get("embed") !== "1") return;
+  document.body.classList.add("embed");
+  const open = document.createElement("a");
+  open.className = "button embed-open";
+  open.href = location.pathname;
+  open.target = "_blank";
+  open.rel = "noopener";
+  open.textContent = "Abrir en navegador";
+  document.body.append(open);
+}
+setupEmbedUi();
 const $ = (id) => document.getElementById(id);
 let activeHop = 0;
 let timer = null;
+const presets = {
+  short: { messageKb: 64, rateMbps: 20, hops: 3, queueMs: 2, procMs: 1, bufferKb: 1024 },
+  large: { messageKb: 4096, rateMbps: 10, hops: 4, queueMs: 8, procMs: 2, bufferKb: 8192 },
+  buffer: { messageKb: 2048, rateMbps: 5, hops: 3, queueMs: 15, procMs: 3, bufferKb: 512 },
+};
 function v(id) { return Number($(id).value); }
 function fmt(ms) { return ms < 1000 ? ms.toFixed(1) + " ms" : (ms / 1000).toFixed(2) + " s"; }
 function svgEl(name, attrs = {}) { const n = document.createElementNS("http://www.w3.org/2000/svg", name); Object.entries(attrs).forEach(([k,val]) => n.setAttribute(k,val)); return n; }
@@ -66,10 +83,22 @@ function update() {
   draw(c);
 }
 ["messageKb","rateMbps","hops","queueMs","procMs","bufferKb"].forEach((id) => $(id).addEventListener("input", () => { activeHop = 0; update(); }));
+function applyPreset(name) {
+  const p = presets[name] || presets.short;
+  Object.entries(p).forEach(([id, val]) => { $(id).value = val; });
+  activeHop = 0;
+  update();
+}
+$("preset").addEventListener("change", () => applyPreset($("preset").value));
 $("stepBtn").addEventListener("click", () => { activeHop = (activeHop + 1) % v("hops"); update(); });
 $("playBtn").addEventListener("click", () => {
   if (timer) { clearInterval(timer); timer = null; $("playBtn").textContent = "Animar"; return; }
   $("playBtn").textContent = "Detener";
   timer = setInterval(() => { activeHop = (activeHop + 1) % v("hops"); update(); }, 900);
+});
+$("resetBtn").addEventListener("click", () => { $("preset").value = "short"; applyPreset("short"); });
+$("explainBtn").addEventListener("click", () => {
+  update();
+  $("messageText").textContent += " Paso a paso: recibir completo → almacenar → decidir salida → reenviar.";
 });
 update();

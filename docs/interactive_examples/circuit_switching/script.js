@@ -3,10 +3,27 @@
  * Contenido docente original asociado publicado bajo CC0 1.0 Universal.
  * Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
  */
+function setupEmbedUi() {
+  if (new URLSearchParams(location.search).get("embed") !== "1") return;
+  document.body.classList.add("embed");
+  const open = document.createElement("a");
+  open.className = "button embed-open";
+  open.href = location.pathname;
+  open.target = "_blank";
+  open.rel = "noopener";
+  open.textContent = "Abrir en navegador";
+  document.body.append(open);
+}
+setupEmbedUi();
 const $ = (id) => document.getElementById(id);
 const phases = ["Establecimiento", "Transferencia", "Liberación"];
 let phase = 0;
 let timer = null;
+const presets = {
+  steady: { hops: 4, setup: 25, rate: 10, data: 800, activity: 100, capacity: 20, release: 5 },
+  bursty: { hops: 4, setup: 25, rate: 10, data: 800, activity: 25, capacity: 20, release: 5 },
+  blocked: { hops: 4, setup: 25, rate: 30, data: 800, activity: 70, capacity: 20, release: 5 },
+};
 function value(id) { return Number($(id).value); }
 function fmtMs(ms) { return ms < 1000 ? ms.toFixed(1) + " ms" : (ms / 1000).toFixed(2) + " s"; }
 function svgEl(name, attrs = {}) { const n = document.createElementNS("http://www.w3.org/2000/svg", name); Object.entries(attrs).forEach(([k,v]) => n.setAttribute(k,v)); return n; }
@@ -43,6 +60,7 @@ function draw(c) {
   svg.append(svgEl("rect", { x: 240, y: 300, width: 420, height: 18, fill: "#e9edf4" }));
   svg.append(svgEl("rect", { x: 240, y: 300, width: 420 * value("activity") / 100, height: 18, fill: "#138a63" }));
   label(svg, { x: 450, y: 342, "text-anchor": "middle", fill: "#516483" }, `Uso efectivo ${value("activity")}% · capacidad ociosa ${idle}% durante la reserva`);
+  label(svg, { x: 450, y: 376, "text-anchor": "middle", fill: "#17315f", "font-weight": 900 }, "línea temporal: establecimiento → transferencia → liberación");
 }
 function update() {
   const c = calc();
@@ -59,10 +77,22 @@ function update() {
   draw(c);
 }
 ["hops","setup","rate","data","activity","capacity","release"].forEach((id) => $(id).addEventListener("input", update));
+function applyPreset(name) {
+  const p = presets[name] || presets.bursty;
+  Object.entries(p).forEach(([id, val]) => { $(id).value = val; });
+  phase = 0;
+  update();
+}
+$("preset").addEventListener("change", () => applyPreset($("preset").value));
 $("phaseBtn").addEventListener("click", () => { phase = (phase + 1) % phases.length; update(); });
 $("autoBtn").addEventListener("click", () => {
   if (timer) { clearInterval(timer); timer = null; $("autoBtn").textContent = "Animar"; return; }
   $("autoBtn").textContent = "Detener";
   timer = setInterval(() => { phase = (phase + 1) % phases.length; update(); }, 1100);
+});
+$("resetBtn").addEventListener("click", () => { $("preset").value = "bursty"; applyPreset("bursty"); });
+$("explainBtn").addEventListener("click", () => {
+  update();
+  $("circuitText").textContent += " La zona verde representa capacidad usada; el resto de la reserva es capacidad ociosa si no hay tráfico continuo.";
 });
 update();

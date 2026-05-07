@@ -26,6 +26,19 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
     <section class="simulator">
       <aside class="panel controls">
         <h2>Parámetros</h2>
+        <div class="lab-prompt embed-keep">
+          <strong>Predice:</strong>
+          <p class="mini-note">¿Qué mejora y qué empeora al hacer paquetes más pequeños?</p>
+        </div>
+        <label>Casos predefinidos
+          <select id="preset">
+            <option value="balanced">Equilibrado</option>
+            <option value="small">Paquetes pequeños</option>
+            <option value="large">Paquetes grandes</option>
+            <option value="queue">Cola dominante</option>
+            <option value="prop">Propagación dominante</option>
+          </select>
+        </label>
         <label>Tamaño total del mensaje (kB) <input id="messageKb" type="number" min="1" value="64"></label>
         <label>Tamaño útil del paquete (B) <input id="payload" type="number" min="64" value="1200"></label>
         <label>Cabecera (B) <input id="header" type="number" min="0" value="40"></label>
@@ -36,6 +49,10 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
         <label>Procesamiento (ms) <input id="proc" type="number" min="0" step="0.1" value="0.2"></label>
         <label><input id="queues" type="checkbox" checked> Activar colas y procesamiento</label>
         <label><input id="compareWhole" type="checkbox" checked> Comparar contra mensaje sin segmentar</label>
+        <label>Tiempo de animación
+          <input id="timeScrub" type="range" min="0" max="100" value="35">
+        </label>
+        <div class="compact-actions"><button id="playBtn" type="button">Play/pausa</button><button id="resetBtn" class="ghost" type="button">Reiniciar</button><button id="explainBtn" class="ghost" type="button">Explicar</button></div>
       </aside>
       <section class="panel">
         <h2>Pipeline y retardo</h2>
@@ -51,8 +68,12 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
       </section>
     </section>
     <section class="panel">
+      <h2>Compromiso tamaño-retardo-overhead</h2>
+      <svg id="tradeoffSvg" class="visual" viewBox="0 0 940 260" role="img" aria-label="Gráficas de eficiencia, retardo y overhead frente a tamaño de paquete"></svg>
+    </section>
+    <section class="panel">
       <h2>Comparación</h2>
-      <div id="warnings" class="watch"></div>
+      <div id="warnings" class="watch interpretation"></div>
       <div class="table-wrap"><table><thead><tr><th>Modo</th><th>Tiempo aproximado</th><th>Lectura</th></tr></thead><tbody id="compareRows"></tbody></table></div>
     </section>
     <section class="formula">
@@ -62,6 +83,10 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
       <p><code>Eficiencia útil = datos útiles / bits totales transmitidos</code></p>
       <p><code>Goodput aproximado = datos útiles entregados / tiempo total</code></p>
       <p><code>Llegada último paquete ≈ H · Tprop + (H + P - 1) · Ttx_paquete</code>, aproximación simplificada sin colas ni procesamiento salvo que actives esos parámetros.</p>
+    </section>
+    <section class="lab-prompt">
+      <h2>Pregunta de reflexión</h2>
+      <p>¿Qué tamaño de paquete escogerías para una videollamada? ¿Y para transferir un backup nocturno?</p>
     </section>
   </main>
   <footer class="site-footer">

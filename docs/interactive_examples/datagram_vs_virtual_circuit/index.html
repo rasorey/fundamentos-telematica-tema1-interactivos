@@ -26,12 +26,23 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
     <section class="simulator">
       <aside class="panel controls">
         <h2>Controles</h2>
+        <div class="lab-prompt embed-keep">
+          <strong>Predice:</strong>
+          <p class="mini-note">Si cada paquete puede cambiar de ruta, ¿puede llegar desordenado?</p>
+        </div>
         <label>Modo
           <select id="mode"><option value="datagram">Datagrama</option><option value="vc">Circuito virtual</option></select>
         </label>
-        <label><input id="congestion" type="checkbox"> Congestionar enlace B-D</label>
-        <label><input id="failure" type="checkbox"> Fallo de enlace B-D</label>
-        <button id="send">Enviar 5 paquetes</button>
+        <label>Enlace congestionado
+          <select id="congestionLink"><option value="BD">B-D</option><option value="CE">C-E</option><option value="BE">B-E</option><option value="CD">C-D</option></select>
+        </label>
+        <label><input id="congestion" type="checkbox"> Activar congestión</label>
+        <label>Enlace fallado
+          <select id="failureLink"><option value="BD">B-D</option><option value="CE">C-E</option><option value="BE">B-E</option><option value="CD">C-D</option></select>
+        </label>
+        <label><input id="failure" type="checkbox"> Activar fallo</label>
+        <label>Peso base por enlace (ms) <input id="baseWeight" type="number" min="1" value="10"></label>
+        <div class="compact-actions"><button id="send">Enviar 5 paquetes</button><button id="resetBtn" class="ghost" type="button">Reiniciar</button><button id="explainBtn" class="ghost" type="button">Explicar</button></div>
         <div class="metrics">
           <div class="metric"><strong id="flex">alta</strong><span>flexibilidad</span></div>
           <div class="metric"><strong id="setup">no</strong><span>establecimiento previo</span></div>
@@ -58,7 +69,11 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
         <tr><td>Decisión</td><td>Por paquete</td><td>En establecimiento y por identificador</td></tr>
       </tbody></table></div>
     </section>
-    <section id="vcTable" class="formula"></section>
+    <section id="vcTable" class="formula interpretation"></section>
+    <section class="lab-prompt">
+      <h2>Pregunta de reflexión</h2>
+      <p>¿Qué gana y qué pierde la red cuando mantiene estado de circuito virtual en los nodos?</p>
+    </section>
   </main>
   <footer class="site-footer">
     <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>

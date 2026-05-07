@@ -3,6 +3,7 @@
 | Parte del repositorio | Licencia |
 |---|---|
 | docs/**/*.html | 0BSD para el código; CC0 para el contenido docente original |
+| docs/embed/*.html | 0BSD para el código; CC0 para el contenido docente original |
 | docs/**/*.css | 0BSD |
 | docs/**/*.js | 0BSD |
 | docs/assets/figures/ propias | CC0 1.0 Universal |

@@ -6,6 +6,30 @@ Este repositorio contiene únicamente los ejemplos interactivos web del Tema 1 d
 
 https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/
 
+## Modos de uso
+
+Cada simulador tiene dos modos:
+
+- Modo normal: página completa para GitHub Pages, aula virtual y trabajo individual.
+- Modo incrustado: añade `?embed=1` a la URL para ocultar cabecera, pie y contenido secundario y optimizar la vista 16:9.
+
+Ejemplo:
+
+https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples/packet_switching_delay/?embed=1
+
+También hay páginas wrapper en `docs/embed/`, útiles para complementos de PowerPoint que acepten una URL web.
+
+Wrappers publicados:
+
+| Ejemplo | URL embed |
+|---|---|
+| `full_mesh_calculator` | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/embed/full_mesh_calculator.html |
+| `transmission_vs_propagation` | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/embed/transmission_vs_propagation.html |
+| `circuit_switching` | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/embed/circuit_switching.html |
+| `message_switching` | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/embed/message_switching.html |
+| `packet_switching_delay` | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/embed/packet_switching_delay.html |
+| `datagram_vs_virtual_circuit` | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/embed/datagram_vs_virtual_circuit.html |
+
 ## Ejemplos
 
 | Ejemplo | Concepto principal | URL |
@@ -27,6 +51,21 @@ python -m http.server 8000
 Después abre:
 
 http://localhost:8000/
+
+## Uso desde PowerPoint o aula virtual
+
+Las diapositivas completas se distribuyen por el aula virtual. Desde las diapositivas se recomienda ofrecer siempre dos vías:
+
+- QR o botón con la URL pública normal para abrir el simulador en navegador.
+- URL con `?embed=1` o wrapper `docs/embed/*.html` cuando el aula o el complemento de PowerPoint permitan incrustar una página web.
+
+Si el complemento web de PowerPoint no funciona, el simulador sigue disponible mediante QR y enlace público.
+
+No se recomienda depender exclusivamente de la incrustación web dentro de PowerPoint. El flujo robusto para clase es:
+
+1. Mantener en la diapositiva una captura del simulador.
+2. Incluir botón y QR con la URL pública normal.
+3. Usar `?embed=1` o `docs/embed/*.html` solo como mejora cuando el aula y el complemento lo permitan.
 
 ## Publicación en GitHub Pages
 
@@ -61,6 +100,12 @@ Las imágenes o recursos externos mantienen su licencia original y se documentan
 ## Cómo citar
 
 Consulta `CITATION.cff`. Aunque la atribución no sea obligatoria para el material CC0, se agradece citar la fuente en contextos docentes.
+
+## Fuentes y créditos
+
+Las fuentes técnicas, docentes, de licencias y de datos de impacto se recogen en `sources.md`.
+
+El sitio no incorpora fotografías ni imágenes externas. Las capturas de `docs/assets/screenshots/` son capturas propias de los simuladores y se publican como contenido docente propio bajo CC0 1.0 Universal.
 
 ## Aviso
 

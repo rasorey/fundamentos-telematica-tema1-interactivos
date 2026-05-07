@@ -26,6 +26,17 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
     <section class="simulator">
       <aside class="panel controls">
         <h2>Controles</h2>
+        <div class="lab-prompt embed-keep">
+          <strong>Predice:</strong>
+          <p class="mini-note">Si el usuario solo transmite a ráfagas, ¿qué ocurre con la capacidad reservada?</p>
+        </div>
+        <label>Casos predefinidos
+          <select id="preset">
+            <option value="steady">Tráfico continuo</option>
+            <option value="bursty">Usuario a ráfagas</option>
+            <option value="blocked">Bloqueo por falta de capacidad</option>
+          </select>
+        </label>
         <label>Número de saltos <input id="hops" type="range" min="1" max="6" value="4"><span class="value-row"><strong id="hopsLabel">4</strong></span></label>
         <label>Establecimiento por salto (ms) <input id="setup" type="number" min="0" value="25"></label>
         <label>Tasa reservada (Mb/s) <input id="rate" type="number" min="0.1" step="0.1" value="10"></label>
@@ -33,7 +44,7 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
         <label>Actividad del usuario (%) <input id="activity" type="range" min="1" max="100" value="40"><span class="value-row"><strong id="activityLabel">40 %</strong></span></label>
         <label>Capacidad disponible por enlace (Mb/s) <input id="capacity" type="number" min="0.1" step="0.1" value="20"></label>
         <label>Liberación por salto (ms) <input id="release" type="number" min="0" value="5"></label>
-        <div class="actions"><button id="phaseBtn">Avanzar fase</button><button id="autoBtn" class="ghost">Animar</button></div>
+        <div class="compact-actions"><button id="phaseBtn">Avanzar fase</button><button id="autoBtn" class="ghost">Animar</button><button id="resetBtn" class="ghost" type="button">Reiniciar</button><button id="explainBtn" type="button">Explicar</button></div>
       </aside>
       <section class="panel">
         <h2>Fases y recursos</h2>
@@ -53,7 +64,11 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
     </section>
     <section class="watch">
       <h2>Qué observar</h2>
-      <p id="circuitText"></p>
+      <p id="circuitText" class="interpretation"></p>
+    </section>
+    <section class="lab-prompt">
+      <h2>Pregunta de reflexión</h2>
+      <p>¿Por qué reservar recursos puede ser útil para predecir retardo y, al mismo tiempo, ineficiente?</p>
     </section>
   </main>
   <footer class="site-footer">
