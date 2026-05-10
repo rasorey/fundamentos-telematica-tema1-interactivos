@@ -1,5 +1,62 @@
 # Changelog
 
+## 1.4.0 - 2026-05-10
+
+- Añadida presentación web paralela en `docs/slides/`.
+- Implementada navegación 16:9 en HTML/CSS/JavaScript vanilla, sin backend ni dependencias externas.
+- Incrustados los seis simuladores en modo `?embed=1` dentro de diapositivas online con botón “Abrir en navegador” y fallback.
+- Añadido `docs/slides/forms-config.js` para configurar URLs normales, URLs de inserción y QR de Microsoft Forms.
+- Añadidas diapositivas Forms con fallback limpio cuando no existe `embedUrl`.
+- Añadido índice navegable, controles por teclado, botón de pantalla completa y barra de progreso.
+- Añadida documentación específica en `docs/slides/README.md`.
+- Actualizada la portada del sitio `docs/index.html` con enlace a la presentación interactiva online.
+- Confirmado que el PowerPoint y el PDF siguen fuera del repositorio.
+
+## 1.3.5 - 2026-05-09
+
+- Mejorados `circuit_switching` y `message_switching` como micro-laboratorios docentes.
+- En `circuit_switching`, añadidas barras de capacidad por enlace con capacidad reservada, usada, ociosa y libre.
+- En `circuit_switching`, reforzada la línea temporal establecimiento → transferencia → liberación y la comparación entre usuario activo al 100 % y usuario a ráfagas.
+- En `circuit_switching`, mejorado el caso de bloqueo cuando la tasa reservada supera la capacidad disponible por enlace.
+- En `message_switching`, añadida visualización de buffers por nodo, ocupación de buffer y cola por nodo.
+- En `message_switching`, reforzado el diagrama espacio-tiempo para mostrar que cada nodo espera el mensaje completo antes de reenviarlo.
+- En `message_switching`, añadida comparación directa entre mensaje completo y aproximación con paquetes.
+- Ajustados ambos modos `?embed=1` para vista 16:9 legible.
+
+## 1.3.4 - 2026-05-09
+
+- Mejorado `datagram_vs_virtual_circuit` para explicar con más claridad datagrama, circuito virtual, estado, rutas, fallo y desorden.
+- Añadida edición de costes por enlace y selección explícita de enlace congestionado o fallado.
+- Sustituidas rutas predefinidas por decisión de ruta calculada sobre un grafo pequeño.
+- Añadida tabla de encaminamiento para modo datagrama con salida preferente, alternativa y coste/estado.
+- Añadida tabla de identificadores de circuito virtual con línea de entrada, IdCV de entrada, línea de salida e IdCV de salida.
+- Añadida animación de paquetes P1, P2 y P3, con rutas distintas en datagrama y ruta lógica fija en circuito virtual.
+- Añadida detección visual de orden esperado, orden real y posible desorden.
+- Añadido aviso “reestablecer circuito” cuando un fallo afecta a la ruta original del circuito virtual.
+- Ajustado el modo `?embed=1` para vista 16:9 legible.
+
+## 1.3.3 - 2026-05-09
+
+- Mejorado `packet_switching_delay` como laboratorio principal de conmutación de paquetes, pipeline, overhead y retardo.
+- Añadido slider visible de tamaño útil del paquete con valor sincronizado en bytes.
+- Rediseñado el diagrama espacio-tiempo con escala temporal, nodos por salto y paquetes P1-P4 avanzando por la ruta.
+- Diferenciadas visualmente cabecera y payload en la estructura del paquete y en el diagrama.
+- Reforzadas las gráficas de eficiencia útil, retardo del último paquete y overhead frente al tamaño de paquete.
+- Añadida comparación simultánea entre mensaje sin segmentar, paquetes pequeños y paquetes grandes.
+- Añadida solución paso a paso con número de paquetes, overhead, `Ttx` por paquete y llegada del último paquete.
+- Sustituido el reto de cálculo simple por un reto de elección de tamaño de paquete para minimizar retardo sin overhead excesivo.
+- Ajustado el modo `?embed=1` para vista 16:9 con controles principales, métricas, diagrama y resumen compacto visibles.
+
+## 1.3.2 - 2026-05-09
+
+- Mejorado `transmission_vs_propagation` como micro-laboratorio visual de tiempo de transmisión y tiempo de propagación.
+- Añadida una línea temporal explícita con cuatro eventos: empieza a salir el primer bit, sale el último bit, llega el primer bit y llega el último bit.
+- Reforzada la visualización simultánea de transmisión y propagación: el paquete aparece como rectángulo ocupando el enlace y los bits extremos se desplazan con la misma velocidad física.
+- Añadidas barras comparativas para `Ttx`, `Tprop` y `Ttotal`.
+- Añadida la comprobación “sube R 10×” para mostrar que aumenta la tasa y baja `Ttx`, pero `Tprop` no cambia.
+- Ajustado el modo `?embed=1` para vista 16:9 compacta, sin scroll vertical de página y con métricas, barras, frases clave, visualización y eventos visibles.
+- Probado el ejemplo en modo normal y modo incrustado con Playwright, sin errores JavaScript en consola.
+
 ## 1.3.1 - 2026-05-07
 
 - Corregida la animación de `transmission_vs_propagation`: el primer bit y el último bit se propagan ahora con la misma velocidad del medio.

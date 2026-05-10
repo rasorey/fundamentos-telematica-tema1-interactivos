@@ -6,6 +6,21 @@ Este repositorio contiene únicamente los ejemplos interactivos web del Tema 1 d
 
 https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/
 
+## Presentación interactiva online
+
+La versión oficial del tema sigue siendo el PowerPoint distribuido desde el aula virtual. Además, este repositorio incluye una versión web paralela, resumida e interactiva, pensada para proyectarse desde navegador:
+
+https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/slides/
+
+Esta presentación web incluye:
+
+- diapositivas 16:9 navegables con teclado;
+- simuladores JavaScript incrustados con `?embed=1`;
+- actividades Microsoft Forms preparadas para iframe, enlace o fallback;
+- botón de pantalla completa e índice de diapositivas.
+
+Las URLs de Microsoft Forms se configuran en `docs/slides/forms-config.js`. Si una actividad no tiene `embedUrl`, se muestra una tarjeta limpia indicando que está disponible desde el aula virtual.
+
 ## Modos de uso
 
 Cada simulador tiene dos modos:
@@ -69,6 +84,8 @@ No se recomienda depender exclusivamente de la incrustación web dentro de Power
 
 La participación en clase se gestiona fuera de este repositorio mediante varios Microsoft Forms cortos, uno por bloque del tema. Esos formularios no forman parte del sitio de ejemplos. La presentación principal para clase se mantiene limpia y los enlaces reales de Forms se preparan en una plantilla local editable.
 
+La versión web `docs/slides/` sí está preparada para incrustar esos Forms cuando se añadan las URLs reales en `forms-config.js`.
+
 ## Modo reto
 
 Cada simulador incluye un modo libre con controles y un bloque “Reto” para trabajar en formato:
@@ -78,6 +95,8 @@ Cada simulador incluye un modo libre con controles y un bloque “Reto” para t
 3. Lee una pista o solución razonada.
 
 Este modo está pensado para actividades breves en clase y para práctica individual desde el aula virtual.
+
+En `transmission_vs_propagation`, el reto se apoya en una línea temporal de cuatro eventos y en la comprobación “sube R 10×” para distinguir qué cambia en `Ttx` y qué no cambia en `Tprop`.
 
 ## Publicación en GitHub Pages
 

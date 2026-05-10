@@ -1,0 +1,563 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Fundamentos de Telemática · Tema 1 · Presentación interactiva</title>
+  <link rel="stylesheet" href="./slides.css">
+</head>
+<body>
+  <a class="skip-link" href="#slide-stage">Saltar a la diapositiva</a>
+  <header class="deck-topbar" aria-label="Controles de presentación">
+    <a class="home-link" href="../">Tema 1 · interactivos</a>
+    <div class="deck-status" aria-live="polite">
+      <span id="slide-counter">1 / 1</span>
+      <span id="slide-title">Portada</span>
+    </div>
+    <div class="deck-actions">
+      <button type="button" id="overview-toggle" class="ghost-button" aria-pressed="false">Índice</button>
+      <button type="button" id="fullscreen-button" class="ghost-button">Pantalla completa</button>
+    </div>
+  </header>
+
+  <main id="slide-stage" class="deck" tabindex="-1">
+    <section class="slide cover-slide" data-title="Portada" aria-labelledby="slide-1-title">
+      <div class="slide-grid two-col">
+        <div>
+          <p class="kicker">Fundamentos de Telemática</p>
+          <h1 id="slide-1-title">Tema 1<br>Introducción a las redes de computadoras</h1>
+          <p class="lead">Versión web paralela con simuladores JavaScript y actividades Microsoft Forms preparadas para incrustación o enlace.</p>
+          <div class="button-row">
+            <a class="primary-button" href="#/2">Empezar</a>
+            <a class="secondary-button" href="../">Volver al sitio</a>
+          </div>
+        </div>
+        <div class="network-hero" aria-hidden="true">
+          <svg viewBox="0 0 560 360" role="img">
+            <title>Red de nodos y enlaces</title>
+            <g class="hero-links">
+              <path d="M80 260 L190 110 L310 190 L450 80" />
+              <path d="M80 260 L260 285 L310 190 L500 255" />
+              <path d="M190 110 L450 80 L500 255" />
+              <path d="M190 110 L260 285" />
+            </g>
+            <g class="hero-nodes">
+              <circle cx="80" cy="260" r="28" /><circle cx="190" cy="110" r="24" />
+              <circle cx="310" cy="190" r="30" /><circle cx="450" cy="80" r="24" />
+              <circle cx="260" cy="285" r="22" /><circle cx="500" cy="255" r="28" />
+            </g>
+            <g class="hero-packet">
+              <rect x="290" y="174" width="42" height="24" rx="6" />
+              <path d="M302 174 V198" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide impact-slide" data-title="Datos de impacto" aria-labelledby="slide-impact-title">
+      <div class="slide-header">
+        <p class="kicker">Apertura</p>
+        <h2 id="slide-impact-title">Vivimos sobre redes</h2>
+        <p>Cada mensaje, videollamada, pago móvil o sensor IoT atraviesa una infraestructura global de enlaces, nodos, protocolos y centros de datos.</p>
+      </div>
+      <div class="impact-grid">
+        <article><strong>Internet</strong><span>miles de millones de usuarios conectados</span></article>
+        <article><strong>Móvil</strong><span>tráfico de datos en escala EB/ZB</span></article>
+        <article><strong>Submarino</strong><span>cables que conectan continentes</span></article>
+        <article><strong>Cloud</strong><span>centros de datos y redes internas de baja latencia</span></article>
+      </div>
+      <div class="note-card">
+        <strong>Qué explica el tema:</strong> cómo se codifica, conmuta, encamina y segmenta la información; por qué aparecen colas, pérdidas, jitter y retardo.
+      </div>
+    </section>
+
+    <section class="slide" data-title="Objetivos" aria-labelledby="slide-objectives-title">
+      <div class="slide-header">
+        <p class="kicker">Objetivos</p>
+        <h2 id="slide-objectives-title">Al terminar el tema deberías poder...</h2>
+      </div>
+      <div class="cards four">
+        <article><span>01</span><h3>Nombrar piezas</h3><p>Distinguir host, nodo, enlace, ruta, red, protocolo, ETD y ETCD.</p></article>
+        <article><span>02</span><h3>Comparar técnicas</h3><p>Diferenciar circuitos, mensajes, paquetes, datagrama y circuito virtual.</p></article>
+        <article><span>03</span><h3>Razonar retardos</h3><p>Separar transmisión, propagación, cola, procesamiento, jitter y pérdida.</p></article>
+        <article><span>04</span><h3>Usar simuladores</h3><p>Modificar parámetros y explicar qué mejora, qué empeora y por qué.</p></article>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Mapa" aria-labelledby="slide-map-title">
+      <div class="slide-header">
+        <p class="kicker">Ruta del tema</p>
+        <h2 id="slide-map-title">Del problema a las decisiones de diseño</h2>
+      </div>
+      <ol class="process-line">
+        <li><strong>Problema</strong><span>comunicar sistemas a distancia</span></li>
+        <li><strong>Piezas</strong><span>nodos, enlaces, rutas y protocolos</span></li>
+        <li><strong>Solución</strong><span>conmutar y compartir recursos</span></li>
+        <li><strong>Rendimiento</strong><span>retardos, colas, pérdidas y overhead</span></li>
+        <li><strong>Decisión</strong><span>qué técnica encaja con cada servicio</span></li>
+      </ol>
+    </section>
+
+    <section class="slide form-slide" data-title="Actividad · redes en una palabra" data-form-key="redesEnUnaPalabra" aria-labelledby="form-word-title">
+      <div class="form-layout">
+        <div class="form-question">
+          <p class="kicker">Microsoft Forms · texto</p>
+          <h2 id="form-word-title">¿Qué palabra asocias con Internet o redes de computadores?</h2>
+          <p>Objetivo: activar ideas previas antes de introducir nodos, enlaces, rutas y protocolos.</p>
+        </div>
+        <div class="form-host" data-form-render></div>
+      </div>
+    </section>
+
+    <section class="slide form-slide" data-title="Actividad · servicio digital crítico" data-form-key="servicioDigital" aria-labelledby="form-service-title">
+      <div class="form-layout">
+        <div class="form-question">
+          <p class="kicker">Microsoft Forms · elección</p>
+          <h2 id="form-service-title">¿Qué servicio digital te resultaría más difícil perder durante 24 horas?</h2>
+          <ul class="option-list">
+            <li>mensajería</li><li>videollamada</li><li>streaming</li><li>banca/pagos</li>
+            <li>navegación web</li><li>videojuegos online</li><li>aula virtual</li><li>servicios cloud</li>
+          </ul>
+        </div>
+        <div class="form-host" data-form-render></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Qué es una red" aria-labelledby="slide-network-title">
+      <div class="slide-grid two-col">
+        <div>
+          <p class="kicker">Concepto</p>
+          <h2 id="slide-network-title">Una red no es solo cable</h2>
+          <p class="lead">Es un sistema que permite intercambiar información entre estaciones terminales mediante enlaces, nodos y reglas compartidas.</p>
+        </div>
+        <div class="definition-grid">
+          <article><strong>Nodo</strong><span>terminal o equipo de red que participa en la comunicación.</span></article>
+          <article><strong>Enlace</strong><span>medio físico o lógico que conecta dos puntos.</span></article>
+          <article><strong>Ruta</strong><span>secuencia de nodos y enlaces seguida por la información.</span></article>
+          <article><strong>Protocolo</strong><span>reglas de formato, temporización, errores y control.</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Modelo de comunicación" aria-labelledby="slide-model-title">
+      <div class="slide-header">
+        <p class="kicker">Modelo</p>
+        <h2 id="slide-model-title">Fuente → codificación → canal/red → decodificación → destino</h2>
+      </div>
+      <div class="model-diagram" aria-label="Modelo básico de comunicación">
+        <span>Fuente</span><i></i><span>Codificación</span><i></i><span class="channel">Canal / red<em>ruido</em></span><i></i><span>Decodificación</span><i></i><span>Destino</span>
+      </div>
+      <div class="two-notes">
+        <article><strong>Ruta lógica</strong><p>Decisiones y nodos que sigue la comunicación.</p></article>
+        <article><strong>Enlace físico</strong><p>Medio concreto: cable, radio, fibra, etc.</p></article>
+      </div>
+    </section>
+
+    <section class="slide form-slide" data-title="Actividad · videollamada" data-form-key="videollamada" aria-labelledby="form-video-title">
+      <div class="form-layout">
+        <div class="form-question">
+          <p class="kicker">Microsoft Forms · quiz</p>
+          <h2 id="form-video-title">¿Qué crees que pesa más en la experiencia de una videollamada?</h2>
+          <ul class="option-list"><li>caudal</li><li>latencia</li><li>jitter</li><li>pérdida</li><li>todas influyen</li></ul>
+          <p class="answer-note">Después: una videollamada necesita caudal suficiente, latencia baja, jitter controlado y pocas pérdidas.</p>
+        </div>
+        <div class="form-host" data-form-render></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Videollamada" aria-labelledby="slide-video-title">
+      <div class="slide-grid two-col">
+        <div>
+          <p class="kicker">Aplicación cercana</p>
+          <h2 id="slide-video-title">Una videollamada condensa casi todo el tema</h2>
+          <p>Audio y vídeo se capturan, comprimen, paquetizan, atraviesan la red y se reproducen con ayuda de búferes para suavizar variaciones.</p>
+        </div>
+        <div class="flow-stack">
+          <span>Captura</span><span>Compresión</span><span>Paquetes</span><span>Red</span><span>Búfer de jitter</span><span>Reproducción</span>
+        </div>
+      </div>
+      <div class="warning-row">
+        <article>Latencia alta: conversación incómoda</article>
+        <article>Jitter: saltos y audio irregular</article>
+        <article>Pérdida: cortes, pixelado o congelación</article>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Funciones" aria-labelledby="slide-functions-title">
+      <div class="slide-header">
+        <p class="kicker">Funciones</p>
+        <h2 id="slide-functions-title">Comunicar exige varias tareas coordinadas</h2>
+      </div>
+      <div class="cards four compact">
+        <article><h3>Representación</h3><p>bits, codificación, formato</p></article>
+        <article><h3>Transmisión</h3><p>señal, medio, sincronización</p></article>
+        <article><h3>Fiabilidad</h3><p>detección y recuperación de errores</p></article>
+        <article><h3>Control</h3><p>flujo, congestión, colas</p></article>
+        <article><h3>Red</h3><p>direccionamiento y encaminamiento</p></article>
+        <article><h3>Seguridad</h3><p>confidencialidad y autenticación</p></article>
+        <article><h3>Gestión</h3><p>monitorización y configuración</p></article>
+        <article><h3>Interfaz</h3><p>adaptación entre usuario y red</p></article>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Clasificación" aria-labelledby="slide-classify-title">
+      <div class="slide-header">
+        <p class="kicker">Clasificación</p>
+        <h2 id="slide-classify-title">Podemos clasificar por rango, función y medio</h2>
+      </div>
+      <div class="range-scale" aria-label="Escala PAN LAN MAN WAN">
+        <span><strong>PAN</strong>metros</span>
+        <span><strong>LAN</strong>edificio/campus</span>
+        <span><strong>MAN</strong>ciudad</span>
+        <span><strong>WAN</strong>país/mundo</span>
+      </div>
+      <div class="note-card">Criterio clásico: distancia emisor-receptor o rango geográfico.</div>
+    </section>
+
+    <section class="slide" data-title="Malla completa" aria-labelledby="slide-mesh-title">
+      <div class="slide-grid two-col">
+        <div>
+          <p class="kicker">Punto a punto</p>
+          <h2 id="slide-mesh-title">La malla completa conecta todos con todos</h2>
+          <p class="formula">Enlaces = N · (N - 1) / 2</p>
+          <p>Funciona para pocos nodos, pero enlaces e interfaces crecen de forma cuadrática.</p>
+        </div>
+        <div class="mesh-mini" aria-hidden="true">
+          <svg viewBox="0 0 420 280">
+            <g class="mesh-lines">
+              <line x1="210" y1="40" x2="330" y2="115"/><line x1="210" y1="40" x2="285" y2="230"/><line x1="210" y1="40" x2="135" y2="230"/><line x1="210" y1="40" x2="90" y2="115"/>
+              <line x1="330" y1="115" x2="285" y2="230"/><line x1="330" y1="115" x2="135" y2="230"/><line x1="330" y1="115" x2="90" y2="115"/>
+              <line x1="285" y1="230" x2="135" y2="230"/><line x1="285" y1="230" x2="90" y2="115"/><line x1="135" y1="230" x2="90" y2="115"/>
+            </g>
+            <g class="mesh-nodes"><circle cx="210" cy="40" r="20"/><circle cx="330" cy="115" r="20"/><circle cx="285" cy="230" r="20"/><circle cx="135" cy="230" r="20"/><circle cx="90" cy="115" r="20"/></g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide lab-slide" data-title="Laboratorio · malla completa">
+      <div class="lab-shell">
+        <div class="lab-copy">
+          <p class="kicker">Laboratorio interactivo</p>
+          <h2>Malla completa</h2>
+          <p>Compara N=10, N=20 y N=100. ¿Qué crece más rápido: nodos, enlaces o interfaces?</p>
+          <a class="primary-button" href="../interactive_examples/full_mesh_calculator/" target="_blank" rel="noopener">Abrir en navegador</a>
+        </div>
+        <iframe title="Simulador de malla completa" data-src="../interactive_examples/full_mesh_calculator/?embed=1"></iframe>
+      </div>
+      <p class="iframe-fallback">Si el simulador no carga, abre el enlace en una pestaña nueva y continúa la clase con la captura conceptual.</p>
+    </section>
+
+    <section class="slide form-slide" data-title="Actividad · malla completa" data-form-key="mallaCompleta" aria-labelledby="form-mesh-title">
+      <div class="form-layout">
+        <div class="form-question">
+          <p class="kicker">Microsoft Forms · quiz</p>
+          <h2 id="form-mesh-title">Para N = 20 nodos en malla completa, ¿cuántos enlaces hacen falta?</h2>
+          <ul class="option-list"><li>20</li><li>40</li><li>190</li><li>380</li></ul>
+          <p class="answer-note">Respuesta: 20 · 19 / 2 = 190 enlaces.</p>
+        </div>
+        <div class="form-host" data-form-render></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Redes conmutadas" aria-labelledby="slide-switched-title">
+      <div class="slide-header">
+        <p class="kicker">Conmutación</p>
+        <h2 id="slide-switched-title">Los nodos de tránsito evitan conectar todo con todo</h2>
+      </div>
+      <div class="definition-grid three">
+        <article><strong>Estación terminal</strong><span>genera o consume información.</span></article>
+        <article><strong>Nodo periférico</strong><span>da acceso, multiplexa y conecta terminales con la red.</span></article>
+        <article><strong>Nodo de tránsito</strong><span>conmuta tráfico entre enlaces sin terminales conectados.</span></article>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Circuitos" aria-labelledby="slide-circuits-title">
+      <div class="slide-header">
+        <p class="kicker">Conmutación de circuitos</p>
+        <h2 id="slide-circuits-title">Primero se reserva una ruta, después se transmite</h2>
+      </div>
+      <ol class="phase-row">
+        <li><strong>Establecimiento</strong><span>señalización, ruta, capacidad y estado</span></li>
+        <li><strong>Transferencia</strong><span>datos por la ruta reservada</span></li>
+        <li><strong>Liberación</strong><span>se elimina estado y se liberan recursos</span></li>
+      </ol>
+      <div class="note-card">Predecible cuando está establecido, pero puede ser ineficiente si el tráfico es a ráfagas.</div>
+    </section>
+
+    <section class="slide lab-slide" data-title="Laboratorio · circuitos">
+      <div class="lab-shell">
+        <div class="lab-copy">
+          <p class="kicker">Laboratorio interactivo</p>
+          <h2>Conmutación de circuitos</h2>
+          <p>Reduce la actividad del usuario. ¿Qué capacidad reservada queda ociosa?</p>
+          <a class="primary-button" href="../interactive_examples/circuit_switching/" target="_blank" rel="noopener">Abrir en navegador</a>
+        </div>
+        <iframe title="Simulador de conmutación de circuitos" data-src="../interactive_examples/circuit_switching/?embed=1"></iframe>
+      </div>
+      <p class="iframe-fallback">Si el iframe no carga, usa el botón para abrir el simulador fuera de la presentación.</p>
+    </section>
+
+    <section class="slide form-slide" data-title="Actividad · circuitos" data-form-key="circuitos" aria-labelledby="form-circuits-title">
+      <div class="form-layout">
+        <div class="form-question">
+          <p class="kicker">Microsoft Forms · quiz</p>
+          <h2 id="form-circuits-title">¿Qué caracteriza a la conmutación de circuitos?</h2>
+          <ul class="option-list"><li>cada paquete elige ruta independiente</li><li>se reserva una ruta antes de transmitir</li><li>no existe fase de establecimiento</li><li>no hay recursos ociosos</li></ul>
+          <p class="answer-note">Respuesta: se reserva una ruta antes de transmitir.</p>
+        </div>
+        <div class="form-host" data-form-render></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Mensajes" aria-labelledby="slide-message-title">
+      <div class="slide-header">
+        <p class="kicker">Conmutación de mensajes</p>
+        <h2 id="slide-message-title">El mensaje completo avanza salto a salto</h2>
+      </div>
+      <div class="timeline-simple">
+        <div><strong>A</strong><span class="block w1">mensaje</span></div>
+        <div><strong>N1</strong><span class="block w2">mensaje</span></div>
+        <div><strong>N2</strong><span class="block w3">mensaje</span></div>
+        <div><strong>B</strong><em>llega</em></div>
+      </div>
+      <div class="note-card">Almacenamiento y reenvío: cada nodo recibe el mensaje entero, lo guarda, espera cola y decide la salida.</div>
+    </section>
+
+    <section class="slide lab-slide" data-title="Laboratorio · mensajes">
+      <div class="lab-shell">
+        <div class="lab-copy">
+          <p class="kicker">Laboratorio interactivo</p>
+          <h2>Conmutación de mensajes</h2>
+          <p>Aumenta el tamaño del mensaje. ¿Qué ocurre con buffer y retardo?</p>
+          <a class="primary-button" href="../interactive_examples/message_switching/" target="_blank" rel="noopener">Abrir en navegador</a>
+        </div>
+        <iframe title="Simulador de conmutación de mensajes" data-src="../interactive_examples/message_switching/?embed=1"></iframe>
+      </div>
+      <p class="iframe-fallback">Si no carga dentro de la diapositiva, usa el enlace externo.</p>
+    </section>
+
+    <section class="slide" data-title="Paquetes" aria-labelledby="slide-packets-title">
+      <div class="slide-grid two-col">
+        <div>
+          <p class="kicker">Conmutación de paquetes</p>
+          <h2 id="slide-packets-title">Segmentar permite pipeline y multiplexación estadística</h2>
+          <p>Un mensaje se divide en paquetes. Cada paquete añade cabecera, pero puede avanzar solapado con otros paquetes y compartir enlaces con otros usuarios.</p>
+        </div>
+        <div class="packet-stack" aria-hidden="true">
+          <span><i>H</i><b>payload</b></span>
+          <span><i>H</i><b>payload</b></span>
+          <span><i>H</i><b>payload</b></span>
+          <span><i>H</i><b>payload</b></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide form-slide" data-title="Actividad · mensajes frente a paquetes" data-form-key="paquetes" aria-labelledby="form-packets-title">
+      <div class="form-layout">
+        <div class="form-question">
+          <p class="kicker">Microsoft Forms · quiz</p>
+          <h2 id="form-packets-title">¿Qué ventaja principal introduce segmentar en paquetes?</h2>
+          <ul class="option-list"><li>elimina la propagación</li><li>permite pipeline y multiplexación</li><li>elimina las cabeceras</li><li>evita cualquier pérdida</li></ul>
+          <p class="answer-note">Respuesta: permite pipeline y multiplexación.</p>
+        </div>
+        <div class="form-host" data-form-render></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Datagrama vs circuito virtual" aria-labelledby="slide-dgvc-title">
+      <div class="slide-header">
+        <p class="kicker">Modos de paquetes</p>
+        <h2 id="slide-dgvc-title">Datagrama y circuito virtual resuelven rutas de forma distinta</h2>
+      </div>
+      <div class="compare-grid">
+        <article><h3>Datagrama</h3><p>Decisión paquete a paquete, direcciones, flexibilidad, posible desorden.</p></article>
+        <article><h3>Circuito virtual</h3><p>Conexión lógica previa, estado en nodos, IdCV local, orden más predecible.</p></article>
+      </div>
+    </section>
+
+    <section class="slide lab-slide" data-title="Laboratorio · datagrama vs circuito virtual">
+      <div class="lab-shell">
+        <div class="lab-copy">
+          <p class="kicker">Laboratorio interactivo</p>
+          <h2>Datagrama frente a circuito virtual</h2>
+          <p>Falla un enlace. ¿Qué modo se adapta mejor y qué ocurre con el orden?</p>
+          <a class="primary-button" href="../interactive_examples/datagram_vs_virtual_circuit/" target="_blank" rel="noopener">Abrir en navegador</a>
+        </div>
+        <iframe title="Simulador datagrama frente a circuito virtual" data-src="../interactive_examples/datagram_vs_virtual_circuit/?embed=1"></iframe>
+      </div>
+      <p class="iframe-fallback">Si el iframe no carga, abre el simulador en navegador.</p>
+    </section>
+
+    <section class="slide form-slide" data-title="Actividad · datagrama y circuito virtual" data-form-key="datagramaCircuitoVirtual" aria-labelledby="form-dgvc-title">
+      <div class="form-layout">
+        <div class="form-question">
+          <p class="kicker">Microsoft Forms · quiz</p>
+          <h2 id="form-dgvc-title">¿Qué modo puede entregar paquetes desordenados con más facilidad?</h2>
+          <ul class="option-list"><li>datagrama</li><li>circuito virtual</li><li>ambos siempre ordenan</li><li>ninguno usa paquetes</li></ul>
+          <p class="answer-note">Respuesta: datagrama, porque cada paquete puede seguir una ruta distinta.</p>
+        </div>
+        <div class="form-host" data-form-render></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Transmisión y propagación" aria-labelledby="slide-ttx-title">
+      <div class="slide-grid two-col">
+        <div>
+          <p class="kicker">Retardos</p>
+          <h2 id="slide-ttx-title">Ttx y Tprop no son lo mismo</h2>
+          <p class="formula">Ttx = L / R</p>
+          <p>Tiempo necesario para introducir todos los bits en el enlace.</p>
+          <p class="formula">Tprop = d / v</p>
+          <p>Tiempo que tarda la señal física en recorrer el medio.</p>
+        </div>
+        <div class="note-card strong">Aumentar R reduce Ttx, pero no reduce Tprop. Más Mb/s no siempre significa menor latencia.</div>
+      </div>
+    </section>
+
+    <section class="slide lab-slide" data-title="Laboratorio · transmisión y propagación">
+      <div class="lab-shell">
+        <div class="lab-copy">
+          <p class="kicker">Laboratorio interactivo</p>
+          <h2>Transmisión vs propagación</h2>
+          <p>Compara LAN corta y satélite GEO. ¿Qué componente domina: Ttx o Tprop?</p>
+          <a class="primary-button" href="../interactive_examples/transmission_vs_propagation/" target="_blank" rel="noopener">Abrir en navegador</a>
+        </div>
+        <iframe title="Simulador de transmisión frente a propagación" data-src="../interactive_examples/transmission_vs_propagation/?embed=1"></iframe>
+      </div>
+      <p class="iframe-fallback">Si no carga dentro de la presentación, abre el simulador en navegador.</p>
+    </section>
+
+    <section class="slide form-slide" data-title="Actividad · transmisión frente a propagación" data-form-key="transmisionPropagacion" aria-labelledby="form-ttx-title">
+      <div class="form-layout">
+        <div class="form-question">
+          <p class="kicker">Microsoft Forms · quiz</p>
+          <h2 id="form-ttx-title">Si duplicamos la tasa R del enlace, ¿qué componente baja directamente?</h2>
+          <ul class="option-list"><li>tiempo de transmisión</li><li>tiempo de propagación</li><li>distancia física</li><li>velocidad de la luz</li></ul>
+          <p class="answer-note">Respuesta: tiempo de transmisión, porque Ttx = L / R.</p>
+        </div>
+        <div class="form-host" data-form-render></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Tamaño, overhead y retardo" aria-labelledby="slide-size-title">
+      <div class="slide-header">
+        <p class="kicker">Paquetes</p>
+        <h2 id="slide-size-title">El tamaño de paquete cambia overhead, pipeline y retardo</h2>
+      </div>
+      <div class="compare-grid">
+        <article><h3>Paquetes pequeños</h3><p>Mejoran el solapamiento inicial, pero aumentan cabeceras.</p></article>
+        <article><h3>Paquetes grandes</h3><p>Reducen overhead relativo, pero tardan más en transmitirse.</p></article>
+      </div>
+      <p class="formula">Goodput ≈ datos útiles entregados / tiempo total</p>
+    </section>
+
+    <section class="slide lab-slide" data-title="Laboratorio · paquetes y retardo">
+      <div class="lab-shell">
+        <div class="lab-copy">
+          <p class="kicker">Laboratorio interactivo</p>
+          <h2>Conmutación de paquetes</h2>
+          <p>Reduce el tamaño de paquete. ¿Baja el retardo? ¿Sube el overhead?</p>
+          <a class="primary-button" href="../interactive_examples/packet_switching_delay/" target="_blank" rel="noopener">Abrir en navegador</a>
+        </div>
+        <iframe title="Simulador de conmutación de paquetes y retardo" data-src="../interactive_examples/packet_switching_delay/?embed=1"></iframe>
+      </div>
+      <p class="iframe-fallback">Si el iframe no carga, usa el botón para abrir el simulador.</p>
+    </section>
+
+    <section class="slide" data-title="Colas, congestión y jitter" aria-labelledby="slide-queues-title">
+      <div class="slide-header">
+        <p class="kicker">Carga variable</p>
+        <h2 id="slide-queues-title">Las colas transforman carga en retardo, jitter y pérdida</h2>
+      </div>
+      <div class="queue-diagram">
+        <span>Llegadas variables</span><i></i><span class="buffer">búfer / cola</span><i></i><span>enlace de salida</span>
+      </div>
+      <div class="cards three compact">
+        <article><h3>Baja carga</h3><p>cola pequeña, retardo bajo</p></article>
+        <article><h3>Carga variable</h3><p>cola variable, jitter</p></article>
+        <article><h3>Saturación</h3><p>búfer lleno, pérdida</p></article>
+      </div>
+    </section>
+
+    <section class="slide form-slide" data-title="Actividad · servicios sensibles" data-form-key="serviciosLatencia" aria-labelledby="form-services-title">
+      <div class="form-layout">
+        <div class="form-question">
+          <p class="kicker">Microsoft Forms · ranking</p>
+          <h2 id="form-services-title">Ordena de más sensible a menos sensible a latencia y jitter</h2>
+          <ul class="option-list"><li>juego online</li><li>videollamada</li><li>streaming</li><li>descarga de archivo</li><li>backup nocturno</li></ul>
+          <p class="answer-note">Usar para discusión razonada: no todos los servicios toleran lo mismo.</p>
+        </div>
+        <div class="form-host" data-form-render></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Síntesis" aria-labelledby="slide-summary-title">
+      <div class="slide-header">
+        <p class="kicker">Síntesis</p>
+        <h2 id="slide-summary-title">Qué decisión afecta a qué</h2>
+      </div>
+      <div class="table-card">
+        <table>
+          <thead><tr><th>Decisión</th><th>Afecta a</th></tr></thead>
+          <tbody>
+            <tr><td>Tamaño de paquete</td><td>overhead, pipeline y tiempo de transmisión</td></tr>
+            <tr><td>Tasa del enlace</td><td>tiempo de transmisión</td></tr>
+            <tr><td>Distancia</td><td>tiempo de propagación</td></tr>
+            <tr><td>Carga de la red</td><td>cola, pérdida y jitter</td></tr>
+            <tr><td>Modo de conmutación</td><td>reserva, flexibilidad, orden y estado</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="slide form-slide" data-title="Actividad · idea final" data-form-key="ideaFinal" aria-labelledby="form-final-title">
+      <div class="form-layout">
+        <div class="form-question">
+          <p class="kicker">Microsoft Forms · texto</p>
+          <h2 id="form-final-title">Escribe una idea clave que te llevas de este tema</h2>
+          <p>Objetivo: cerrar la clase con una comprobación rápida de aprendizaje.</p>
+        </div>
+        <div class="form-host" data-form-render></div>
+      </div>
+    </section>
+
+    <section class="slide closing-slide" data-title="Cierre" aria-labelledby="slide-close-title">
+      <div class="slide-header">
+        <p class="kicker">Cierre</p>
+        <h2 id="slide-close-title">Ideas clave</h2>
+      </div>
+      <div class="cards three">
+        <article><h3>Red = sistema</h3><p>No solo cables: identificación, señal, reglas, rutas, control y seguridad.</p></article>
+        <article><h3>Compartir tiene coste</h3><p>Multiplexar mejora utilización, pero introduce colas, jitter y pérdidas.</p></article>
+        <article><h3>No todo es Mb/s</h3><p>Caudal, latencia, propagación, overhead y goodput explican experiencias distintas.</p></article>
+      </div>
+      <p class="license-note">Código web: 0BSD · contenido docente propio: CC0 1.0 Universal · diapositivas oficiales en aula virtual.</p>
+    </section>
+  </main>
+
+  <aside id="overview-panel" class="overview-panel" aria-label="Índice de diapositivas" hidden>
+    <div>
+      <h2>Índice</h2>
+      <p>Selecciona una diapositiva o usa ← → para navegar.</p>
+      <nav id="overview-list"></nav>
+    </div>
+  </aside>
+
+  <footer class="deck-controls" aria-label="Navegación">
+    <button type="button" id="prev-slide" class="nav-button">Anterior</button>
+    <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+    <button type="button" id="next-slide" class="nav-button">Siguiente</button>
+  </footer>
+
+  <script src="./forms-config.js"></script>
+  <script src="./slides.js"></script>
+</body>
+</html>
