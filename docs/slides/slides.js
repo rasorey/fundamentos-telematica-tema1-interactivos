@@ -20,9 +20,9 @@
 
   const params = new URLSearchParams(window.location.search);
   const debug = params.get("debug") === "1";
-  const formsConfig = typeof FORMS !== "undefined" ? FORMS : {};
+  const pollsConfig = typeof POLLS !== "undefined" ? POLLS : {};
   const interactions = typeof INTERACTIONS !== "undefined" ? INTERACTIONS : [];
-  const formOverlay = typeof FORM_OVERLAY !== "undefined" ? FORM_OVERLAY : { x: 0.3, y: 0.17, w: 0.61, h: 0.61 };
+  const pollOverlay = typeof POLL_OVERLAY !== "undefined" ? POLL_OVERLAY : { x: 0.3, y: 0.17, w: 0.61, h: 0.61 };
   const slideCount = typeof SLIDE_COUNT !== "undefined" ? SLIDE_COUNT : 67;
   const slideTitles = typeof SLIDE_TITLES !== "undefined" ? SLIDE_TITLES : [];
 
@@ -92,9 +92,9 @@
 
   function interactionsForSlide(slideNumber) {
     const slideInteractions = interactions.filter((interaction) => interaction.slide === slideNumber);
-    Object.entries(formsConfig).forEach(([key, form]) => {
-      if (form.slide === slideNumber) {
-        slideInteractions.push({ type: "form", key, ...form, ...formOverlay });
+    Object.entries(pollsConfig).forEach(([key, poll]) => {
+      if (poll.slide === slideNumber) {
+        slideInteractions.push({ type: "poll", key, ...poll, ...pollOverlay });
       }
     });
     return slideInteractions;
@@ -129,36 +129,31 @@
     return overlay;
   }
 
-  function createFormOverlay(form) {
+  function createPollOverlay(poll) {
     const overlay = document.createElement("div");
-    overlay.className = "forms-overlay";
-    overlay.dataset.kind = "form";
-    applyRect(overlay, form);
+    overlay.className = "polls-overlay";
+    overlay.dataset.kind = "poll";
+    overlay.dataset.loaded = "false";
+    applyRect(overlay, poll);
 
-    if (form.embedUrl) {
+    if (poll.displayUrl) {
       const iframe = document.createElement("iframe");
-      iframe.src = form.embedUrl;
-      iframe.title = `Microsoft Forms · ${form.title}`;
+      iframe.src = poll.displayUrl;
+      iframe.title = `Resultados de encuesta · ${poll.title}`;
       iframe.loading = "lazy";
+      iframe.addEventListener("load", () => {
+        overlay.dataset.loaded = "true";
+      });
       overlay.append(iframe);
     } else {
       const fallback = document.createElement("div");
-      fallback.className = "forms-fallback";
+      fallback.className = "polls-fallback";
       const content = document.createElement("div");
       const heading = document.createElement("strong");
-      heading.textContent = "Actividad disponible desde el aula virtual";
+      heading.textContent = "Encuesta de aula";
       const text = document.createElement("p");
-      text.textContent = "Usa el enlace publicado en el aula virtual o continúa la actividad en clase.";
+      text.textContent = "Actividad disponible desde el aula virtual.";
       content.append(heading, text);
-
-      if (form.qr) {
-        const qr = document.createElement("img");
-        qr.className = "qr-image";
-        qr.src = form.qr;
-        qr.alt = `QR de ${form.title}`;
-        content.append(qr);
-      }
-
       fallback.append(content);
       overlay.append(fallback);
     }
@@ -166,12 +161,15 @@
     const toolbar = document.createElement("div");
     toolbar.className = "overlay-toolbar";
     toolbar.append(createFocusButton());
-    if (form.openUrl) {
-      toolbar.append(createOpenButton(form.openUrl, "Abrir Forms"));
+    if (poll.studentUrl) {
+      toolbar.append(createOpenButton(poll.studentUrl, "Responder"));
+    }
+    if (poll.displayOpenUrl || poll.displayUrl) {
+      toolbar.append(createOpenButton(poll.displayOpenUrl || poll.displayUrl, "Abrir resultados"));
     }
     overlay.append(toolbar);
 
-    addDebugChrome(overlay, `form · ${form.title}`, form);
+    addDebugChrome(overlay, `poll · ${poll.title}`, poll);
     return overlay;
   }
 
@@ -212,7 +210,9 @@
     slideFrame.setAttribute("aria-label", `Diapositiva ${slideNumber}: ${slideTitle(slideNumber)}`);
 
     activeInteractions.forEach((interaction) => {
-      const overlay = interaction.type === "form" ? createFormOverlay(interaction) : createSimulatorOverlay(interaction);
+      const overlay = interaction.type === "poll"
+        ? createPollOverlay(interaction)
+        : createSimulatorOverlay(interaction);
       slideFrame.append(overlay);
     });
 
@@ -230,7 +230,7 @@
     if (!debug) return;
     debugPanel.hidden = false;
     const slideNumber = current + 1;
-    const missingForms = Object.values(formsConfig).filter((form) => !form.embedUrl);
+    const missingPolls = Object.values(pollsConfig).filter((poll) => !poll.displayUrl);
     const rows = activeInteractions.map((item) => {
       const url = item.embedUrl || item.openUrl || "";
       return `<li><code>${item.type}</code> ${escapeHtml(item.title || item.key)}<br>x=${item.x}, y=${item.y}, w=${item.w}, h=${item.h}<br>${escapeHtml(url || "sin URL embed")}</li>`;
@@ -240,7 +240,7 @@
       <p><strong>Diapositiva:</strong> ${slideNumber} / ${slideCount}</p>
       <p><strong>Overlays activos:</strong> ${activeInteractions.length}</p>
       <ul>${rows || "<li>Sin overlays en esta diapositiva.</li>"}</ul>
-      <p><strong>Forms sin embedUrl:</strong> ${missingForms.length}</p>
+      <p><strong>Encuestas sin displayUrl:</strong> ${missingPolls.length}</p>
     `;
   }
 

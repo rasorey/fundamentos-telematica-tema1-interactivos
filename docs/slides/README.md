@@ -2,14 +2,14 @@
 
 Esta carpeta contiene una versión web paralela del Tema 1 de Fundamentos de Telemática. La versión oficial sigue siendo `TEMA_1_mejorado_v6_4.pptx`, distribuida por el aula virtual; este sitio web no sustituye al PowerPoint.
 
-La presentación web usa fondos renderizados desde el PowerPoint oficial y añade capas interactivas encima solo en las diapositivas que lo necesitan. Así mantiene la estética, diagramas, capturas, imágenes y composición del PPTX, pero permite incrustar simuladores y Microsoft Forms en navegador.
+La presentación web usa fondos renderizados desde el PowerPoint oficial y añade capas interactivas encima solo en las diapositivas que lo necesitan. Así mantiene la estética, diagramas, capturas, imágenes y composición del PPTX, pero permite incrustar simuladores y encuestas de aula del VPS en navegador.
 
 ## Estructura
 
 - `index.html`: visor 16:9 de la presentación.
 - `slides.css`: estilos del visor, controles, overlays, modo debug e iframes.
 - `slides.js`: navegación, pantalla completa, índice, precarga de fondos y carga diferida de iframes.
-- `forms-config.js`: configuración de Microsoft Forms.
+- `polls-config.js`: configuración pública de encuestas del VPS.
 - `interactions-config.js`: configuración de overlays de simuladores y coordenadas.
 - `assets/slide-backgrounds/`: fondos renderizados de todas las diapositivas.
 - `assets/thumbnails/`: miniaturas para el índice.
@@ -21,7 +21,7 @@ El PowerPoint es el material oficial para el aula virtual. La versión web es un
 
 - reproduce cada diapositiva como fondo 16:9;
 - incrusta simuladores JavaScript con `iframe`;
-- puede incrustar Microsoft Forms si se añaden URLs de inserción reales;
+- incrusta resultados de encuestas de aula servidas desde el VPS;
 - ofrece fallback limpio cuando una actividad no tiene URL configurada;
 - no contiene archivos `.ppt`, `.pptx` ni PDF de las diapositivas.
 
@@ -48,31 +48,32 @@ docs/slides/assets/thumbnails/
 
 Los nombres deben mantener el patrón `slide-01.png`, `slide-02.png`, etc. El número total de diapositivas se configura en `interactions-config.js` mediante `SLIDE_COUNT`.
 
-## Configurar Microsoft Forms
+## Configurar encuestas del VPS
 
-Edita `forms-config.js`. Cada entrada tiene esta forma:
+Edita `polls-config.js`. Cada entrada tiene esta forma:
 
 ```js
 servicioDigital: {
   slide: 5,
   title: "Servicio digital crítico",
   question: "¿Qué servicio digital te resultaría más difícil perder durante 24 horas?",
-  embedUrl: "https://forms.office.com/Pages/ResponsePage.aspx?...&embed=true",
-  openUrl: "https://forms.office.com/...",
-  qr: "./assets/qrs/servicio-digital.png"
+  activity: "servicio-digital-critico",
+  studentUrl: "https://vps-d05caed1.vps.ovh.net/polls/student/tema1-2026/servicio-digital-critico",
+  displayUrl: "https://vps-d05caed1.vps.ovh.net/polls/display/tema1-2026/servicio-digital-critico?embed=1",
+  displayOpenUrl: "https://vps-d05caed1.vps.ovh.net/polls/display/tema1-2026/servicio-digital-critico"
 }
 ```
 
 Campos:
 
 - `slide`: número visible de diapositiva donde se coloca el overlay.
-- `embedUrl`: URL de inserción para cargar Forms dentro de un `iframe`.
-- `openUrl`: URL normal para abrir Forms en una pestaña nueva.
-- `qr`: ruta relativa a una imagen QR, si se quiere mostrar.
+- `studentUrl`: URL pública para que el alumnado responda.
+- `displayUrl`: URL compacta `?embed=1` para incrustar resultados agregados en la diapositiva web.
+- `displayOpenUrl`: URL normal para abrir los resultados en una pestaña nueva.
 
-Si `embedUrl` está vacío, el modo presentación muestra una tarjeta limpia: “Actividad disponible desde el aula virtual”. El modo debug indica qué Forms siguen sin URL.
+La URL de profesor no se incluye en GitHub Pages y no debe contener token. El token privado se gestiona fuera del repositorio.
 
-No añadas afirmaciones sobre anonimato, cuentas o acceso si no están confirmadas en la configuración real del formulario.
+No añadas afirmaciones sobre anonimato. El texto correcto es: “No se solicita nombre ni correo.”
 
 ## Configurar simuladores
 
@@ -114,7 +115,7 @@ El modo debug muestra:
 - número de diapositiva;
 - overlays activos;
 - coordenadas;
-- Forms sin `embedUrl`;
+- encuestas sin `displayUrl`;
 - contorno de los overlays.
 
 El modo normal no muestra datos técnicos.

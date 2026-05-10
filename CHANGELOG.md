@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.5.0 - 2026-05-10
+
+- Sustituida la integración de Microsoft Forms en `docs/slides/` por el sistema propio de encuestas de aula desplegado en el VPS.
+- Añadido `docs/slides/polls-config.js` con URLs públicas de estudiante y vistas `display` embebibles bajo `https://vps-d05caed1.vps.ovh.net/polls/`.
+- Actualizado el visor web para crear overlays `poll` con iframes reales de resultados en directo, botones de respuesta y fallback limpio.
+- Añadidos QR públicos de estudiante en `docs/slides/assets/qrs/polls/`.
+- Añadida documentación `docs/polls/README.md` para student/display/teacher, borrado de respuestas e integración con la presentación web.
+- Confirmado que no se incluyen tokens privados, PowerPoint ni PDF de diapositivas en el repositorio.
+
 ## 1.4.1 - 2026-05-10
 
 - Reconstruida `docs/slides/` para que la versión web use fondos renderizados desde `TEMA_1_mejorado_v6_4.pptx`, en lugar de una presentación HTML resumida.

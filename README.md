@@ -17,10 +17,10 @@ Esta presentación web usa las diapositivas renderizadas del PowerPoint como fon
 - diapositivas 16:9 navegables con teclado, índice y pantalla completa;
 - fondos de diapositiva exportados desde `TEMA_1_mejorado_v6_4.pptx`;
 - simuladores JavaScript incrustados con `?embed=1`;
-- actividades Microsoft Forms preparadas para iframe, enlace o fallback limpio;
+- encuestas de aula propias servidas desde el VPS e incrustadas como resultados en directo;
 - modo diagnóstico con `?debug=1` para ajustar overlays y revisar configuración.
 
-Las URLs de Microsoft Forms se configuran en `docs/slides/forms-config.js`. Si una actividad no tiene `embedUrl`, se muestra una tarjeta limpia indicando que está disponible desde el aula virtual.
+Las URLs de encuestas se configuran en `docs/slides/polls-config.js`. La vista proyectada incrusta los resultados agregados del VPS y el alumnado responde desde los QR o enlaces públicos de estudiante.
 
 ## Modos de uso
 
@@ -83,9 +83,9 @@ No se recomienda depender exclusivamente de la incrustación web dentro de Power
 2. Incluir botón y QR con la URL pública normal.
 3. Usar `?embed=1` o `docs/embed/*.html` solo como mejora cuando el aula y el complemento lo permitan.
 
-La participación en clase se gestiona fuera de este repositorio mediante varios Microsoft Forms cortos, uno por bloque del tema. Esos formularios no forman parte del sitio de ejemplos. La presentación principal para clase se mantiene limpia y los enlaces reales de Forms se preparan en una plantilla local editable.
+La participación en clase se gestiona con el sistema propio `telematica-polls`, desplegado fuera de GitHub Pages en el VPS. Este repositorio solo contiene la configuración pública de enlaces e iframes; no contiene tokens de profesor ni base de datos de respuestas.
 
-La versión web `docs/slides/` sí está preparada para incrustar esos Forms cuando se añadan las URLs reales en `forms-config.js`.
+La versión web `docs/slides/` incrusta las vistas de resultados `display` del VPS. Los QR públicos de estudiante pueden versionarse porque no contienen credenciales.
 
 ## Modo reto
 

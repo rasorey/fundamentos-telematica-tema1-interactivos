@@ -190,7 +190,8 @@ iframe:focus-visible {
 }
 
 .activity-overlay,
-.forms-overlay {
+.forms-overlay,
+.polls-overlay {
   position: absolute;
   z-index: 5;
   border-radius: 10px;
@@ -201,7 +202,8 @@ iframe:focus-visible {
 }
 
 .activity-overlay iframe,
-.forms-overlay iframe {
+.forms-overlay iframe,
+.polls-overlay iframe {
   display: block;
   width: 100%;
   height: 100%;
@@ -237,7 +239,8 @@ iframe:focus-visible {
   background: rgba(31, 63, 136, .92);
 }
 
-.forms-fallback {
+.forms-fallback,
+.polls-fallback {
   width: 100%;
   height: 100%;
   display: grid;
@@ -249,14 +252,16 @@ iframe:focus-visible {
   color: var(--ink);
 }
 
-.forms-fallback strong {
+.forms-fallback strong,
+.polls-fallback strong {
   display: block;
   margin-bottom: 10px;
   font-size: clamp(1.1rem, 2.1vw, 2rem);
   line-height: 1.1;
 }
 
-.forms-fallback p {
+.forms-fallback p,
+.polls-fallback p {
   margin: 0;
   color: var(--muted);
   font-size: clamp(.86rem, 1.2vw, 1.15rem);
