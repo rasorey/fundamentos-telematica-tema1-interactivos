@@ -8,16 +8,17 @@ https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/
 
 ## Presentación interactiva online
 
-La versión oficial del tema sigue siendo el PowerPoint distribuido desde el aula virtual. Además, este repositorio incluye una versión web paralela, resumida e interactiva, pensada para proyectarse desde navegador:
+La versión oficial del tema sigue siendo el PowerPoint distribuido desde el aula virtual. Además, este repositorio incluye una versión web paralela e interactiva, pensada para proyectarse desde navegador:
 
 https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/slides/
 
-Esta presentación web incluye:
+Esta presentación web usa las diapositivas renderizadas del PowerPoint como fondo, de modo que mantiene el diseño visual del material oficial y añade encima capas interactivas solo donde hacen falta. Incluye:
 
-- diapositivas 16:9 navegables con teclado;
+- diapositivas 16:9 navegables con teclado, índice y pantalla completa;
+- fondos de diapositiva exportados desde `TEMA_1_mejorado_v6_4.pptx`;
 - simuladores JavaScript incrustados con `?embed=1`;
-- actividades Microsoft Forms preparadas para iframe, enlace o fallback;
-- botón de pantalla completa e índice de diapositivas.
+- actividades Microsoft Forms preparadas para iframe, enlace o fallback limpio;
+- modo diagnóstico con `?debug=1` para ajustar overlays y revisar configuración.
 
 Las URLs de Microsoft Forms se configuran en `docs/slides/forms-config.js`. Si una actividad no tiene `embedUrl`, se muestra una tarjeta limpia indicando que está disponible desde el aula virtual.
 

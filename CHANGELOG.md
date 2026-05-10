@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.4.1 - 2026-05-10
+
+- Reconstruida `docs/slides/` para que la versión web use fondos renderizados desde `TEMA_1_mejorado_v6_4.pptx`, en lugar de una presentación HTML resumida.
+- Añadidos fondos 16:9 de las 67 diapositivas en `docs/slides/assets/slide-backgrounds/` y miniaturas para el índice en `docs/slides/assets/thumbnails/`.
+- Añadido `docs/slides/interactions-config.js` con overlays proporcionales para simuladores y números reales de diapositiva.
+- Incrustados los seis simuladores con `iframe` sobre la zona de captura de sus diapositivas de laboratorio.
+- Ajustada la configuración de Microsoft Forms para permitir inserción por `embedUrl` y fallback limpio cuando no hay URL real.
+- Añadido modo diagnóstico con `?debug=1` para revisar overlays, coordenadas y Forms sin URL sin ensuciar el modo presentación.
+- Actualizada la documentación de `docs/slides/`, README y portada del sitio para explicar el flujo basado en PowerPoint renderizado.
+- Confirmado que el PowerPoint y el PDF siguen fuera del repositorio.
+
 ## 1.4.0 - 2026-05-10
 
 - Añadida presentación web paralela en `docs/slides/`.
