@@ -7,6 +7,7 @@
 - Actualizado el visor web para crear overlays `poll` con iframes reales de resultados en directo, botones de respuesta y fallback limpio.
 - Añadidos QR públicos de estudiante en `docs/slides/assets/qrs/polls/`.
 - Regenerados los fondos y miniaturas de la presentación web desde la versión local integrada con encuestas del VPS.
+- Añadida versión de assets en el visor web para evitar fondos antiguos cacheados en navegador.
 - Añadida documentación `docs/polls/README.md` para student/display/teacher, borrado de respuestas e integración con la presentación web.
 - Confirmado que no se incluyen tokens privados, PowerPoint ni PDF de diapositivas en el repositorio.
 

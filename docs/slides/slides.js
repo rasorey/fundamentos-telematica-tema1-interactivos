@@ -25,6 +25,7 @@
   const pollOverlay = typeof POLL_OVERLAY !== "undefined" ? POLL_OVERLAY : { x: 0.3, y: 0.17, w: 0.61, h: 0.61 };
   const slideCount = typeof SLIDE_COUNT !== "undefined" ? SLIDE_COUNT : 67;
   const slideTitles = typeof SLIDE_TITLES !== "undefined" ? SLIDE_TITLES : [];
+  const assetVersion = typeof SLIDE_ASSET_VERSION !== "undefined" ? SLIDE_ASSET_VERSION : "2026-05-10-polls-vps";
 
   let current = getIndexFromHash();
   const backgroundCache = new Map();
@@ -48,11 +49,11 @@
   }
 
   function backgroundUrl(slideNumber) {
-    return `./assets/slide-backgrounds/slide-${padSlideNumber(slideNumber)}.png`;
+    return `./assets/slide-backgrounds/slide-${padSlideNumber(slideNumber)}.png?v=${encodeURIComponent(assetVersion)}`;
   }
 
   function thumbnailUrl(slideNumber) {
-    return `./assets/thumbnails/slide-${padSlideNumber(slideNumber)}.jpg`;
+    return `./assets/thumbnails/slide-${padSlideNumber(slideNumber)}.jpg?v=${encodeURIComponent(assetVersion)}`;
   }
 
   function preloadBackground(slideNumber) {
