@@ -6,12 +6,13 @@
 - Añadido `docs/slides/polls-config.js` con URLs públicas de estudiante y vistas `display` embebibles bajo `https://vps-d05caed1.vps.ovh.net/polls/`.
 - Actualizado el visor web para crear overlays `poll` con iframes reales de resultados en directo, botones de respuesta y fallback limpio.
 - Añadidos QR públicos de estudiante en `docs/slides/assets/qrs/polls/`.
+- Regenerados los fondos y miniaturas de la presentación web desde la versión local integrada con encuestas del VPS.
 - Añadida documentación `docs/polls/README.md` para student/display/teacher, borrado de respuestas e integración con la presentación web.
 - Confirmado que no se incluyen tokens privados, PowerPoint ni PDF de diapositivas en el repositorio.
 
 ## 1.4.1 - 2026-05-10
 
-- Reconstruida `docs/slides/` para que la versión web use fondos renderizados desde `TEMA_1_mejorado_v6_4.pptx`, en lugar de una presentación HTML resumida.
+- Reconstruida `docs/slides/` para que la versión web use fondos renderizados desde el PowerPoint local, en lugar de una presentación HTML resumida.
 - Añadidos fondos 16:9 de las 67 diapositivas en `docs/slides/assets/slide-backgrounds/` y miniaturas para el índice en `docs/slides/assets/thumbnails/`.
 - Añadido `docs/slides/interactions-config.js` con overlays proporcionales para simuladores y números reales de diapositiva.
 - Incrustados los seis simuladores con `iframe` sobre la zona de captura de sus diapositivas de laboratorio.

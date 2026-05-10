@@ -15,7 +15,7 @@ https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/slides/
 Esta presentación web usa las diapositivas renderizadas del PowerPoint como fondo, de modo que mantiene el diseño visual del material oficial y añade encima capas interactivas solo donde hacen falta. Incluye:
 
 - diapositivas 16:9 navegables con teclado, índice y pantalla completa;
-- fondos de diapositiva exportados desde `TEMA_1_mejorado_v6_4.pptx`;
+- fondos de diapositiva exportados desde la versión local integrada con encuestas del VPS;
 - simuladores JavaScript incrustados con `?embed=1`;
 - encuestas de aula propias servidas desde el VPS e incrustadas como resultados en directo;
 - modo diagnóstico con `?debug=1` para ajustar overlays y revisar configuración.

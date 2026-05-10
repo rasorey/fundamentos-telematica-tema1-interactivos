@@ -1,8 +1,8 @@
 # Presentación interactiva online
 
-Esta carpeta contiene una versión web paralela del Tema 1 de Fundamentos de Telemática. La versión oficial sigue siendo `TEMA_1_mejorado_v6_4.pptx`, distribuida por el aula virtual; este sitio web no sustituye al PowerPoint.
+Esta carpeta contiene una versión web paralela del Tema 1 de Fundamentos de Telemática. La versión oficial sigue siendo el PowerPoint distribuido por el aula virtual; este sitio web no sustituye a esa presentación.
 
-La presentación web usa fondos renderizados desde el PowerPoint oficial y añade capas interactivas encima solo en las diapositivas que lo necesitan. Así mantiene la estética, diagramas, capturas, imágenes y composición del PPTX, pero permite incrustar simuladores y encuestas de aula del VPS en navegador.
+La presentación web usa fondos renderizados desde la versión local integrada con encuestas del VPS y añade capas interactivas encima solo en las diapositivas que lo necesitan. Así mantiene la estética, diagramas, capturas, imágenes y composición del PPTX, pero permite incrustar simuladores y encuestas de aula del VPS en navegador.
 
 ## Estructura
 
