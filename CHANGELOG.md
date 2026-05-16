@@ -1,8 +1,17 @@
 # Changelog
 
+## 1.6.0 - 2026-05-15
+
+- Añadidos seis laboratorios interactivos del Tema 2 en `docs/interactive_examples_tema2/`.
+- Implementados `encapsulation_explorer`, `osi_tcpip_mapper`, `pdu_builder`, `cidr_calculator`, `ports_multiplexing` y `web_request_stack` con HTML/CSS/JavaScript vanilla.
+- Añadido índice propio del Tema 2 con enlaces normales y enlaces `?embed=1`.
+- Actualizada la portada web `docs/index.html` para enlazar los laboratorios del Tema 2 sin modificar los ejemplos existentes del Tema 1.
+- Reutilizado un tema visual compartido y helpers JavaScript comunes para mantener consistencia, responsive básico y accesibilidad.
+- Confirmado que no se añaden PowerPoint ni PDF de diapositivas al repositorio.
+
 ## 1.5.0 - 2026-05-10
 
-- Sustituida la integración de Microsoft Forms en `docs/slides/` por el sistema propio de encuestas de aula desplegado en el VPS.
+- Sustituida la integración externa de encuestas en `docs/slides/` por el sistema propio de encuestas de aula desplegado en el VPS.
 - Añadido `docs/slides/polls-config.js` con URLs públicas de estudiante y vistas `display` embebibles bajo `https://vps-d05caed1.vps.ovh.net/polls/`.
 - Actualizado el visor web para crear overlays `poll` con iframes reales de resultados en directo, botones de respuesta y fallback limpio.
 - Añadidos QR públicos de estudiante en `docs/slides/assets/qrs/polls/`.
@@ -17,8 +26,8 @@
 - Añadidos fondos 16:9 de las 67 diapositivas en `docs/slides/assets/slide-backgrounds/` y miniaturas para el índice en `docs/slides/assets/thumbnails/`.
 - Añadido `docs/slides/interactions-config.js` con overlays proporcionales para simuladores y números reales de diapositiva.
 - Incrustados los seis simuladores con `iframe` sobre la zona de captura de sus diapositivas de laboratorio.
-- Ajustada la configuración de Microsoft Forms para permitir inserción por `embedUrl` y fallback limpio cuando no hay URL real.
-- Añadido modo diagnóstico con `?debug=1` para revisar overlays, coordenadas y Forms sin URL sin ensuciar el modo presentación.
+- Ajustada la configuración heredada de encuestas para permitir inserción por `embedUrl` y fallback limpio cuando no hay URL real.
+- Añadido modo diagnóstico con `?debug=1` para revisar overlays, coordenadas y encuestas sin URL sin ensuciar el modo presentación.
 - Actualizada la documentación de `docs/slides/`, README y portada del sitio para explicar el flujo basado en PowerPoint renderizado.
 - Confirmado que el PowerPoint y el PDF siguen fuera del repositorio.
 
@@ -27,8 +36,8 @@
 - Añadida presentación web paralela en `docs/slides/`.
 - Implementada navegación 16:9 en HTML/CSS/JavaScript vanilla, sin backend ni dependencias externas.
 - Incrustados los seis simuladores en modo `?embed=1` dentro de diapositivas online con botón “Abrir en navegador” y fallback.
-- Añadido `docs/slides/forms-config.js` para configurar URLs normales, URLs de inserción y QR de Microsoft Forms.
-- Añadidas diapositivas Forms con fallback limpio cuando no existe `embedUrl`.
+- Añadido `docs/slides/forms-config.js` para configurar URLs normales, URLs de inserción y QR de encuestas.
+- Añadidas diapositivas de encuesta con fallback limpio cuando no existe `embedUrl`.
 - Añadido índice navegable, controles por teclado, botón de pantalla completa y barra de progreso.
 - Añadida documentación específica en `docs/slides/README.md`.
 - Actualizada la portada del sitio `docs/index.html` con enlace a la presentación interactiva online.
@@ -93,14 +102,14 @@
 - Revisado el modo incrustado `?embed=1` para mantener vistas compactas 16:9.
 - Sustituido el vaciado de SVG con `innerHTML` por `replaceChildren()` para evitar patrones frágiles.
 - Probadas 19 rutas locales con Chromium/Google Chrome headless: índice, seis ejemplos en modo normal, seis ejemplos con `?embed=1` y seis wrappers `docs/embed/*.html`, sin errores de consola.
-- Actualizada la documentación para aclarar que la versión principal de las diapositivas se mantiene limpia y que Microsoft Forms se gestiona fuera del repositorio.
+- Actualizada la documentación para aclarar que la versión principal de las diapositivas se mantiene limpia y que las encuestas se gestionan fuera del repositorio.
 - Confirmado que el repositorio sigue sin contener `.ppt`, `.pptx` ni PDF de diapositivas.
 
 ## 1.2.0 - 2026-05-07
 
 - Actualizadas fuentes y documentación para la iteración V4 local de la presentación.
-- Sustituida la referencia documental a herramientas de participación externas por Microsoft Forms.
-- Añadidas fuentes oficiales para Microsoft Forms, inserción en PowerPoint, compartición mediante enlace/QR, prefijos SI y prefijos binarios.
+- Sustituida la referencia documental a herramientas de participación externas por un sistema de encuestas enlazable.
+- Añadidas fuentes oficiales para inserción en PowerPoint, compartición mediante enlace/QR, prefijos SI y prefijos binarios.
 - Mantenida la separación: el repositorio sigue alojando solo ejemplos interactivos web y documentación asociada, nunca diapositivas.
 
 ## 1.1.0 - 2026-05-07

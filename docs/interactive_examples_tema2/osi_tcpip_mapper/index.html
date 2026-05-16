@@ -1,0 +1,76 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Mapa OSI frente a TCP/IP · Tema 2</title>
+  <link rel="stylesheet" href="../shared/lab-theme.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema2-lab mapper-page">
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver al índice</a>
+    <div>
+      <p class="lab-kicker">Fundamentos de Telemática · Tema 2</p>
+      <h1>Mapa OSI frente a TCP/IP</h1>
+      <p>Coloca protocolos y funciones sin forzar una correspondencia perfecta entre el modelo OSI e Internet real.</p>
+    </div>
+  </header>
+  <main class="lab-shell">
+    <section class="lab-grid">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+        <div class="control-row">
+          <label for="preset">Escenario</label>
+          <select id="preset">
+            <option value="classic">Web clásica</option>
+            <option value="modern">Web actual</option>
+            <option value="diagnostic">Diagnóstico</option>
+            <option value="all">Todos</option>
+          </select>
+        </div>
+        <div class="button-row">
+          <button id="checkBtn" type="button">Comprobar</button>
+          <button id="hintBtn" type="button" class="secondary">Mostrar pista</button>
+          <button id="resetBtn" type="button" class="ghost">Reiniciar</button>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">Asigna cada tarjeta a una capa OSI y a una capa TCP/IP.</p>
+      </aside>
+      <section class="panel visual-panel">
+        <h2>Clasificación</h2>
+        <div id="mapperRows" class="mapper-rows"></div>
+      </section>
+    </section>
+    <section class="panel">
+      <h2>Pilas de referencia</h2>
+      <svg id="mapSvg" class="visual" viewBox="0 0 920 420" role="img" aria-label="Pilas OSI y TCP/IP con tarjetas clasificadas"></svg>
+    </section>
+    <section class="panel hide-embed">
+      <h2>Qué observar</h2>
+      <ul class="watch-list">
+        <li>OSI ayuda a nombrar funciones; TCP/IP describe cómo se organiza Internet.</li>
+        <li>TLS y QUIC requieren matiz: no todo cae limpiamente en una sola capa introductoria.</li>
+        <li>Acceso a red agrupa funciones que OSI separa como enlace y físico.</li>
+      </ul>
+    </section>
+    <section class="panel hide-embed">
+      <h2>Reto</h2>
+      <div class="challenge-grid">
+        <p>Coloca DNS, TLS, TCP, IP y Wi-Fi y localiza el caso que necesita explicación.</p>
+        <button id="challengeBtn" type="button">Comprobar reto</button>
+      </div>
+      <p id="challengeFeedback" class="status" role="status" aria-live="polite">Usa el preset “Web actual” para este reto.</p>
+    </section>
+  </main>
+  <footer class="lab-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

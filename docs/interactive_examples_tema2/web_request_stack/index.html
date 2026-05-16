@@ -1,0 +1,101 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Traza de una web HTTPS · Tema 2</title>
+  <link rel="stylesheet" href="../shared/lab-theme.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema2-lab web-stack-page">
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver al índice</a>
+    <div>
+      <p class="lab-kicker">Fundamentos de Telemática · Tema 2</p>
+      <h1>Traza de una web HTTPS</h1>
+      <p>Sigue una petición desde la URL hasta los bits y vuelve por la pila hasta el navegador.</p>
+    </div>
+  </header>
+  <main class="lab-shell">
+    <section class="lab-grid">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+        <div class="control-row">
+          <label for="preset">Preset</label>
+          <select id="preset">
+            <option value="tcp">HTTPS típico</option>
+            <option value="quic">HTTPS con QUIC</option>
+            <option value="ethernet">Red cableada</option>
+            <option value="layers">Solo traza de capas</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="urlInput">URL</label>
+          <input id="urlInput" type="text" value="https://www.ejemplo.edu/">
+        </div>
+        <div class="control-row">
+          <label for="transport">Transporte</label>
+          <select id="transport">
+            <option value="tcp">HTTPS sobre TCP</option>
+            <option value="quic">HTTPS sobre QUIC</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="link">Enlace local</label>
+          <select id="link">
+            <option value="wifi">Wi-Fi</option>
+            <option value="ethernet">Ethernet</option>
+          </select>
+        </div>
+        <label class="checkbox-row"><input id="showPacket" type="checkbox" checked> Mostrar detalle de paquete</label>
+        <div class="button-row">
+          <button id="stepBtn" type="button">Paso</button>
+          <button id="animateBtn" type="button" class="secondary">Animar</button>
+          <button id="resetBtn" type="button" class="ghost">Reiniciar</button>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">Pulsa “Paso” para comenzar la traza.</p>
+      </aside>
+      <section class="panel visual-panel">
+        <h2>Línea de tiempo y pila activa</h2>
+        <div class="metric-grid">
+          <div class="metric"><strong id="hostOut">-</strong><span>nombre</span></div>
+          <div class="metric"><strong id="ipOut">203.0.113.10</strong><span>IP resuelta</span></div>
+          <div class="metric"><strong id="portOut">443</strong><span>puerto servidor</span></div>
+          <div class="metric"><strong id="socketOut">-</strong><span>socket cliente</span></div>
+        </div>
+        <svg id="traceSvg" class="visual" viewBox="0 0 940 470" role="img" aria-label="Traza de una petición HTTPS por capas"></svg>
+      </section>
+    </section>
+    <section class="panel hide-embed">
+      <h2>Qué observar</h2>
+      <ul class="watch-list">
+        <li>DNS resuelve el nombre antes de que IP pueda encaminar.</li>
+        <li>HTTP define la petición; TLS protege la conversación HTTPS.</li>
+        <li>IP conserva origen y destino, mientras cada enlace usa su propia trama local.</li>
+      </ul>
+    </section>
+    <section class="panel hide-embed">
+      <h2>Reto</h2>
+      <p>¿Qué elemento permite entregar la respuesta al navegador correcto?</p>
+      <div class="challenge-options" role="group" aria-label="Opciones del reto">
+        <label class="radio-row"><input type="radio" name="challenge" value="ip"> solo la IP</label>
+        <label class="radio-row"><input type="radio" name="challenge" value="mac"> solo la MAC</label>
+        <label class="radio-row"><input type="radio" name="challenge" value="socket"> protocolo + IP + puerto</label>
+        <label class="radio-row"><input type="radio" name="challenge" value="dns"> solo DNS</label>
+      </div>
+      <div class="button-row"><button id="challengeBtn" type="button">Comprobar reto</button></div>
+      <p id="challengeFeedback" class="status" role="status" aria-live="polite">Selecciona una opción.</p>
+    </section>
+  </main>
+  <footer class="lab-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

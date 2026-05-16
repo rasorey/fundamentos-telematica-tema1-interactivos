@@ -1,0 +1,100 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Multiplexación por puertos · Tema 2</title>
+  <link rel="stylesheet" href="../shared/lab-theme.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema2-lab ports-page">
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver al índice</a>
+    <div>
+      <p class="lab-kicker">Fundamentos de Telemática · Tema 2</p>
+      <h1>Multiplexación por puertos</h1>
+      <p>Comprueba cómo IP elige la máquina y TCP/UDP con puerto eligen la aplicación dentro de esa máquina.</p>
+    </div>
+  </header>
+  <main class="lab-shell">
+    <section class="lab-grid">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+        <div class="control-row">
+          <label for="preset">Preset</label>
+          <select id="preset">
+            <option value="https">Web HTTPS</option>
+            <option value="dns">DNS</option>
+            <option value="http">Web clásica</option>
+            <option value="ftp">FTP histórico</option>
+            <option value="closed">Puerto sin servicio</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="protocol">Protocolo</label>
+          <select id="protocol">
+            <option value="TCP">TCP</option>
+            <option value="UDP">UDP</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="serverIp">IP destino</label>
+          <input id="serverIp" type="text" value="203.0.113.10">
+        </div>
+        <div class="control-row">
+          <label for="sourcePort">Puerto origen</label>
+          <input id="sourcePort" type="number" min="49152" max="65535" value="52000">
+        </div>
+        <div class="control-row">
+          <label for="destPort">Puerto destino</label>
+          <input id="destPort" type="number" min="1" max="65535" value="443">
+        </div>
+        <label class="checkbox-row"><input id="showSockets" type="checkbox" checked> Mostrar sockets</label>
+        <div class="button-row">
+          <button id="sendBtn" type="button">Enviar paquete</button>
+          <button id="multiBtn" type="button" class="secondary">Enviar tres aplicaciones</button>
+          <button id="changePortBtn" type="button" class="secondary">Cambiar puerto</button>
+          <button id="resetBtn" type="button" class="ghost">Reiniciar</button>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">Elige un servicio y envía un paquete.</p>
+      </aside>
+      <section class="panel visual-panel">
+        <h2>Servidor con varias aplicaciones</h2>
+        <div class="metric-grid">
+          <div class="metric"><strong id="destApp">-</strong><span>aplicación destino</span></div>
+          <div class="metric"><strong id="clientSocket">-</strong><span>socket origen</span></div>
+          <div class="metric"><strong id="serverSocket">-</strong><span>socket destino</span></div>
+          <div class="metric"><strong id="packetCount">0</strong><span>paquetes enviados</span></div>
+        </div>
+        <svg id="portsSvg" class="visual" viewBox="0 0 920 430" role="img" aria-label="Demultiplexación por puertos en un servidor"></svg>
+      </section>
+    </section>
+    <section class="panel hide-embed">
+      <h2>Qué observar</h2>
+      <ul class="watch-list">
+        <li>La misma IP del servidor puede recibir tráfico de varias aplicaciones.</li>
+        <li>El puerto destino decide qué aplicación recibe los datos.</li>
+        <li>El protocolo también importa: TCP/53 y UDP/53 no son la misma conversación.</li>
+      </ul>
+    </section>
+    <section class="panel hide-embed">
+      <h2>Reto</h2>
+      <div class="challenge-grid">
+        <p>Configura un paquete para que llegue al servicio HTTPS del servidor.</p>
+        <button id="challengeBtn" type="button">Comprobar reto</button>
+      </div>
+      <p id="challengeFeedback" class="status" role="status" aria-live="polite">Necesitas TCP y puerto destino 443.</p>
+    </section>
+  </main>
+  <footer class="lab-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

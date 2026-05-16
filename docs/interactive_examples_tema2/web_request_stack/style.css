@@ -1,0 +1,31 @@
+/*
+ * Código fuente publicado bajo licencia 0BSD.
+ * Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+ * Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+ */
+.web-stack-page .visual {
+  min-height: 460px;
+}
+
+.challenge-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .65rem;
+  margin-bottom: .8rem;
+}
+
+.challenge-options .radio-row {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: .7rem;
+}
+
+body.embed.web-stack-page .visual {
+  height: calc(100vh - 9.2rem);
+}
+
+@media (max-width: 760px) {
+  .challenge-options {
+    grid-template-columns: 1fr;
+  }
+}

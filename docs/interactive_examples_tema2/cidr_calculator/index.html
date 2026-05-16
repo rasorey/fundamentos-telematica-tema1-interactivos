@@ -1,0 +1,89 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Calculadora CIDR · Tema 2</title>
+  <link rel="stylesheet" href="../shared/lab-theme.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema2-lab cidr-page">
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver al índice</a>
+    <div>
+      <p class="lab-kicker">Fundamentos de Telemática · Tema 2</p>
+      <h1>Calculadora CIDR</h1>
+      <p>Lee direcciones IPv4 con prefijos modernos y compara esa lectura con las clases históricas.</p>
+    </div>
+  </header>
+  <main class="lab-shell">
+    <section class="lab-grid">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+        <div class="control-row">
+          <label for="preset">Preset</label>
+          <select id="preset">
+            <option value="lan">192.168.1.0/24</option>
+            <option value="privateA">10.0.0.0/8</option>
+            <option value="privateB">172.16.0.0/12</option>
+            <option value="doc">203.0.113.0/27</option>
+            <option value="classA">Clase A histórica</option>
+            <option value="classB">Clase B histórica</option>
+            <option value="classC">Clase C histórica</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="ipInput">Dirección IPv4</label>
+          <input id="ipInput" type="text" value="192.168.1.0">
+        </div>
+        <div class="control-row">
+          <label for="prefixInput">Prefijo /<span id="prefixLabel">24</span></label>
+          <input id="prefixInput" type="range" min="0" max="32" value="24">
+        </div>
+        <label class="checkbox-row"><input id="showBits" type="checkbox" checked> Mostrar bits</label>
+        <div class="button-row">
+          <button id="applyBtn" type="button">Aplicar</button>
+          <button id="resetBtn" type="button" class="ghost">Reiniciar</button>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">CIDR usa prefijos /n; las clases son historia.</p>
+      </aside>
+      <section class="panel visual-panel">
+        <h2>Bloque IPv4</h2>
+        <div class="metric-grid">
+          <div class="metric"><strong id="maskOut">-</strong><span>máscara</span></div>
+          <div class="metric"><strong id="networkOut">-</strong><span>red</span></div>
+          <div class="metric"><strong id="totalOut">-</strong><span>direcciones</span></div>
+          <div class="metric"><strong id="usableOut">-</strong><span>hosts clásicos</span></div>
+        </div>
+        <svg id="cidrSvg" class="visual" viewBox="0 0 920 420" role="img" aria-label="Barra de 32 bits con parte de red y parte de host"></svg>
+      </section>
+    </section>
+    <section class="panel hide-embed">
+      <h2>Qué observar</h2>
+      <ul class="watch-list">
+        <li>El prefijo indica cuántos bits pertenecen a la red.</li>
+        <li>La máscara es otra forma de escribir ese mismo corte.</li>
+        <li>Las clases A/B/C ayudan a leer documentación antigua, no a explicar la práctica actual.</li>
+      </ul>
+    </section>
+    <section class="panel hide-embed">
+      <h2>Reto</h2>
+      <div class="challenge-grid">
+        <p>Encuentra un prefijo para que el bloque tenga 32 direcciones totales.</p>
+        <button id="challengeBtn" type="button">Comprobar reto</button>
+      </div>
+      <p id="challengeFeedback" class="status" role="status" aria-live="polite">Ajusta el prefijo y comprueba.</p>
+    </section>
+  </main>
+  <footer class="lab-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -9,18 +9,19 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="data:,">
-  <title>Fundamentos de Telemática · Tema 1 · Ejemplos interactivos</title>
+  <title>Fundamentos de Telemática · Ejemplos interactivos</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <header class="site-header hero">
     <div>
       <p class="eyebrow">Universidad Politécnica de Cartagena</p>
-      <h1>Fundamentos de Telemática · Tema 1 · Ejemplos interactivos</h1>
-      <p>Simuladores docentes para explorar mallas completas, conmutación, retardos, overhead, pipeline, datagrama y circuito virtual.</p>
+      <h1>Fundamentos de Telemática · Ejemplos interactivos</h1>
+      <p>Simuladores docentes para explorar redes de comunicación, conmutación, retardos, overhead, arquitectura de protocolos, direccionamiento y puertos.</p>
       <p class="notice">Las diapositivas completas del tema se distribuyen a través del aula virtual. Este sitio contiene únicamente los ejemplos interactivos.</p>
       <div class="hero-actions">
-        <a class="button" href="#simuladores">Ver simuladores</a>
+        <a class="button" href="#tema1">Tema 1</a>
+        <a class="button secondary" href="#tema2">Tema 2</a>
         <a class="button secondary" href="slides/">Presentación interactiva online</a>
         <a class="button secondary" href="https://github.com/rasorey/fundamentos-telematica-tema1-interactivos">Repositorio</a>
       </div>
@@ -35,9 +36,9 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
       <a class="button" href="slides/">Abrir presentación interactiva</a>
     </section>
 
-    <section id="simuladores" class="section">
+    <section id="tema1" class="section">
       <div class="section-heading">
-        <h2>Simuladores disponibles</h2>
+        <h2>Tema 1 · Simuladores disponibles</h2>
         <p>Cada ejemplo se puede usar en clase, en el aula virtual, como actividad autónoma del estudiante o en modo compacto para una diapositiva 16:9.</p>
       </div>
       <div class="card-grid">
@@ -80,6 +81,52 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
       </div>
     </section>
 
+    <section id="tema2" class="section">
+      <div class="section-heading">
+        <h2>Tema 2 · Arquitectura de protocolos</h2>
+        <p>Laboratorios para trabajar capas, entidades pares, encapsulación, OSI, TCP/IP, CIDR, puertos y una petición web HTTPS completa.</p>
+      </div>
+      <div class="card-grid">
+      <article class="sim-card">
+        <span class="sim-number">T2-01</span>
+        <h3>Encapsulación</h3>
+        <p>Recorre capas, entidades pares, comunicación lógica y flujo real en fuente y destino.</p>
+        <a class="button" href="interactive_examples_tema2/encapsulation_explorer/">Abrir laboratorio</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">T2-02</span>
+        <h3>OSI frente a TCP/IP</h3>
+        <p>Clasifica protocolos y servicios para ver qué es modelo de referencia y qué es arquitectura real.</p>
+        <a class="button" href="interactive_examples_tema2/osi_tcpip_mapper/">Abrir laboratorio</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">T2-03</span>
+        <h3>Constructor PDU</h3>
+        <p>Construye una unidad de datos con cabeceras, payload, trailer, overhead y eficiencia útil.</p>
+        <a class="button" href="interactive_examples_tema2/pdu_builder/">Abrir laboratorio</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">T2-04</span>
+        <h3>Calculadora CIDR</h3>
+        <p>Compara clases históricas con prefijos actuales, máscara, red, rango y hosts disponibles.</p>
+        <a class="button" href="interactive_examples_tema2/cidr_calculator/">Abrir laboratorio</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">T2-05</span>
+        <h3>Puertos y sockets</h3>
+        <p>Visualiza multiplexación TCP/UDP y la combinación protocolo + IP + puerto.</p>
+        <a class="button" href="interactive_examples_tema2/ports_multiplexing/">Abrir laboratorio</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">T2-06</span>
+        <h3>Petición HTTPS</h3>
+        <p>Sigue DNS, transporte, TLS, HTTP, IP, enlace y medio físico al abrir una página web.</p>
+        <a class="button" href="interactive_examples_tema2/web_request_stack/">Abrir laboratorio</a>
+      </article>
+      </div>
+      <p><a class="button secondary" href="interactive_examples_tema2/">Abrir índice del Tema 2</a></p>
+    </section>
+
     <section class="section">
       <div class="section-heading">
         <h2>Tabla de conceptos</h2>
@@ -95,6 +142,12 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
         <tr><td><code>message_switching</code></td><td>Conmutación de mensajes y almacenamiento/reenvío</td><td><a href="interactive_examples/message_switching/">Conmutación de mensajes</a></td></tr>
         <tr><td><code>packet_switching_delay</code></td><td>Conmutación de paquetes, pipeline, overhead y retardo</td><td><a href="interactive_examples/packet_switching_delay/">Conmutación de paquetes</a></td></tr>
         <tr><td><code>datagram_vs_virtual_circuit</code></td><td>Datagrama frente a circuito virtual</td><td><a href="interactive_examples/datagram_vs_virtual_circuit/">Datagrama vs circuito virtual</a></td></tr>
+        <tr><td><code>encapsulation_explorer</code></td><td>Capas, entidades pares y encapsulación</td><td><a href="interactive_examples_tema2/encapsulation_explorer/">Encapsulación</a></td></tr>
+        <tr><td><code>osi_tcpip_mapper</code></td><td>Modelo OSI y arquitectura TCP/IP</td><td><a href="interactive_examples_tema2/osi_tcpip_mapper/">OSI frente a TCP/IP</a></td></tr>
+        <tr><td><code>pdu_builder</code></td><td>SDU, PDU, cabecera, payload y overhead</td><td><a href="interactive_examples_tema2/pdu_builder/">Constructor PDU</a></td></tr>
+        <tr><td><code>cidr_calculator</code></td><td>Clases históricas, CIDR, prefijo y máscara</td><td><a href="interactive_examples_tema2/cidr_calculator/">Calculadora CIDR</a></td></tr>
+        <tr><td><code>ports_multiplexing</code></td><td>Puertos TCP/UDP, multiplexación y sockets</td><td><a href="interactive_examples_tema2/ports_multiplexing/">Puertos y sockets</a></td></tr>
+        <tr><td><code>web_request_stack</code></td><td>Petición web HTTPS completa por capas</td><td><a href="interactive_examples_tema2/web_request_stack/">Petición HTTPS</a></td></tr>
           </tbody>
         </table>
       </div>

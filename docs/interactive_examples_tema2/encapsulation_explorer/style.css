@@ -1,0 +1,36 @@
+/*
+ * Código fuente publicado bajo licencia 0BSD.
+ * Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+ * Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+ */
+.encapsulation-page .visual {
+  min-height: 460px;
+}
+
+.encapsulation-page .token-list {
+  margin-top: .75rem;
+}
+
+.encapsulation-page .metric-mini {
+  border-left: 4px solid var(--transport);
+  background: var(--transport-soft);
+  color: var(--ink);
+  display: grid;
+  gap: .15rem;
+  margin: .45rem 0 .75rem;
+  padding: .7rem .85rem;
+}
+
+.encapsulation-page .metric-mini strong {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.encapsulation-page .metric-mini span {
+  font-size: .84rem;
+  line-height: 1.2;
+}
+
+body.embed.encapsulation-page .visual {
+  height: calc(100vh - 7.4rem);
+}

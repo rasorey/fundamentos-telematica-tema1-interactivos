@@ -1,0 +1,61 @@
+/*
+ * Código fuente publicado bajo licencia 0BSD.
+ * Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+ * Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+ */
+.mapper-rows {
+  display: grid;
+  gap: .65rem;
+}
+
+.mapper-row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 1fr) minmax(8rem, 1fr) minmax(8rem, 1fr);
+  gap: .55rem;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: .55rem;
+  background: #fff;
+}
+
+.mapper-row strong {
+  color: var(--ink);
+}
+
+.mapper-row small {
+  display: block;
+  color: var(--muted);
+}
+
+.mapper-row.ok {
+  border-color: var(--ok);
+  background: #f2fbf7;
+}
+
+.mapper-row.warn {
+  border-color: var(--warn);
+  background: #fff7ed;
+}
+
+.mapper-row.bad {
+  border-color: var(--bad);
+  background: #fff8f7;
+}
+
+body.embed.mapper-page .mapper-rows {
+  gap: .36rem;
+}
+
+body.embed.mapper-page .mapper-row {
+  grid-template-columns: 5.8rem 1fr 1fr;
+  padding: .35rem;
+}
+
+body.embed.mapper-page .mapper-row small {
+  display: none;
+}
+
+body.embed.mapper-page .visual {
+  height: 240px;
+}

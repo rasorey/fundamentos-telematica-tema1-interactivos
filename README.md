@@ -1,10 +1,15 @@
-# Fundamentos de Telemática · Tema 1 · Ejemplos interactivos
+# Fundamentos de Telemática · Ejemplos interactivos
 
-Este repositorio contiene únicamente los ejemplos interactivos web del Tema 1 de Fundamentos de Telemática. Las diapositivas del tema se distribuyen por separado a través del aula virtual.
+Este repositorio contiene únicamente ejemplos interactivos web, presentación web, assets web, documentación y licencias de Fundamentos de Telemática. Las diapositivas PowerPoint se distribuyen por separado a través del aula virtual.
 
 ## Sitio publicado
 
 https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/
+
+Índices principales:
+
+- Tema 1: https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/#tema1
+- Tema 2: https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema2/
 
 ## Presentación interactiva online
 
@@ -46,7 +51,7 @@ Wrappers publicados:
 | `packet_switching_delay` | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/embed/packet_switching_delay.html |
 | `datagram_vs_virtual_circuit` | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/embed/datagram_vs_virtual_circuit.html |
 
-## Ejemplos
+## Ejemplos del Tema 1
 
 | Ejemplo | Concepto principal | URL |
 |---|---|---|
@@ -56,6 +61,17 @@ Wrappers publicados:
 | `message_switching` | Conmutación de mensajes y almacenamiento/reenvío | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples/message_switching/ |
 | `packet_switching_delay` | Conmutación de paquetes, pipeline, overhead y retardo | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples/packet_switching_delay/ |
 | `datagram_vs_virtual_circuit` | Datagrama frente a circuito virtual | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples/datagram_vs_virtual_circuit/ |
+
+## Ejemplos del Tema 2
+
+| Ejemplo | Concepto principal | URL |
+|---|---|---|
+| `encapsulation_explorer` | Capas, entidades pares y flujo real de encapsulación | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema2/encapsulation_explorer/ |
+| `osi_tcpip_mapper` | Relación entre modelo OSI y arquitectura TCP/IP | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema2/osi_tcpip_mapper/ |
+| `pdu_builder` | SDU, PDU, cabeceras, payload, overhead y eficiencia | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema2/pdu_builder/ |
+| `cidr_calculator` | IPv4 histórico por clases, CIDR, prefijo y máscara | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema2/cidr_calculator/ |
+| `ports_multiplexing` | Puertos TCP/UDP, multiplexación y socket | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema2/ports_multiplexing/ |
+| `web_request_stack` | Recorrido de una petición web HTTPS por la pila | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema2/web_request_stack/ |
 
 ## Uso local
 

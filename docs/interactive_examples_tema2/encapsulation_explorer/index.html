@@ -1,0 +1,89 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Explorador de encapsulación · Tema 2</title>
+  <link rel="stylesheet" href="../shared/lab-theme.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema2-lab encapsulation-page">
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver al índice</a>
+    <div>
+      <p class="lab-kicker">Fundamentos de Telemática · Tema 2</p>
+      <h1>Explorador de pila de protocolos</h1>
+      <p>Compara la comunicación lógica entre entidades pares con el recorrido real del dato por la pila.</p>
+    </div>
+  </header>
+  <main class="lab-shell">
+    <section class="lab-grid">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+        <div class="control-row">
+          <label for="stackSelect">Pila visible</label>
+          <select id="stackSelect">
+            <option value="tcpip">TCP/IP</option>
+            <option value="two">Dos niveles</option>
+            <option value="osi">OSI completo</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="modeSelect">Vista</label>
+          <select id="modeSelect">
+            <option value="both">Ambas</option>
+            <option value="logical">Comunicación lógica</option>
+            <option value="real">Flujo real</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="payloadSize">Payload de aplicación: <span id="payloadLabel">500 B</span></label>
+          <input id="payloadSize" type="range" min="100" max="1500" step="100" value="500">
+        </div>
+        <div class="metric-mini" aria-label="Resumen de overhead">
+          <strong id="overheadLabel">58 B</strong>
+          <span id="overheadDetail">de control · 10,4 % del total</span>
+        </div>
+        <div class="button-row">
+          <button id="stepBtn" type="button">Paso siguiente</button>
+          <button id="animateBtn" type="button" class="secondary">Animar</button>
+          <button id="pauseBtn" type="button" class="ghost">Pausar</button>
+          <button id="resetBtn" type="button" class="ghost">Reiniciar</button>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">Selecciona un paso para ver qué relación se activa.</p>
+      </aside>
+      <section class="panel visual-panel">
+        <h2>Entidades pares y flujo real</h2>
+        <svg id="stackSvg" class="visual" viewBox="0 0 900 520" role="img" aria-label="Dos hosts con capas y comunicación lógica entre entidades pares"></svg>
+        <div class="token-list" id="legend" aria-label="Leyenda de relaciones"></div>
+      </section>
+    </section>
+    <section class="panel hide-embed">
+      <h2>Qué observar</h2>
+      <ul class="watch-list">
+        <li>Las líneas discontinuas son conversaciones lógicas entre entidades pares.</li>
+        <li>Las flechas verticales muestran el recorrido real por interfaces locales.</li>
+        <li>El medio físico solo transporta bits: no entiende las capas superiores.</li>
+      </ul>
+    </section>
+    <section class="panel hide-embed">
+      <h2>Reto</h2>
+      <div class="challenge-grid">
+        <p>Haz que se vea solo la comunicación lógica de transporte y avanza hasta esa capa.</p>
+        <button id="challengeBtn" type="button">Comprobar reto</button>
+      </div>
+      <p id="challengeFeedback" class="status" role="status" aria-live="polite">Ajusta la pila y la vista antes de comprobar.</p>
+    </section>
+  </main>
+  <footer class="lab-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
