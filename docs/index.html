@@ -17,12 +17,14 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
     <div>
       <p class="eyebrow">Universidad Politécnica de Cartagena</p>
       <h1>Fundamentos de Telemática · Ejemplos interactivos</h1>
-      <p>Simuladores docentes para explorar redes de comunicación, conmutación, retardos, overhead, arquitectura de protocolos, direccionamiento y puertos.</p>
+      <p>Simuladores docentes para explorar redes de comunicación, conmutación, retardos, arquitectura de protocolos, direccionamiento, señales, capacidad y codificación.</p>
       <p class="notice">Las diapositivas completas del tema se distribuyen a través del aula virtual. Este sitio contiene únicamente los ejemplos interactivos.</p>
       <div class="hero-actions">
         <a class="button" href="#tema1">Tema 1</a>
         <a class="button secondary" href="#tema2">Tema 2</a>
+        <a class="button secondary" href="#tema3">Tema 3</a>
         <a class="button secondary" href="slides/">Presentación interactiva online</a>
+        <a class="button secondary" href="slides_tema3/">Tema 3 online</a>
         <a class="button secondary" href="https://github.com/rasorey/fundamentos-telematica-tema1-interactivos">Repositorio</a>
       </div>
     </div>
@@ -32,8 +34,10 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
     <section class="license-panel">
       <h2>Presentación interactiva online</h2>
       <p>Además de los simuladores individuales, hay una versión web del Tema 1 basada en fondos renderizados del PowerPoint oficial, con encuestas de aula del VPS y simuladores cargados dentro de las diapositivas online.</p>
+      <p>El Tema 3 cuenta también con una versión online propia, basada en fondos renderizados de la versión step04 y con los seis laboratorios del tema incrustados en modo compacto.</p>
       <p>La presentación oficial de PowerPoint sigue distribuyéndose desde el aula virtual. Esta versión web es un complemento para usar en navegador.</p>
       <a class="button" href="slides/">Abrir presentación interactiva</a>
+      <a class="button secondary" href="slides_tema3/">Abrir Tema 3 online</a>
     </section>
 
     <section id="tema1" class="section">
@@ -127,6 +131,52 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
       <p><a class="button secondary" href="interactive_examples_tema2/">Abrir índice del Tema 2</a></p>
     </section>
 
+    <section id="tema3" class="section">
+      <div class="section-heading">
+        <h2>Tema 3 · Señales, capacidad y codificación</h2>
+        <p>Laboratorios para entender frecuencia y Fourier, comparar Nyquist/Shannon, regenerar señales, visualizar códigos de línea, digitalizar con PCM/MIC y conectar perturbaciones con BER.</p>
+      </div>
+      <div class="card-grid">
+      <article class="sim-card">
+        <span class="sim-number">T3-01</span>
+        <h3>Frecuencia y Fourier</h3>
+        <p>Suma senos, observa el espectro y limita el ancho de banda del canal para ver la distorsión resultante.</p>
+        <a class="button" href="interactive_examples_tema3/fourier_frequency_explorer/">Abrir laboratorio</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">T3-02</span>
+        <h3>Capacidad de canal</h3>
+        <p>Compara el límite ideal de Nyquist con la capacidad de Shannon usando B, M, SNR y una tasa objetivo.</p>
+        <a class="button" href="interactive_examples_tema3/channel_capacity_playground/">Abrir laboratorio</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">T3-03</span>
+        <h3>Codificación de línea</h3>
+        <p>Compara NRZ-L, NRZI, AMI, pseudoternario, Manchester, B8ZS y HDB3 con la misma secuencia de bits.</p>
+        <a class="button" href="interactive_examples_tema3/line_coding_studio/">Abrir laboratorio</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">T3-04</span>
+        <h3>Regeneración digital</h3>
+        <p>Degrada una señal digital, decide bits por umbral y observa cuándo aparece el primer error.</p>
+        <a class="button" href="interactive_examples_tema3/digital_regeneration_lab/">Abrir laboratorio</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">T3-05</span>
+        <h3>PCM/MIC y muestreo</h3>
+        <p>Visualiza muestreo, sample &amp; hold, cuantificación, palabras binarias y aliasing.</p>
+        <a class="button" href="interactive_examples_tema3/sampling_pcm_lab/">Abrir laboratorio</a>
+      </article>
+      <article class="sim-card">
+        <span class="sim-number">T3-06</span>
+        <h3>Decisión y BER</h3>
+        <p>Relaciona ruido, atenuación, distorsión e interferencia con regiones de decisión y BER.</p>
+        <a class="button" href="interactive_examples_tema3/symbol_decision_noise_lab/">Abrir laboratorio</a>
+      </article>
+      </div>
+      <p><a class="button secondary" href="interactive_examples_tema3/">Abrir índice del Tema 3</a></p>
+    </section>
+
     <section class="section">
       <div class="section-heading">
         <h2>Tabla de conceptos</h2>
@@ -148,6 +198,12 @@ Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
         <tr><td><code>cidr_calculator</code></td><td>Clases históricas, CIDR, prefijo y máscara</td><td><a href="interactive_examples_tema2/cidr_calculator/">Calculadora CIDR</a></td></tr>
         <tr><td><code>ports_multiplexing</code></td><td>Puertos TCP/UDP, multiplexación y sockets</td><td><a href="interactive_examples_tema2/ports_multiplexing/">Puertos y sockets</a></td></tr>
         <tr><td><code>web_request_stack</code></td><td>Petición web HTTPS completa por capas</td><td><a href="interactive_examples_tema2/web_request_stack/">Petición HTTPS</a></td></tr>
+        <tr><td><code>fourier_frequency_explorer</code></td><td>Frecuencia, Fourier, espectro y ancho de banda</td><td><a href="interactive_examples_tema3/fourier_frequency_explorer/">Frecuencia y Fourier</a></td></tr>
+        <tr><td><code>channel_capacity_playground</code></td><td>Nyquist, Shannon, niveles, SNR y tasa objetivo</td><td><a href="interactive_examples_tema3/channel_capacity_playground/">Capacidad de canal</a></td></tr>
+        <tr><td><code>line_coding_studio</code></td><td>Codificación de línea, transiciones y ceros largos</td><td><a href="interactive_examples_tema3/line_coding_studio/">Codificación de línea</a></td></tr>
+        <tr><td><code>digital_regeneration_lab</code></td><td>Señal degradada, umbral, regenerador y BER</td><td><a href="interactive_examples_tema3/digital_regeneration_lab/">Regeneración digital</a></td></tr>
+        <tr><td><code>sampling_pcm_lab</code></td><td>Muestreo, sample &amp; hold, cuantificación y palabras binarias</td><td><a href="interactive_examples_tema3/sampling_pcm_lab/">PCM/MIC</a></td></tr>
+        <tr><td><code>symbol_decision_noise_lab</code></td><td>Perturbaciones, regiones de decisión y BER</td><td><a href="interactive_examples_tema3/symbol_decision_noise_lab/">Decisión y BER</a></td></tr>
           </tbody>
         </table>
       </div>

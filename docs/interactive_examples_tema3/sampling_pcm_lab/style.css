@@ -1,0 +1,20 @@
+/*
+ * Codigo fuente publicado bajo licencia 0BSD.
+ * Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+ * Veanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+ */
+.pcm-page .visual {
+  min-height: 31rem;
+}
+
+body.embed.pcm-page .visual {
+  height: calc(100vh - 5.1rem);
+}
+
+body.embed.pcm-page .optional-embed {
+  display: none;
+}
+
+body.embed.pcm-page .checkbox-row {
+  font-size: .72rem;
+}

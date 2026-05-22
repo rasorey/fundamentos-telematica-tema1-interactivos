@@ -1,0 +1,43 @@
+/*
+ * Codigo fuente publicado bajo licencia 0BSD.
+ * Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+ * Veanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+ */
+.line-coding-page .visual {
+  min-height: 33rem;
+}
+
+.compare-box {
+  display: grid;
+  gap: .35rem;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: .72rem;
+}
+
+.compare-box legend {
+  padding: 0 .35rem;
+  color: var(--ink);
+  font-size: .85rem;
+  font-weight: 850;
+}
+
+.line-coding-page #bitsHelp {
+  color: var(--muted);
+  font-size: .76rem;
+  font-weight: 700;
+}
+
+body.embed.line-coding-page .visual {
+  height: calc(100vh - 5.1rem);
+}
+
+body.embed.line-coding-page .compare-box {
+  display: none;
+}
+
+body.embed.line-coding-page .compare-box legend,
+body.embed.line-coding-page #bitsHelp {
+  font-size: .68rem;
+}

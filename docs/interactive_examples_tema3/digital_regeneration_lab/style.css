@@ -1,0 +1,22 @@
+/*
+ * Codigo fuente publicado bajo licencia 0BSD.
+ * Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+ * Veanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+ */
+.regeneration-page .visual {
+  min-height: 31rem;
+}
+
+.regeneration-page small {
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+body.embed.regeneration-page .visual {
+  height: calc(100vh - 5.1rem);
+}
+
+body.embed.regeneration-page .optional-embed,
+body.embed.regeneration-page small {
+  display: none;
+}

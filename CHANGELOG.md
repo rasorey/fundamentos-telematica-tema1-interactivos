@@ -1,5 +1,32 @@
 # Changelog
 
+## 1.9.0 - 2026-05-22
+
+- Añadida la presentación online del Tema 3 en `docs/slides_tema3/`.
+- Incorporados fondos 16:9 renderizados desde `TEMA_3_mejorado_v1_step04.pptx`.
+- Incrustados los seis laboratorios implementados del Tema 3 con iframes en modo `?embed=1`.
+- Añadidos QR públicos de los seis laboratorios en `docs/interactive_examples_tema3/assets/qrs/`.
+- Actualizados README y portada web para enlazar la versión online del Tema 3.
+- Confirmado que no se añaden archivos PowerPoint ni PDF de diapositivas al repositorio.
+
+## 1.8.0 - 2026-05-22
+
+- Añadida la Fase C de laboratorios interactivos del Tema 3.
+- Implementados `digital_regeneration_lab`, `sampling_pcm_lab` y `symbol_decision_noise_lab` con HTML/CSS/JavaScript vanilla.
+- Actualizado el índice del Tema 3 para marcar seis laboratorios implementados y mantener los tres restantes como planificados sin enlaces rotos.
+- Añadidas capturas 16:9 previstas para PowerPoint en `docs/interactive_examples_tema3/assets/screenshots/`.
+- Actualizados README y portada web para enlazar los nuevos laboratorios.
+- Confirmado que no se añaden PowerPoint ni PDF de diapositivas al repositorio.
+
+## 1.7.0 - 2026-05-22
+
+- Añadida la Fase A de laboratorios interactivos del Tema 3 en `docs/interactive_examples_tema3/`.
+- Implementados `fourier_frequency_explorer`, `channel_capacity_playground` y `line_coding_studio` con HTML/CSS/JavaScript vanilla.
+- Añadido índice propio del Tema 3 con enlaces normales, enlaces `?embed=1` y laboratorios restantes marcados como planificados sin enlaces rotos.
+- Actualizada la portada web `docs/index.html` y el README para enlazar los tres laboratorios del Tema 3.
+- Añadidas capturas 16:9 previstas para PowerPoint en `docs/interactive_examples_tema3/assets/screenshots/`.
+- Confirmado que no se añaden PowerPoint ni PDF de diapositivas al repositorio.
+
 ## 1.6.0 - 2026-05-15
 
 - Añadidos seis laboratorios interactivos del Tema 2 en `docs/interactive_examples_tema2/`.

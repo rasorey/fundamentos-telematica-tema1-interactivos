@@ -1,0 +1,104 @@
+<!--
+Codigo fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Veanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Frecuencia y Fourier · Tema 3</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema3-lab fourier-page">
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver al índice</a>
+    <div>
+      <p class="lab-kicker">Fundamentos de Telemática · Tema 3</p>
+      <h1>Frecuencia, Fourier y ancho de banda</h1>
+      <p>Construye una señal sumando componentes senoidales y observa cómo el espectro y el ancho de banda del canal cambian la reconstrucción.</p>
+    </div>
+  </header>
+
+  <main class="lab-shell">
+    <section class="lab-grid">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+        <div class="control-row">
+          <label for="signalType">Señal objetivo</label>
+          <select id="signalType">
+            <option value="sine">Senoidal</option>
+            <option value="square" selected>Cuadrada</option>
+            <option value="triangle">Triangular</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="harmonics">Armónicos usados: <span id="harmonicsValue">7</span></label>
+          <input id="harmonics" type="range" min="1" max="15" step="1" value="7">
+        </div>
+        <div class="control-row">
+          <label for="fundamental">Frecuencia fundamental: <span id="fundamentalValue">2.0 Hz</span></label>
+          <input id="fundamental" type="range" min="0.5" max="5" step="0.5" value="2">
+        </div>
+        <div class="control-row">
+          <label for="bandwidth">Ancho de banda del canal: <span id="bandwidthValue">10.0 Hz</span></label>
+          <input id="bandwidth" type="range" min="0.5" max="25" step="0.5" value="10">
+        </div>
+        <div class="control-row">
+          <label for="preset">Presets</label>
+          <select id="preset">
+            <option value="square-rich">Cuadrada con varios armónicos</option>
+            <option value="square-narrow">Cuadrada en canal estrecho</option>
+            <option value="sine-basic">Seno puro</option>
+            <option value="triangle">Triangular suave</option>
+          </select>
+        </div>
+        <label class="checkbox-row"><input id="showComponents" type="checkbox" checked> Mostrar componentes</label>
+        <label class="checkbox-row"><input id="showTarget" type="checkbox" checked> Mostrar objetivo</label>
+        <div class="button-row">
+          <button id="resetBtn" type="button" class="ghost">Reiniciar</button>
+          <button id="challengeBtn" type="button" class="secondary">Comprobar reto</button>
+        </div>
+        <div class="metric-grid">
+          <div class="metric"><strong id="periodValue">0,50 s</strong><span>Periodo T</span></div>
+          <div class="metric"><strong id="passedValue">3 de 7</strong><span>Componentes que pasan</span></div>
+          <div class="metric optional-embed"><strong id="errorValue">0,22</strong><span>Error visual RMS</span></div>
+        </div>
+        <p id="message" class="status" role="status" aria-live="polite">Los armónicos añaden detalle.</p>
+      </aside>
+
+      <section class="panel visual-panel">
+        <h2>Componentes, suma temporal y espectro</h2>
+        <svg id="fourierSvg" class="visual" viewBox="0 0 1240 720" preserveAspectRatio="xMidYMin meet" role="img" aria-label="Componentes senoidales, señal reconstruida y espectro de frecuencia"></svg>
+      </section>
+    </section>
+
+    <section class="panel hide-embed">
+      <h2>Qué observar</h2>
+      <ul class="watch-list">
+        <li>La fundamental marca la frecuencia base y el periodo de repetición.</li>
+        <li>Los armónicos añaden detalle a la forma temporal.</li>
+        <li>Si el canal no deja pasar ciertos armónicos, la señal reconstruida se deforma.</li>
+      </ul>
+    </section>
+
+    <section class="panel hide-embed">
+      <h2>Reto</h2>
+      <div class="challenge-grid">
+        <p>Reduce el ancho de banda hasta que la onda cuadrada pierda su forma. ¿Qué componentes han desaparecido?</p>
+        <p id="challengeFeedback" class="status" role="status" aria-live="polite">Ajusta la ventana de ancho de banda y pulsa comprobar.</p>
+      </div>
+      <p>Matiz técnico: muchas señales periódicas de interés pueden aproximarse como suma de senos y cosenos. Para señales no periódicas, la idea se generaliza mediante la transformada de Fourier.</p>
+    </section>
+  </main>
+
+  <a class="button embed-open" href="./" target="_blank" rel="noreferrer">Abrir en navegador</a>
+  <footer class="lab-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

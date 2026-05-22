@@ -1,0 +1,106 @@
+<!--
+Codigo fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Veanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Capacidad de canal · Tema 3</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema3-lab capacity-page">
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver al índice</a>
+    <div>
+      <p class="lab-kicker">Fundamentos de Telemática · Tema 3</p>
+      <h1>Capacidad de canal: Nyquist y Shannon</h1>
+      <p>Manipula ancho de banda, niveles y SNR para comparar el límite ideal sin ruido con el límite teórico cuando hay ruido.</p>
+    </div>
+  </header>
+
+  <main class="lab-shell">
+    <section class="lab-grid">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+        <div class="control-row">
+          <label for="preset">Preset</label>
+          <select id="preset">
+            <option value="clean-narrow">Canal estrecho y limpio</option>
+            <option value="wide-noisy">Canal ancho con ruido</option>
+            <option value="many-levels-low-snr">Muchos niveles con poco SNR</option>
+            <option value="impossible-shannon">Caso imposible por Shannon</option>
+            <option value="nyquist-limited">Caso limitado por Nyquist</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="bandwidth">Ancho de banda B: <span id="bandwidthLabel">3,0 kHz</span></label>
+          <input id="bandwidth" type="range" min="1" max="5000" step="1" value="3">
+        </div>
+        <div class="control-row">
+          <label for="levels">Niveles M</label>
+          <select id="levels">
+            <option value="2">2</option>
+            <option value="4" selected>4</option>
+            <option value="8">8</option>
+            <option value="16">16</option>
+            <option value="32">32</option>
+            <option value="64">64</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="snr">SNR: <span id="snrLabel">24 dB</span></label>
+          <input id="snr" type="range" min="0" max="45" step="1" value="24">
+        </div>
+        <div class="control-row">
+          <label for="target">Tasa objetivo: <span id="targetLabel">16,0 kbit/s</span></label>
+          <input id="target" type="range" min="1" max="50000" step="1" value="8">
+        </div>
+        <div class="button-row">
+          <button id="resetBtn" type="button" class="ghost">Reiniciar</button>
+          <button id="challengeBtn" type="button" class="secondary">Comprobar reto</button>
+        </div>
+        <div class="metric-grid">
+          <div class="metric"><strong id="snrLinearValue">251,19</strong><span>S/N lineal</span></div>
+          <div class="metric"><strong id="nyquistValue">12,0 kbit/s</strong><span>Nyquist ideal</span></div>
+          <div class="metric"><strong id="shannonValue">23,9 kbit/s</strong><span>Shannon con ruido</span></div>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">Nyquist supone canal ideal sin ruido.</p>
+      </aside>
+
+      <section class="panel visual-panel">
+        <h2>Límites y viabilidad</h2>
+        <svg id="capacitySvg" class="visual" viewBox="0 0 1180 720" preserveAspectRatio="xMidYMin meet" role="img" aria-label="Barras de Nyquist, Shannon y tasa objetivo junto a niveles de señal"></svg>
+      </section>
+    </section>
+
+    <section class="panel hide-embed">
+      <h2>Qué observar</h2>
+      <ul class="watch-list">
+        <li>Nyquist aumenta con el ancho de banda y con el número de niveles, pero supone canal ideal sin ruido.</li>
+        <li>Shannon limita la capacidad cuando hay ruido y usa S/N en escala lineal.</li>
+        <li>Más niveles acercan los símbolos: exigen distinguir diferencias más pequeñas.</li>
+      </ul>
+    </section>
+
+    <section class="panel hide-embed">
+      <h2>Reto</h2>
+      <div class="challenge-grid">
+        <p>Con B fijo, sube M hasta que Nyquist permita la tasa objetivo. Después baja SNR y observa si Shannon lo sigue permitiendo.</p>
+        <p id="challengeFeedback" class="status" role="status" aria-live="polite">Ajusta M y SNR antes de comprobar.</p>
+      </div>
+      <p>No sustituyas SNR en dB directamente en Shannon: primero conviértelo con S/N = 10^(SNR_dB / 10).</p>
+    </section>
+  </main>
+
+  <a class="button embed-open" href="./" target="_blank" rel="noreferrer">Abrir en navegador</a>
+  <footer class="lab-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

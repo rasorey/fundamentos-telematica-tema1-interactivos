@@ -1,0 +1,25 @@
+/*
+ * Codigo fuente publicado bajo licencia 0BSD.
+ * Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+ * Veanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+ */
+.fourier-page .visual {
+  min-height: 31rem;
+}
+
+body.embed.fourier-page .visual {
+  height: calc(100vh - 5.1rem);
+}
+
+body.embed.fourier-page .metric-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+body.embed.fourier-page .checkbox-row,
+body.embed.fourier-page .optional-embed {
+  display: none;
+}
+
+body.embed.fourier-page #errorValue {
+  font-size: .85rem;
+}

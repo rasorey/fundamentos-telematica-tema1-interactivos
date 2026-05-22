@@ -10,6 +10,8 @@ https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/
 
 - Tema 1: https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/#tema1
 - Tema 2: https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema2/
+- Tema 3: https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema3/
+- Tema 3 online: https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/slides_tema3/
 
 ## Presentación interactiva online
 
@@ -73,6 +75,19 @@ Wrappers publicados:
 | `ports_multiplexing` | Puertos TCP/UDP, multiplexación y socket | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema2/ports_multiplexing/ |
 | `web_request_stack` | Recorrido de una petición web HTTPS por la pila | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema2/web_request_stack/ |
 
+## Ejemplos del Tema 3
+
+| Ejemplo | Concepto principal | URL |
+|---|---|---|
+| `fourier_frequency_explorer` | Frecuencia, armónicos, Fourier, espectro y ancho de banda | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema3/fourier_frequency_explorer/ |
+| `channel_capacity_playground` | Nyquist, Shannon, niveles, SNR y tasa objetivo | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema3/channel_capacity_playground/ |
+| `line_coding_studio` | NRZ-L, NRZI, AMI, pseudoternario, Manchester, B8ZS y HDB3 | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema3/line_coding_studio/ |
+| `digital_regeneration_lab` | Señal degradada, umbral, regenerador y BER | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema3/digital_regeneration_lab/ |
+| `sampling_pcm_lab` | Muestreo, sample & hold, cuantificación, palabras binarias y aliasing | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema3/sampling_pcm_lab/ |
+| `symbol_decision_noise_lab` | Perturbaciones, regiones de decisión y BER | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema3/symbol_decision_noise_lab/ |
+
+Los laboratorios restantes del Tema 3 se mantienen planificados hasta fases posteriores y no tienen enlaces publicados en esta iteración.
+
 ## Uso local
 
 ```bash
@@ -102,6 +117,8 @@ No se recomienda depender exclusivamente de la incrustación web dentro de Power
 La participación en clase se gestiona con el sistema propio `telematica-polls`, desplegado fuera de GitHub Pages en el VPS. Este repositorio solo contiene la configuración pública de enlaces e iframes; no contiene tokens de profesor ni base de datos de respuestas.
 
 La versión web `docs/slides/` incrusta las vistas de resultados `display` del VPS. Los QR públicos de estudiante pueden versionarse porque no contienen credenciales.
+
+La versión web `docs/slides_tema3/` usa fondos renderizados del Tema 3 step04 e incrusta los seis laboratorios ya implementados mediante iframes `?embed=1`. Las encuestas del Tema 3 se dejan con fallback limpio hasta que el backend del VPS publique URLs reales.
 
 ## Modo reto
 

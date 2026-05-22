@@ -1,0 +1,91 @@
+<!--
+Codigo fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Veanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>PCM/MIC y muestreo · Tema 3</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema3-lab pcm-page">
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver al indice</a>
+    <div>
+      <p class="lab-kicker">Fundamentos de Telematica · Tema 3</p>
+      <h1>Muestreo, sample &amp; hold y PCM/MIC</h1>
+      <p>Sigue el paso de una senal analogica a muestras, escalones, niveles cuantificados y palabras binarias.</p>
+    </div>
+  </header>
+
+  <main class="lab-shell">
+    <section class="lab-grid">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+        <div class="control-row">
+          <label for="signalFreq">Frecuencia de señal: <span id="signalFreqValue">3.0 Hz</span></label>
+          <input id="signalFreq" type="range" min="1" max="8" step="0.5" value="3">
+        </div>
+        <div class="control-row">
+          <label for="sampleFreq">Frecuencia de muestreo: <span id="sampleFreqValue">12 Hz</span></label>
+          <input id="sampleFreq" type="range" min="3" max="28" step="1" value="12">
+        </div>
+        <div class="control-row">
+          <label for="bits">Bits por muestra: <span id="bitsValue">3</span></label>
+          <input id="bits" type="range" min="2" max="6" step="1" value="3">
+        </div>
+        <div class="control-row">
+          <label for="range">Rango de amplitud: <span id="rangeValue">±1.0 V</span></label>
+          <input id="range" type="range" min="0.6" max="1.6" step="0.1" value="1">
+        </div>
+        <label class="checkbox-row"><input id="showHold" type="checkbox" checked> Mostrar sample &amp; hold</label>
+        <label class="checkbox-row"><input id="showQuant" type="checkbox" checked> Mostrar cuantificacion</label>
+        <label class="checkbox-row"><input id="showWords" type="checkbox" checked> Mostrar palabras binarias</label>
+        <div class="button-row">
+          <button id="resetBtn" type="button" class="ghost">Reiniciar</button>
+          <button id="challengeBtn" type="button" class="secondary">Comprobar reto</button>
+        </div>
+        <div class="metric-grid">
+          <div class="metric"><strong id="nyquistValue">6.0 Hz</strong><span>2·fmax</span></div>
+          <div class="metric"><strong id="levelsValue">8</strong><span>niveles</span></div>
+          <div class="metric optional-embed"><strong id="errorValue">0.04 V</strong><span>error RMS</span></div>
+        </div>
+        <p id="message" class="status" role="status" aria-live="polite">Muestrear no es cuantificar.</p>
+      </aside>
+
+      <section class="panel visual-panel">
+        <h2>Analogica → muestras → cuantificacion → bits</h2>
+        <svg id="pcmSvg" class="visual" viewBox="0 0 1240 720" preserveAspectRatio="xMidYMin meet" role="img" aria-label="Muestreo, sample and hold, cuantificacion y palabras binarias"></svg>
+      </section>
+    </section>
+
+    <section class="panel hide-embed">
+      <h2>Que observar</h2>
+      <ul class="watch-list">
+        <li>Muestrear toma valores de la senal en instantes concretos.</li>
+        <li>Sample &amp; hold mantiene cada muestra, pero todavia no la convierte en bits.</li>
+        <li>La cuantificacion redondea a niveles discretos y crea error propio.</li>
+      </ul>
+    </section>
+
+    <section class="panel hide-embed">
+      <h2>Reto</h2>
+      <div class="challenge-grid">
+        <p>Baja la frecuencia de muestreo hasta que aparezca aliasing. ¿Que cambia en la senal reconstruida?</p>
+        <p id="challengeFeedback" class="status" role="status" aria-live="polite">Ajusta fs y pulsa comprobar.</p>
+      </div>
+    </section>
+  </main>
+
+  <a class="button embed-open" href="./" target="_blank" rel="noreferrer">Abrir en navegador</a>
+  <footer class="lab-footer">
+    <p>Codigo: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas estan en el aula virtual.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

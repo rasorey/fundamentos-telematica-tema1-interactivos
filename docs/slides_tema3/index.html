@@ -1,0 +1,59 @@
+<!--
+Código fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Véanse LICENSE-0BSD, LICENSE-CC0 y LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Fundamentos de Telemática · Tema 3 · Presentación online</title>
+  <link rel="stylesheet" href="./slides.css?v=2026-05-22-step04">
+</head>
+<body>
+  <a class="skip-link" href="#deck-stage">Saltar a la diapositiva</a>
+
+  <header class="viewer-bar" aria-label="Controles de presentación">
+    <a class="viewer-home" href="../">Fundamentos de Telemática</a>
+    <div class="viewer-status" aria-live="polite">
+      <span id="slide-counter">1 / 50</span>
+      <span id="slide-title">Diapositiva 1</span>
+    </div>
+    <div class="viewer-actions">
+      <button id="overview-toggle" type="button" class="viewer-button" aria-pressed="false">Índice</button>
+      <button id="fullscreen-button" type="button" class="viewer-button">Pantalla completa</button>
+    </div>
+  </header>
+
+  <main id="deck-stage" class="deck-stage" tabindex="-1">
+    <section id="slide-frame" class="slide-frame" aria-label="Diapositiva actual"></section>
+  </main>
+
+  <aside id="overview-panel" class="overview-panel" aria-label="Índice de diapositivas" hidden>
+    <div class="overview-card">
+      <div class="overview-head">
+        <div>
+          <h1>Índice</h1>
+          <p>Selecciona una diapositiva o usa las flechas del teclado.</p>
+        </div>
+        <button id="overview-close" type="button" class="viewer-button">Cerrar</button>
+      </div>
+      <nav id="overview-list" class="overview-list" aria-label="Lista de diapositivas"></nav>
+    </div>
+  </aside>
+
+  <aside id="debug-panel" class="debug-panel" hidden aria-label="Diagnóstico de overlays"></aside>
+
+  <footer class="viewer-controls" aria-label="Navegación de diapositivas">
+    <button id="prev-slide" type="button" class="nav-button">Anterior</button>
+    <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+    <button id="next-slide" type="button" class="nav-button">Siguiente</button>
+  </footer>
+
+  <script src="./polls-config.js?v=2026-05-22-step04"></script>
+  <script src="./interactions-config.js?v=2026-05-22-step04"></script>
+  <script src="./slides.js?v=2026-05-22-step04"></script>
+</body>
+</html>

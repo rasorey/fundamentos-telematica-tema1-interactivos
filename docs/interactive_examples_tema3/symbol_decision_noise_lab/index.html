@@ -1,0 +1,103 @@
+<!--
+Codigo fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Veanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Decision de simbolos y BER · Tema 3</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema3-lab decision-page">
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver al indice</a>
+    <div>
+      <p class="lab-kicker">Fundamentos de Telematica · Tema 3</p>
+      <h1>Decision de simbolos, ruido y BER</h1>
+      <p>Aplica ruido, atenuacion, distorsion e interferencia y observa cuando las muestras caen en regiones de decision equivocadas.</p>
+    </div>
+  </header>
+
+  <main class="lab-shell">
+    <section class="lab-grid">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+        <div class="control-row">
+          <label for="levels">Numero de niveles: <span id="levelsValue">4</span></label>
+          <select id="levels">
+            <option value="2">2</option>
+            <option value="4" selected>4</option>
+            <option value="8">8</option>
+            <option value="16">16</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="noise">Ruido: <span id="noiseValue">0.16 V</span></label>
+          <input id="noise" type="range" min="0" max="0.55" step="0.01" value="0.16">
+        </div>
+        <div class="control-row">
+          <label for="attenuation">Atenuacion: <span id="attenuationValue">10 %</span></label>
+          <input id="attenuation" type="range" min="0" max="55" step="1" value="10">
+        </div>
+        <div class="control-row">
+          <label for="distortion">Distorsion: <span id="distortionValue">0.10</span></label>
+          <input id="distortion" type="range" min="0" max="0.55" step="0.01" value="0.10">
+        </div>
+        <div class="control-row">
+          <label for="interference">Interferencia: <span id="interferenceValue">0.08 V</span></label>
+          <input id="interference" type="range" min="0" max="0.45" step="0.01" value="0.08">
+        </div>
+        <div class="control-row">
+          <label for="symbolCount">Simbolos: <span id="symbolCountValue">64</span></label>
+          <input id="symbolCount" type="range" min="24" max="120" step="8" value="64">
+        </div>
+        <label class="checkbox-row"><input id="compare" type="checkbox" checked> Comparar antes/despues</label>
+        <div class="button-row">
+          <button id="generateBtn" type="button" class="ghost">Generar</button>
+          <button id="challengeBtn" type="button" class="secondary">Comprobar reto</button>
+        </div>
+        <div class="metric-grid">
+          <div class="metric"><strong id="berValue">0.0 %</strong><span>BER estimada</span></div>
+          <div class="metric"><strong id="serValue">0/64</strong><span>simbolos erroneos</span></div>
+          <div class="metric optional-embed"><strong id="marginValue">0.67 V</strong><span>separacion ideal</span></div>
+        </div>
+        <p id="message" class="status" role="status" aria-live="polite">El error aparece cuando una muestra cae en la region de decision equivocada.</p>
+      </aside>
+
+      <section class="panel visual-panel">
+        <h2>Perturbaciones, regiones de decision y BER</h2>
+        <svg id="decisionSvg" class="visual" viewBox="0 0 1240 720" preserveAspectRatio="xMidYMin meet" role="img" aria-label="Senal ideal, senal perturbada, regiones de decision, errores y nube de decision"></svg>
+      </section>
+    </section>
+
+    <section class="panel hide-embed">
+      <h2>Que observar</h2>
+      <ul class="watch-list">
+        <li>Atenuacion reduce margen: los niveles se acercan al centro.</li>
+        <li>Ruido anade variacion aleatoria a las muestras.</li>
+        <li>Distorsion deforma la relacion entre nivel transmitido y recibido.</li>
+        <li>Interferencia anade una senal no deseada que puede desplazar muestras.</li>
+      </ul>
+    </section>
+
+    <section class="panel hide-embed">
+      <h2>Reto</h2>
+      <div class="challenge-grid">
+        <p>Con el mismo ruido, aumenta el numero de niveles. ¿Que pasa con la BER?</p>
+        <p id="challengeFeedback" class="status" role="status" aria-live="polite">Ajusta niveles y pulsa comprobar.</p>
+      </div>
+    </section>
+  </main>
+
+  <a class="button embed-open" href="./" target="_blank" rel="noreferrer">Abrir en navegador</a>
+  <footer class="lab-footer">
+    <p>Codigo: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas estan en el aula virtual.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

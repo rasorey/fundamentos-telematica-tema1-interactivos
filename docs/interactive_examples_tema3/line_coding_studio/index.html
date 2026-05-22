@@ -1,0 +1,120 @@
+<!--
+Codigo fuente publicado bajo licencia 0BSD.
+Contenido docente original asociado publicado bajo CC0 1.0 Universal.
+Veanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Codificación de línea · Tema 3</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema3-lab line-coding-page">
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver al índice</a>
+    <div>
+      <p class="lab-kicker">Fundamentos de Telemática · Tema 3</p>
+      <h1>Estudio de codificación de línea</h1>
+      <p>Compara cómo la misma secuencia de bits cambia en banda base según niveles, transiciones, sincronismo y sustitución de ceros largos.</p>
+    </div>
+  </header>
+
+  <main class="lab-shell">
+    <section class="lab-grid">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+        <div class="control-row">
+          <label for="bitsInput">Bits</label>
+          <input id="bitsInput" inputmode="numeric" pattern="[01]*" value="100000000001" aria-describedby="bitsHelp">
+          <span id="bitsHelp" class="label">Solo 0 y 1; se limita a 16 bits.</span>
+        </div>
+        <div class="control-row">
+          <label for="preset">Secuencias obligatorias</label>
+          <select id="preset">
+            <option value="10110010">10110010</option>
+            <option value="00000000">00000000</option>
+            <option value="100000000001" selected>100000000001</option>
+            <option value="110000000011">110000000011</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="mainCode">Código principal</label>
+          <select id="mainCode">
+            <option value="nrzl">NRZ-L</option>
+            <option value="nrzi">NRZI</option>
+            <option value="ami" selected>Bipolar-AMI</option>
+            <option value="pseudo">Pseudoternario</option>
+            <option value="manchester">Manchester</option>
+            <option value="b8zs">B8ZS avanzado</option>
+            <option value="hdb3">HDB3 avanzado</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label for="initialPolarity">Polaridad inicial AMI/B8ZS/HDB3</label>
+          <select id="initialPolarity">
+            <option value="1">Primer pulso +V</option>
+            <option value="-1">Primer pulso -V</option>
+          </select>
+        </div>
+        <fieldset class="compare-box">
+          <legend>Comparar</legend>
+          <label class="checkbox-row"><input class="compare-code" type="checkbox" value="nrzl" checked> NRZ-L</label>
+          <label class="checkbox-row"><input class="compare-code" type="checkbox" value="nrzi"> NRZI</label>
+          <label class="checkbox-row"><input class="compare-code" type="checkbox" value="ami" checked> AMI</label>
+          <label class="checkbox-row"><input class="compare-code" type="checkbox" value="pseudo"> Pseudoternario</label>
+          <label class="checkbox-row"><input class="compare-code" type="checkbox" value="manchester" checked> Manchester</label>
+          <label class="checkbox-row"><input class="compare-code" type="checkbox" value="b8zs"> B8ZS</label>
+          <label class="checkbox-row"><input class="compare-code" type="checkbox" value="hdb3"> HDB3</label>
+        </fieldset>
+        <fieldset class="compare-box">
+          <legend>Mostrar</legend>
+          <label class="checkbox-row"><input id="showGrid" type="checkbox" checked> Rejilla temporal</label>
+          <label class="checkbox-row"><input id="showTransitions" type="checkbox" checked> Transiciones</label>
+          <label class="checkbox-row"><input id="showViolations" type="checkbox" checked> Violaciones</label>
+          <label class="checkbox-row"><input id="showClock" type="checkbox" checked> Reloj</label>
+          <label class="checkbox-row"><input id="showDc" type="checkbox" checked> Componente continua cualitativa</label>
+        </fieldset>
+        <div class="button-row">
+          <button id="resetBtn" type="button" class="ghost">Reiniciar</button>
+          <button id="challengeBtn" type="button" class="secondary">Comprobar reto</button>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">AMI alterna polaridad para los unos.</p>
+      </aside>
+
+      <section class="panel visual-panel">
+        <h2>Bits alineados y formas de onda</h2>
+        <svg id="codingSvg" class="visual" viewBox="0 0 1220 720" preserveAspectRatio="xMidYMin meet" role="img" aria-label="Comparación de códigos de línea en una rejilla temporal común"></svg>
+      </section>
+    </section>
+
+    <section class="panel hide-embed">
+      <h2>Qué observar</h2>
+      <ul class="watch-list">
+        <li>NRZ puede tener largas zonas sin transición.</li>
+        <li>NRZI codifica mediante cambios o ausencia de cambios.</li>
+        <li>Manchester introduce una transición por bit, útil para sincronismo.</li>
+        <li>B8ZS/HDB3 sustituyen ceros largos para recuperar transiciones.</li>
+      </ul>
+    </section>
+
+    <section class="panel hide-embed">
+      <h2>Reto</h2>
+      <div class="challenge-grid">
+        <p>Introduce 00000000. ¿Qué códigos dejan la señal sin transiciones? ¿Qué códigos corrigen el problema?</p>
+        <p id="challengeFeedback" class="status" role="status" aria-live="polite">Selecciona la secuencia de ocho ceros y compara los códigos.</p>
+      </div>
+      <p>B8ZS/HDB3 no se introducen para memorizar un patrón, sino para evitar largas rachas sin transiciones y mantener sincronismo.</p>
+    </section>
+  </main>
+
+  <a class="button embed-open" href="./" target="_blank" rel="noreferrer">Abrir en navegador</a>
+  <footer class="lab-footer">
+    <p>Código: 0BSD · Contenido docente propio: CC0 1.0 Universal · Las diapositivas completas están en el aula virtual.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
