@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.10.1 - 2026-05-23
+
+- Validada la Fase A de laboratorios interactivos del Tema 4 en modo normal y modo `?embed=1`.
+- Regeneradas capturas PNG 16:9 a 1280×720 desde el modo incrustado.
+- Reparados archivos sincronizados corruptos con bytes nulos en los laboratorios del Tema 4.
+- Actualizados README principal y README del Tema 4 con URLs públicas normales, URLs embed, tabla de validación, comando de captura y limitaciones docentes.
+
+## 1.10.0 - 2026-05-23
+
+- Añadida la Fase A de laboratorios interactivos del Tema 4 en `docs/interactive_examples_tema4/`.
+- Implementados `fiber_loss_budget`, `wireless_range_explorer` y `structured_cabling_builder` con HTML/CSS/JavaScript vanilla.
+- Añadido índice propio del Tema 4 con enlaces normales, enlaces `?embed=1` y laboratorios restantes marcados como planificados sin enlaces rotos.
+- Añadido modo incrustado 16:9 en los tres laboratorios para capturas y uso posterior en PowerPoint.
+- Añadidas capturas 16:9 previstas para PowerPoint en `docs/interactive_examples_tema4/assets/screenshots/`.
+- Actualizados README y esquema de licencias del repositorio.
+- Confirmado que no se añaden PowerPoint ni PDF de diapositivas al repositorio.
+
 ## 1.9.0 - 2026-05-22
 
 - Añadida la presentación online del Tema 3 en `docs/slides_tema3/`.

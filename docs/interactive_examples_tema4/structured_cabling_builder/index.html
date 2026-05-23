@@ -1,0 +1,126 @@
+<!--
+Código fuente: 0BSD.
+Contenido docente propio: CC0 1.0 Universal.
+Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Cableado estructurado · Tema 4</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="button embed-open" href="./" target="_blank" rel="noopener">Abrir en navegador</a>
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver</a>
+    <div>
+      <p class="lab-kicker">Tema 4 · Cableado estructurado</p>
+      <h1>Constructor de cableado estructurado</h1>
+      <p>Construye el canal permanente y el canal completo. El objetivo es cambiar un puerto de usuario sin rehacer el cable horizontal.</p>
+    </div>
+  </header>
+
+  <main class="lab-shell">
+    <div class="lab-grid">
+      <form id="cablingForm" class="panel controls" autocomplete="off">
+        <div class="metric-grid">
+          <div class="metric"><strong id="permanentMetric">3</strong><span>Canal permanente</span></div>
+          <div class="metric"><strong id="completeMetric">6</strong><span>Canal completo</span></div>
+          <div class="metric"><strong id="lengthMetric">86 m</strong><span>Longitud total</span></div>
+          <div class="metric" id="stateCard"><strong id="stateMetric">Mantenible</strong><span>Estado</span></div>
+        </div>
+
+        <p id="cablingMessage" class="status">El patch panel permite reorganizar conexiones con latiguillos.</p>
+
+        <div class="split-row">
+          <div class="control-row">
+            <label for="channelMode">Modo</label>
+            <select id="channelMode">
+              <option value="permanent">Canal permanente</option>
+              <option value="complete">Canal completo</option>
+            </select>
+          </div>
+          <div class="control-row">
+            <label for="changePort">Cambio de puerto</label>
+            <select id="changePort">
+              <option value="none">Sin cambio</option>
+              <option value="port12">Mover latiguillo a puerto 12</option>
+              <option value="horizontal">Alterar cable horizontal</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="split-row">
+          <div class="control-row">
+            <label for="horizontalLength">Cable horizontal</label>
+            <input id="horizontalLength" type="number" min="1" max="95" step="1" value="78">
+            <span class="unit">m</span>
+          </div>
+          <div class="control-row">
+            <label for="patchLength">Latiguillos</label>
+            <input id="patchLength" type="number" min="0" max="20" step="1" value="8">
+            <span class="unit">m en total</span>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <span class="label">Mostrar elementos</span>
+          <div class="switch-grid">
+            <label class="checkbox-row"><input id="showRack" type="checkbox" checked> Rack</label>
+            <label class="checkbox-row"><input id="showSwitch" type="checkbox" checked> Switch</label>
+            <label class="checkbox-row"><input id="showPatchPanel" type="checkbox" checked> Patch panel</label>
+            <label class="checkbox-row"><input id="showHorizontal" type="checkbox" checked> Cable horizontal</label>
+            <label class="checkbox-row"><input id="showOutlet" type="checkbox" checked> Roseta</label>
+            <label class="checkbox-row"><input id="showPatchCords" type="checkbox" checked> Latiguillos</label>
+            <label class="checkbox-row"><input id="showEndpoint" type="checkbox" checked> Endpoint</label>
+            <label class="checkbox-row"><input id="labelsEnabled" type="checkbox" checked> Etiquetado</label>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button type="button" id="resetBtn" class="secondary">Reiniciar</button>
+          <button type="button" id="challengeBtn">Reto: mover puerto</button>
+        </div>
+      </form>
+
+      <section class="panel visual-panel">
+        <h2>Rack -> cable horizontal -> roseta -> puesto</h2>
+        <svg id="cablingSvg" class="visual" role="img" aria-label="Visualización de cableado estructurado"></svg>
+        <div class="challenge-grid optional-embed">
+          <section>
+            <h3>Qué observar</h3>
+            <ul class="watch-list">
+              <li>Canal permanente y canal completo no son lo mismo.</li>
+              <li>El cable horizontal no debería rehacerse para cada cambio.</li>
+              <li>El etiquetado reduce tiempo de diagnóstico y errores de intervención.</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Reto</h3>
+            <p>Cambia el puerto del usuario sin tocar el cable horizontal. ¿Qué elementos se modifican?</p>
+          </section>
+        </div>
+        <div class="split-row optional-embed">
+          <section>
+            <h3>Canal permanente</h3>
+            <ul id="permanentList" class="warning-list"></ul>
+          </section>
+          <section>
+            <h3>Canal completo</h3>
+            <ul id="completeList" class="warning-list"></ul>
+          </section>
+        </div>
+        <ul id="warningList" class="warning-list optional-embed"></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="lab-footer">
+    <p>Modelo simplificado para uso docente. Código fuente: 0BSD. Contenido docente propio: CC0 1.0 Universal.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

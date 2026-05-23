@@ -12,6 +12,7 @@ https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/
 - Tema 2: https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema2/
 - Tema 3: https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema3/
 - Tema 3 online: https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/slides_tema3/
+- Tema 4: https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema4/
 
 ## Presentación interactiva online
 
@@ -87,6 +88,43 @@ Wrappers publicados:
 | `symbol_decision_noise_lab` | Perturbaciones, regiones de decisión y BER | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema3/symbol_decision_noise_lab/ |
 
 Los laboratorios restantes del Tema 3 se mantienen planificados hasta fases posteriores y no tienen enlaces publicados en esta iteración.
+
+## Ejemplos del Tema 4
+
+Índice público:
+
+https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema4/
+
+| Ejemplo | Concepto principal | URL normal | URL embed |
+|---|---|---|---|
+| `fiber_loss_budget` | Presupuesto óptico, pérdidas, sensibilidad y margen | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema4/fiber_loss_budget/ | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema4/fiber_loss_budget/?embed=1 |
+| `wireless_range_explorer` | Pérdida de espacio libre, obstáculos, potencia recibida y margen radio | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema4/wireless_range_explorer/ | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema4/wireless_range_explorer/?embed=1 |
+| `structured_cabling_builder` | Canal permanente, canal completo, patch panel, latiguillos y mantenimiento | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema4/structured_cabling_builder/ | https://rasorey.github.io/fundamentos-telematica-tema1-interactivos/interactive_examples_tema4/structured_cabling_builder/?embed=1 |
+
+Validación de Fase A:
+
+| Laboratorio | Local normal | Local embed | GitHub Pages normal | GitHub Pages embed | Captura 16:9 |
+|---|---|---|---|---|---|
+| `fiber_loss_budget` | OK | OK | OK | OK | `docs/interactive_examples_tema4/assets/screenshots/fiber_loss_budget.png` |
+| `wireless_range_explorer` | OK | OK | OK | OK | `docs/interactive_examples_tema4/assets/screenshots/wireless_range_explorer.png` |
+| `structured_cabling_builder` | OK | OK | OK | OK | `docs/interactive_examples_tema4/assets/screenshots/structured_cabling_builder.png` |
+
+Comando de captura usado como referencia:
+
+```bash
+python3 -m http.server 8014 --directory docs
+npx playwright screenshot --viewport-size=1280,720 http://127.0.0.1:8014/interactive_examples_tema4/fiber_loss_budget/?embed=1 docs/interactive_examples_tema4/assets/screenshots/fiber_loss_budget.png
+npx playwright screenshot --viewport-size=1280,720 http://127.0.0.1:8014/interactive_examples_tema4/wireless_range_explorer/?embed=1 docs/interactive_examples_tema4/assets/screenshots/wireless_range_explorer.png
+npx playwright screenshot --viewport-size=1280,720 http://127.0.0.1:8014/interactive_examples_tema4/structured_cabling_builder/?embed=1 docs/interactive_examples_tema4/assets/screenshots/structured_cabling_builder.png
+```
+
+Limitaciones docentes:
+
+- `fiber_loss_budget` usa un modelo de presupuesto óptico simplificado; no sustituye una certificación real ni una hoja de datos de transceptores.
+- `wireless_range_explorer` usa pérdida de espacio libre y pérdidas agregadas; interiores reales añaden multitrayecto, fading, normativa e interferencias.
+- `structured_cabling_builder` representa una instalación tipo; no cubre todas las variantes normativas ni detalles de obra.
+
+Los laboratorios restantes del Tema 4 se mantienen planificados hasta fases posteriores y no tienen enlaces publicados en esta iteración.
 
 ## Uso local
 

@@ -1,0 +1,150 @@
+<!--
+Código fuente: 0BSD.
+Contenido docente propio: CC0 1.0 Universal.
+Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Alcance inalámbrico · Tema 4</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="button embed-open" href="./" target="_blank" rel="noopener">Abrir en navegador</a>
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver</a>
+    <div>
+      <p class="lab-kicker">Tema 4 · Radio</p>
+      <h1>Explorador de alcance inalámbrico</h1>
+      <p>Compara frecuencia, distancia, potencia, antenas, obstáculos y sensibilidad. La pérdida de espacio libre es una referencia, no una predicción exacta de interiores.</p>
+    </div>
+  </header>
+
+  <main class="lab-shell">
+    <div class="lab-grid">
+      <form id="wirelessForm" class="panel controls" autocomplete="off">
+        <div class="metric-grid">
+          <div class="metric"><strong id="fsplMetric">0 dB</strong><span>FSPL</span></div>
+          <div class="metric"><strong id="rxMetric">0 dBm</strong><span>Potencia Rx</span></div>
+          <div class="metric" id="marginCard"><strong id="marginMetric">0 dB</strong><span>Margen</span></div>
+          <div class="metric" id="stateCard"><strong id="stateMetric">Viable</strong><span>Estado</span></div>
+        </div>
+
+        <p id="radioMessage" class="status">Mayor frecuencia no significa automáticamente mejor enlace.</p>
+
+        <div class="split-row">
+          <div class="control-row">
+            <label for="band">Banda</label>
+            <select id="band">
+              <option value="2400">2.4 GHz</option>
+              <option value="5000">5 GHz</option>
+              <option value="6000">6 GHz</option>
+              <option value="custom">Personalizada</option>
+            </select>
+          </div>
+          <div class="control-row">
+            <label for="customFrequency">Frecuencia</label>
+            <input id="customFrequency" type="number" min="100" max="80000" step="10" value="2400" disabled>
+            <span class="unit">MHz</span>
+          </div>
+        </div>
+
+        <div class="split-row">
+          <div class="control-row">
+            <label for="distanceM">Distancia <output id="distanceValue">80 m</output></label>
+            <input id="distanceM" type="range" min="1" max="1000" step="1" value="80">
+          </div>
+          <div class="control-row">
+            <label for="obstacle">Obstáculo</label>
+            <select id="obstacle">
+              <option value="0">Ninguno</option>
+              <option value="6">Pared ligera · 6 dB</option>
+              <option value="15">Pared pesada · 15 dB</option>
+              <option value="8">Exterior con lluvia · 8 dB</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="split-row">
+          <div class="control-row">
+            <label for="txPower">Potencia Tx</label>
+            <input id="txPower" type="number" min="-10" max="30" step="0.5" value="16">
+            <span class="unit">dBm</span>
+          </div>
+          <div class="control-row">
+            <label for="rxSensitivity">Sensibilidad Rx</label>
+            <input id="rxSensitivity" type="number" min="-105" max="-45" step="1" value="-82">
+            <span class="unit">dBm</span>
+          </div>
+        </div>
+
+        <div class="split-row">
+          <div class="control-row">
+            <label for="gainTx">Ganancia antena Tx</label>
+            <input id="gainTx" type="number" min="0" max="30" step="0.5" value="2">
+            <span class="unit">dBi</span>
+          </div>
+          <div class="control-row">
+            <label for="gainRx">Ganancia antena Rx</label>
+            <input id="gainRx" type="number" min="0" max="30" step="0.5" value="2">
+            <span class="unit">dBi</span>
+          </div>
+        </div>
+
+        <div class="split-row">
+          <div class="control-row optional-embed">
+            <label for="extraLoss">Pérdidas adicionales</label>
+            <input id="extraLoss" type="number" min="0" max="40" step="0.5" value="0">
+            <span class="unit">dB</span>
+          </div>
+          <div class="control-row optional-embed">
+            <label for="cableLoss">Cable/conectores</label>
+            <input id="cableLoss" type="number" min="0" max="20" step="0.5" value="1">
+            <span class="unit">dB</span>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label for="recommendedMargin">Margen recomendado</label>
+          <input id="recommendedMargin" type="number" min="0" max="30" step="1" value="12">
+          <span class="unit">dB</span>
+        </div>
+
+        <div class="button-row">
+          <button type="button" id="resetBtn" class="secondary">Reiniciar</button>
+          <button type="button" id="compareBtn">Comparar bandas</button>
+        </div>
+      </form>
+
+      <section class="panel visual-panel">
+        <h2>Emisor -> espacio/obstáculo -> receptor</h2>
+        <svg id="wirelessSvg" class="visual" role="img" aria-label="Visualización del enlace radio"></svg>
+        <div id="bandCards" class="band-grid"></div>
+        <div class="challenge-grid optional-embed">
+          <section>
+            <h3>Qué observar</h3>
+            <ul class="watch-list">
+              <li>2.4 GHz suele conservar más margen a igual distancia.</li>
+              <li>5/6 GHz pueden aportar más capacidad y canales más anchos según entorno.</li>
+              <li>Obstáculos e interferencias cambian el resultado real.</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Reto</h3>
+            <p>Con la misma distancia, compara 2.4, 5 y 6 GHz. ¿Cuál conserva más margen? ¿Cuál podría ofrecer más capacidad?</p>
+          </section>
+        </div>
+        <ul id="warningList" class="warning-list optional-embed"></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="lab-footer">
+    <p>Modelo simplificado para uso docente. FSPL(dB) = 32,44 + 20 log10(fMHz) + 20 log10(dkm). Código fuente: 0BSD. Contenido docente propio: CC0 1.0 Universal.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

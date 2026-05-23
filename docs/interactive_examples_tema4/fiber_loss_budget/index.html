@@ -1,0 +1,152 @@
+<!--
+Código fuente: 0BSD.
+Contenido docente propio: CC0 1.0 Universal.
+Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Presupuesto de fibra · Tema 4</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="button embed-open" href="./" target="_blank" rel="noopener">Abrir en navegador</a>
+  <header class="lab-header">
+    <a class="back-link" href="../">Volver</a>
+    <div>
+      <p class="lab-kicker">Tema 4 · Fibra óptica</p>
+      <h1>Presupuesto óptico de un enlace de fibra</h1>
+      <p>Calcula pérdidas, potencia recibida y margen. Un enlace viable no solo recibe luz: la recibe por encima de la sensibilidad con margen suficiente.</p>
+    </div>
+  </header>
+
+  <main class="lab-shell">
+    <div class="lab-grid">
+      <form id="fiberForm" class="panel controls" autocomplete="off">
+        <div class="metric-grid">
+          <div class="metric"><strong id="lossMetric">0 dB</strong><span>Pérdida total</span></div>
+          <div class="metric"><strong id="rxMetric">0 dBm</strong><span>Potencia Rx</span></div>
+          <div class="metric" id="marginCard"><strong id="marginMetric">0 dB</strong><span>Margen</span></div>
+          <div class="metric" id="stateCard"><strong id="stateMetric">Viable</strong><span>Estado</span></div>
+        </div>
+
+        <p id="fiberMessage" class="status">Cada pérdida se suma en dB.</p>
+
+        <div class="control-row">
+          <label for="linkType">Tipo de enlace</label>
+          <select id="linkType">
+            <option value="singlemode">Monomodo punto a punto</option>
+            <option value="multimode">Multimodo de edificio</option>
+            <option value="pon">PON con splitter</option>
+          </select>
+        </div>
+
+        <div class="split-row">
+          <div class="control-row">
+            <label for="lengthKm">Longitud <output id="lengthKmValue">10 km</output></label>
+            <input id="lengthKm" type="range" min="0.1" max="40" step="0.1" value="10">
+          </div>
+          <div class="control-row">
+            <label for="attenuation">Atenuación</label>
+            <input id="attenuation" type="number" min="0.1" max="3.5" step="0.01" value="0.35">
+            <span class="unit">dB/km</span>
+          </div>
+        </div>
+
+        <div class="split-row">
+          <div class="control-row">
+            <label for="connectors">Conectores</label>
+            <input id="connectors" type="number" min="0" max="20" step="1" value="4">
+          </div>
+          <div class="control-row">
+            <label for="splices">Empalmes</label>
+            <input id="splices" type="number" min="0" max="40" step="1" value="6">
+          </div>
+        </div>
+
+        <div class="split-row optional-embed">
+          <div class="control-row">
+            <label for="connectorLoss">Pérdida por conector</label>
+            <input id="connectorLoss" type="number" min="0" max="1.5" step="0.05" value="0.3">
+            <span class="unit">dB</span>
+          </div>
+          <div class="control-row">
+            <label for="spliceLoss">Pérdida por empalme</label>
+            <input id="spliceLoss" type="number" min="0" max="0.5" step="0.01" value="0.05">
+            <span class="unit">dB</span>
+          </div>
+        </div>
+
+        <div class="split-row">
+          <div class="control-row">
+            <label for="splitter">Splitter</label>
+            <select id="splitter">
+              <option value="0">Ninguno</option>
+              <option value="3.5">1:2 · 3.5 dB</option>
+              <option value="7.2">1:4 · 7.2 dB</option>
+              <option value="10.5">1:8 · 10.5 dB</option>
+              <option value="13.8">1:16 · 13.8 dB</option>
+              <option value="17.1">1:32 · 17.1 dB</option>
+            </select>
+          </div>
+          <div class="control-row">
+            <label for="recommendedMargin">Margen recomendado</label>
+            <input id="recommendedMargin" type="number" min="0" max="10" step="0.5" value="3">
+            <span class="unit">dB</span>
+          </div>
+        </div>
+
+        <div class="split-row">
+          <div class="control-row">
+            <label for="txPower">Potencia Tx</label>
+            <input id="txPower" type="number" min="-20" max="10" step="0.5" value="0">
+            <span class="unit">dBm</span>
+          </div>
+          <div class="control-row">
+            <label for="rxSensitivity">Sensibilidad Rx</label>
+            <input id="rxSensitivity" type="number" min="-35" max="-5" step="0.5" value="-24">
+            <span class="unit">dBm</span>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button type="button" id="resetBtn" class="secondary">Reiniciar</button>
+          <button type="button" id="challengeBtn">Reto 1:32</button>
+        </div>
+      </form>
+
+      <section class="panel visual-panel">
+        <h2>Tx óptico -> pérdidas -> Rx</h2>
+        <svg id="fiberSvg" class="visual" role="img" aria-label="Visualización del presupuesto óptico"></svg>
+        <div class="challenge-grid optional-embed">
+          <section>
+            <h3>Qué observar</h3>
+            <ul class="watch-list">
+              <li>Cada tramo, conector, empalme y splitter añade pérdida en dB.</li>
+              <li>El splitter puede dominar el presupuesto en PON.</li>
+              <li>Monomodo y multimodo no se eligen solo por velocidad.</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Reto</h3>
+            <p>Activa un splitter 1:32. ¿Qué tendrías que cambiar para recuperar margen?</p>
+          </section>
+        </div>
+        <section class="optional-embed">
+          <h3>Desglose de pérdidas</h3>
+          <div id="lossBreakdown" class="breakdown"></div>
+          <ul id="warningList" class="warning-list"></ul>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <footer class="lab-footer">
+    <p>Modelo simplificado para uso docente. Código fuente: 0BSD. Contenido docente propio: CC0 1.0 Universal.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

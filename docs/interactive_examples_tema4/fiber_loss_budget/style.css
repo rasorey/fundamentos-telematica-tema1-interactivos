@@ -1,0 +1,47 @@
+/*
+ * Código fuente: 0BSD.
+ * Contenido docente propio: CC0 1.0 Universal.
+ * Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+ */
+@import url("../style.css");
+
+:root {
+  --upct: var(--fiber);
+  --upct-dark: #07526f;
+}
+
+.unit {
+  margin-top: -.2rem;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 760;
+}
+
+#fiberSvg text {
+  fill: var(--ink);
+  font-family: inherit;
+}
+
+#fiberSvg .fiber-line {
+  stroke: var(--fiber);
+  stroke-width: 18;
+  stroke-linecap: round;
+}
+
+#fiberSvg .loss-line {
+  stroke: var(--loss);
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+#fiberSvg .margin-ok {
+  fill: var(--ok);
+}
+
+#fiberSvg .margin-warn {
+  fill: var(--warn);
+}
+
+#fiberSvg .margin-bad {
+  fill: var(--bad);
+}

@@ -13,6 +13,10 @@
 | docs/interactive_examples_tema3/**/*.js | 0BSD |
 | docs/interactive_examples_tema3/assets/screenshots/ propias | CC0 1.0 Universal |
 | docs/interactive_examples_tema3/assets/qrs/ propias | CC0 1.0 Universal |
+| docs/interactive_examples_tema4/**/*.html | 0BSD para el código; CC0 para el contenido docente original |
+| docs/interactive_examples_tema4/**/*.css | 0BSD |
+| docs/interactive_examples_tema4/**/*.js | 0BSD |
+| docs/interactive_examples_tema4/assets/screenshots/ propias | CC0 1.0 Universal |
 | docs/slides_tema3/**/*.html | 0BSD para el código; CC0 para el contenido docente original |
 | docs/slides_tema3/**/*.css | 0BSD |
 | docs/slides_tema3/**/*.js | 0BSD |

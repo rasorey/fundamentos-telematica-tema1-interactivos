@@ -1,0 +1,53 @@
+/*
+ * Código fuente: 0BSD.
+ * Contenido docente propio: CC0 1.0 Universal.
+ * Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+ */
+@import url("../style.css");
+
+:root {
+  --upct: var(--radio);
+  --upct-dark: #3c2778;
+}
+
+.unit {
+  margin-top: -.2rem;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 760;
+}
+
+.band-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .5rem;
+}
+
+.band-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fbfdff;
+  padding: .55rem;
+}
+
+.band-card strong {
+  display: block;
+  color: var(--ink);
+}
+
+.band-card span {
+  color: var(--muted);
+  font-size: .82rem;
+  font-weight: 750;
+}
+
+#wirelessSvg text {
+  fill: var(--ink);
+  font-family: inherit;
+}
+
+@media (max-width: 560px) {
+  .band-grid {
+    grid-template-columns: 1fr;
+  }
+}

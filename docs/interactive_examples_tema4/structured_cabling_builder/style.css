@@ -1,0 +1,35 @@
+/*
+ * Código fuente: 0BSD.
+ * Contenido docente propio: CC0 1.0 Universal.
+ * Véanse ../../../LICENSE-0BSD, ../../../LICENSE-CC0 y ../../../LICENSES.md.
+ */
+@import url("../style.css");
+
+:root {
+  --upct: var(--cabling);
+  --upct-dark: #0d5f46;
+}
+
+.unit {
+  margin-top: -.2rem;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 760;
+}
+
+.switch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .35rem .5rem;
+}
+
+#cablingSvg text {
+  fill: var(--ink);
+  font-family: inherit;
+}
+
+@media (max-width: 560px) {
+  .switch-grid {
+    grid-template-columns: 1fr;
+  }
+}
